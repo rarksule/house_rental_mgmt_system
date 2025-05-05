@@ -32,9 +32,9 @@
                                                     @foreach($rentalHistory as $history)
                                                         <tr>
                                                             <td>
-                                                                <strong>{{ $history->property->name }}</strong><br>
+                                                                <strong>{{ $history->house->name }}</strong><br>
                                                                 <small
-                                                                    class="text-muted">{{ $history->property->address }}</small>
+                                                                    class="text-muted">{{$history->nu ->address }}</small>
                                                             </td>
                                                             <td>
                                                                 @if($history->action === 'rented')

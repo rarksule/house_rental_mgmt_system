@@ -100,11 +100,30 @@ function languages()
 function isAdminPanel()
 {
     if (isAdmin() || isOwner()) {
-        return !(Route::currentRouteName() == 'home' || Route::currentRouteName() == 'house_detail');
+        $value = false;
+        switch (Route::currentRouteName()) {
+            case 'home':
+                $value = true;
+                break;
+            case 'house_detail':
+                $value = true;
+                break;
+            case 'privacy':
+                $value = true;
+                break;
+            case 'cookie':
+                $value = true;
+                break;
+            case 'terms':
+                $value = true;
+                break;
+        }
+        return $value;
     } else {
         return false;
     }
 }
+
 
 function noImage()
 {

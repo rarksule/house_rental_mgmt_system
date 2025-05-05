@@ -37,6 +37,13 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/messages', [HomeController::class, 'index'])->name('messages');
 
+
+Route::get('/privacy', [HomeController::class, 'privacy'])->name('privacy');
+
+Route::get('/cookie', [HomeController::class, 'cookie'])->name('cookie');
+
+Route::get('/terms', [HomeController::class, 'terms'])->name('terms');
+
 Route::get('/house_detail/{id}', [HomeController::class, 'show'])->name('house_detail');
 
 require __DIR__ . '/auth.php';

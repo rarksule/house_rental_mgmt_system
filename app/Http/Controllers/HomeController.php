@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use App\Models\House;
 
@@ -37,9 +38,33 @@ class HomeController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function cookie()
+    {   
+        $setting = Setting::find(1);
+        $content = $setting ? $setting->cookie_policy : '';
+        return view('common.cookie',compact(['content']));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function privacy()
     {
-        //
+        
+        $setting = Setting::find(1);
+        $content = $setting ? $setting->privacy_policy : '' ;
+        return view('common.cookie',compact(['content']));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function terms()
+    {
+        
+        $setting = Setting::find(1);
+        $content = $setting ?  $setting->terms_conditions : '';
+        return view('common.cookie',compact(['content']));
     }
 
     /**
