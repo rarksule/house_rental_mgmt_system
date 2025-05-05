@@ -11,10 +11,12 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\View\View;
 use App\Models\User;
+use App\HistoryTrait;
 
 
 class UserController extends Controller
 {
+    use HistoryTrait;
 
     public function register()
     {
@@ -41,6 +43,7 @@ class UserController extends Controller
             'status' => 1,
             'role' => $request->role,
         ]);
+        $this->recordHistory(REGISTERED,$user->id);
 
         return redirect()->route('phoneVerify', ['phone' => $request->contact_number])->with('warning', __('message.verify_phone'));
 

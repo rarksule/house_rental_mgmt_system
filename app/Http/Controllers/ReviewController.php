@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ReviewReplay;
 use Illuminate\Http\Request;
 
 class ReviewController extends Controller
@@ -17,9 +18,20 @@ class ReviewController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function reply(Request $request)
     {
-        //
+        if(!isAdmin()){
+            return back()->with('error',__('message.action_forbidden'));
+        }
+
+        ReviewReplay::create([
+            'content'=>$request->content,
+            'user_id'=>auth()->id(),
+            'review_id' =>$request->review_id,
+        ]);
+
+        return back()->with('success',__('message.saved succefully'));
+        
     }
 
     /**

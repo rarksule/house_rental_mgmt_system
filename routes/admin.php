@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\Owner\OwnerController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Owner\HouseController;
@@ -36,7 +37,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'a
     Route::patch('/activate/{id}', [UserController::class, 'activte'])->name('activate');
     Route::get('change-password', [PasswordController::class, 'index'])
                 ->name('change-password');
-                
+    
+    Route::get('/allHouse', [HouseController::class, 'index'])->name('allHouse');
+    Route::get('/rentedHouse', [HouseController::class, 'rented'])->name('rentedHouse');
     
     Route::patch('/language', [AdminController::class,'language'])->name('language');
     Route::put('/policy', [AdminController::class,'policy'])->name('policy');
@@ -46,4 +49,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'a
     Route::get('/settings', [AdminController::class, 'settings'])->name('setting');
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::get('/messages',[MessageController::class,'index'])->name('messages');
+
+    
+    Route::post('/reply',[ReviewController::class,'reply'])->name('reply');
 });

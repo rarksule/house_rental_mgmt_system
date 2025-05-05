@@ -64,6 +64,11 @@ class User extends Authenticatable implements HasMedia
         return $this->hasMany(Message::class, 'receiver_id');
     }
 
+    public function history()
+    {
+        return $this->hasMany(UserHistory::class, 'user_id');
+    }
+
 
     /**
      * The attributes that should be hidden for serialization.

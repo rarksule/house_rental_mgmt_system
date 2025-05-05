@@ -144,6 +144,7 @@ return [
     'Welcome_back' => 'Welcome back'
     ,'req_tour'=> 'Request Tour',
     'reqd_tour' => 'Tour Requested',
+    'reply'=>'reply',
 
 
 ];

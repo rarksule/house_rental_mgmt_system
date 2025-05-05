@@ -1,7 +1,7 @@
 <x-app-layout>
 
     <div id="headless-wrapper">
-        <section class="sign-up-page bg-white">
+        <div class="sign-up-page bg-white">
             <div class="container-fluid p-0">
                 <div class="row sign-up-page-wrap-row">
                     <div class="col-md-6">
@@ -60,8 +60,12 @@
                                             <su style="color: red;"> *</su>
                                         </label>
                                         <select id="role" name="role" required class="form-control border-dark">
-                                            <option value={{USER_ROLE_TENANT}}>{{ __('message.tenant') }}</option>
-                                            <option value={{USER_ROLE_OWNER}}>{{ __('message.owner.0') }}</option>
+                                            <option value="{{ USER_ROLE_TENANT }}" {{ old('role') == USER_ROLE_TENANT ? 'selected' : '' }}>
+                                                {{ __('message.tenant') }}
+                                            </option>
+                                            <option value="{{ USER_ROLE_OWNER }}" {{ old('role') == USER_ROLE_OWNER ? 'selected' : '' }}>
+                                                {{ __('message.owner.0') }}
+                                            </option>
                                         </select>
                                         @error('role')
                                             <span class="text-danger">{{ $message }}</span>
@@ -111,7 +115,7 @@
                                 <div class="row mb-25">
                                     <div class="col-md-12">
                                         <button type="submit"
-                                            class="theme-btn theme-button1 theme-button3 font-15 fw-bold w-100"
+                                            class="btn btn-primary font-15 fw-bold w-100"
                                             title="{{ __('message.sign_up') }}">{{ __('message.sign_up') }}</button>
                                     </div>
                                 </div>
@@ -129,6 +133,6 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
     </div>
 </x-app-layout>

@@ -26,6 +26,11 @@ class Review extends Model
         return $this->belongsTo(House::class, 'house_id');
     }
 
+    public function replies()
+    {
+        return $this->hasMany(ReviewReplay::class, 'review_id');
+    }
+
     public function tenant()
     {
         return $this->belongsTo(User::class, 'tenant_id');

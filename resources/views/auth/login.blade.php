@@ -215,7 +215,7 @@
                         startTimer();
                     },
                     error: function (xhr, status, error) {
-                        toastr.error('Failed to send OTP code.');
+                        toastr.error(error);
                         console.error('Failed to send OTP code.');
                     }
                 });

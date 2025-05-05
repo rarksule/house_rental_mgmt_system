@@ -19,7 +19,7 @@
                         </a>
                         <ul class="sub-menu {{ @$navHouseMMShowClass }}" aria-expanded="false">
                             <li class="{{ @$subNavAllHouseMMActiveClass }}">
-                                <a href="{{ route('owner.allHouse') }}"
+                                <a href="{{ route(userprefix().'.allHouse') }}"
                                     class="{{ @$subNavAllHouseActiveClass }}">{{ __('message.all_house') }}</a>
                             </li>
                             @if (isOwner())
@@ -29,7 +29,7 @@
                             </li>
                             @endif
                             <li class="{{ @$subNavOwnHouseActiveClass }}">
-                                <a href="{{ route('owner.rentedHouse') }}"
+                                <a href="{{ route(userprefix().'.rentedHouse') }}"
                                     class="{{ @$subNavOwnHouseActiveClass }}">{{ __('message.rented_house') }}</a>
                             </li>
                         </ul>

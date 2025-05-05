@@ -15,5 +15,12 @@ const app_preloader_status = 1;
 const USER_STATUS_INACTIVE = 0;
 const USER_STATUS_ACTIVE = 1;
 
+const RENTED = 'Rented';
+const RELEASED  = 'Released';
+const VISITED = 'Visited';
+const REGISTERED = 'registered';
+const ADDED = 'Added';
+const REMOVED = 'Removed';
+
 // //Message
 const SOMETHING_WENT_WRONG = "Something went wrong! Please try again";

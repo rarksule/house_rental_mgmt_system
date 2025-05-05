@@ -11,9 +11,11 @@ use App\Models\Review;
 use App\Models\User;
 use App\DataTables\HousesDataTable;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use App\HistoryTrait;
 
 class HouseController extends Controller
 {
+    use HistoryTrait;
     /**
      * Display a listing of the resource.
      */
@@ -48,7 +50,7 @@ class HouseController extends Controller
     public function create()
     {
         $pageTitle  = 'Add House';
-        $tenant = User::where('role', USER_ROLE_TENANT) // Assuming you have a 'role' column
+        $tenants = User::where('role', USER_ROLE_TENANT) 
     ->where(function($query) {
         $query->whereHas('sentMessages', function ($q) {
                 $q->where('receiver_id', auth()->id());
@@ -58,7 +60,7 @@ class HouseController extends Controller
             });
     })
     ->get();
-        return view('owner.add-house',compact(['pageTitle','tenant']));
+        return view('owner.add-house',compact(['pageTitle','tenants']));
     }
 
     /**
@@ -86,8 +88,8 @@ class HouseController extends Controller
             'acceptMarried' => $request->has('acceptMarried'),
             'hasDog' => $request->has('hasDog'),
         ];
-
-        if($request->has('renter_email')){
+        $tenant_id=null;
+        if($request->has('renter_email') && isset($request->renter_email)){
             $tenant_id = User::where('email',$request->renter_email)->first()->id;
         }
         
@@ -111,6 +113,11 @@ class HouseController extends Controller
             'latitude' =>$request->latitude,
         ]);
 
+        $this->recordHistory(ADDED,auth()->user()->id,$house->id);
+        if($tenant_id!=null){
+            $this->recordHistory(RENTED,$tenant_id,$house->id);
+        }
+
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
                 $house->addMedia($image)
@@ -118,7 +125,7 @@ class HouseController extends Controller
             }
         }
 
-        return back()->with('success', 'House created successfully!');
+        return redirect()->route(userPrefix().'.allHouse')->with('success', 'House created successfully!');
     }
     
 
@@ -182,6 +189,7 @@ class HouseController extends Controller
 
         $cleanDescription = Purifier::clean($request->input('description'));
         $house = House::findOrFail($r);
+        $previousTenant = $house->tenant_id;
         $house->update([
             'name' => $request->name, // Assuming this is the title
             'address' => $request->address,
@@ -197,6 +205,12 @@ class HouseController extends Controller
             'longitude' =>$request->longitude,
             'latitude' =>$request->latitude,
         ]);
+        if($previousTenant!=null && $tenant_id==null){
+            $this->recordHistory(RELEASED,$previousTenant,$house->id);
+        }
+        if($previousTenant!=null && $tenant_id!=$previousTenant){
+            $this->recordHistory(RENTED,$tenant_id,$house->id);
+        }
 
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
@@ -205,7 +219,7 @@ class HouseController extends Controller
             }
         }
 
-        return back()->with('success', 'House updated successfully!');
+        return redirect()->route('owner.allHouse')->with('success', 'House updated successfully!');
     }
 
     /**
@@ -218,6 +232,7 @@ class HouseController extends Controller
         }
         $house = House::findOrFail($id);
         $house->delete();
+        $this->recordHistory(REMOVED,auth()->id(),$house->id);
         return back()->with('success','house deleted succesfully');
     }
 

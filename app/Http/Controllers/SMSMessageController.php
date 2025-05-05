@@ -30,9 +30,9 @@ class SMSMessageController extends Controller
      */
     public function store(Request $request)
     {
-        $user = User::where('contact_number', $request->phone);
+        $user = User::where('contact_number', $request->phone)->first();
         if (!$user) {
-            return response(404)->json('user not found');
+            return response()->json('user not found',404);
         }
         $otp = str_pad(random_int(0, pow(10, 6) - 1), 6, '0', STR_PAD_LEFT);
 
@@ -78,7 +78,7 @@ class SMSMessageController extends Controller
             $user->save();
             return redirect()->route('dashboard')->with('success', 'phone Verification Successfull');
         }
-        return back()->with('error', 'data received');
+        return back()->with('error', 'incorrect code');
     }
 
     /**

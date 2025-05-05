@@ -9,7 +9,8 @@
                 <div class="col-md-4 text-md-end">
                     <h2 class="text-primary display-6">{{$house->price}}<small class="text-muted">/ Month</small></h2>
                     <div class="mt-3">
-                        <button class="{{tourRequested() ? 'btn btn-success':'btn btn-outline-secondary' }} me-2" id="req-tour"><i
+                        <button class="{{tourRequested() ? 'btn btn-success' : 'btn btn-outline-secondary' }} me-2"
+                            id="req-tour"><i
                                 class="me-1"></i>{{tourRequested() ? __('message.reqd_tour') : __('message.req_tour')}}</button>
                         <!-- Your existing button -->
 
@@ -111,7 +112,7 @@
                 <section class="mb-5">
                     <h2 class="mb-4">{{__('message.review')}}</h2>
                     @foreach ($house->reviews as $review)
-                        <div class="card review-card">
+                        <div class="card review-card mb-3">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between mb-2">
                                     <h5 class="card-title">{{$review->tenant->first_name}}</h5>
@@ -129,6 +130,43 @@
                                     <span class="ms-1">({{ $review->ratting }} /5)</span>
                                 </div>
                                 <p class="card-text">{{$review->comment}}</p>
+
+
+                                @if($review->replies->count() > 0 || isAdmin())
+                                    <button class="btn btn-sm btn-link p-0 text-decoration-none mt-2" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#replies-{{$review->id}}">
+                                        <i class="fas fa-reply me-1"></i> {{$review->replies->count()}}
+                                        {{__('message.reply')}}
+                                    </button>
+
+                                    <div class="collapse mt-2" id="replies-{{$review->id}}">
+                                        @foreach($review->replies as $reply)
+                                            <div class="card bg-light mb-2">
+                                                <div class="card-body p-3">
+                                                    <div class="d-flex justify-content-between mb-1">
+                                                        <strong>{{ $reply->user->name }}</strong>
+                                                        <small class="text-muted">{{timeAgo($reply->created_at)}}</small>
+                                                    </div>
+                                                    <p class="mb-0">{{$reply->content}}</p>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                        @if(isAdmin())
+                                            <div class="mt-2">
+                                                <form action="{{ route('admin.reply') }}" method="POST">
+                                                    @csrf
+                                                    <input type="hidden" name="review_id" value="{{$review->id}}">
+                                                    <div class="mb-2">
+                                                        <textarea class="form-control form-control-sm" name="content" rows="2"
+                                                            required></textarea>
+                                                    </div>
+                                                    <button type="submit"
+                                                        class="btn btn-sm btn-primary">{{__('message.save')}}</button>
+                                                </form>
+                                            </div>
+                                        @endif
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     @endforeach
@@ -187,20 +225,20 @@
 
         <script>
             const tourRequested = {{ tourRequested() }}
-            const isTenant = {{ isTenant() }}
-            document.getElementById('req-tour').addEventListener('click', function (e) {
+                    const isTenant = {{ isTenant() }}
+                document.getElementById('req-tour').addEventListener('click', function (e) {
 
-                e.preventDefault();
-                if(!isTenant || tourRequested){
-                    return;
-                }
-                // Optional: Add loading state
-                this.disabled = true;
-                this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                    e.preventDefault();
+                    if (!isTenant || tourRequested) {
+                        return;
+                    }
+                    // Optional: Add loading state
+                    this.disabled = true;
+                    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
 
-                // Submit the hidden form
-                document.getElementById('tour-request-form').submit();
-            });
+                    // Submit the hidden form
+                    document.getElementById('tour-request-form').submit();
+                });
         </script>
         <script src="{{ asset('assets/js/rateme.js') }}"></script>
     @endpush
