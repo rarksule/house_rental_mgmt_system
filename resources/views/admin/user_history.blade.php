@@ -25,33 +25,43 @@
                                                         <th>Property</th>
                                                         <th>Action</th>
                                                         <th>Date</th>
-                                                        <th>Status</th>
+                                                        <th>description</th>
+                                                        <th>Links</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     @foreach($rentalHistory as $history)
                                                         <tr>
                                                             <td>
-                                                                <strong>{{ $history->house->name }}</strong><br>
-                                                                <small
-                                                                    class="text-muted">{{$history->nu ->address }}</small>
+                                                                @if(isset($history->house))
+                                                                    <strong>{{ $history->house->name }}</strong><br>
+                                                                    <small class="text-muted">{{$history->house->address }}</small>
+
+                                                                @else
+                                                                    <strong>{{ $history->user->name }}</strong><br>
+                                                                    <small class="text-muted">{{$history->user->role }}</small>
+                                                                @endif
                                                             </td>
                                                             <td>
-                                                                @if($history->action === 'rented')
-                                                                    <span class="badge badge-success">Rented</span>
-                                                                @elseif($history->action === 'left')
-                                                                    <span class="badge badge-danger">Left</span>
+                                                                @if($history->type == RENTED)
+                                                                    <span class="property-type bg-danger mb-2 d-inline-block">Rented</span>
+                                                                @elseif($history->type == RELEASED)
+                                                                    <span class="property-type bg-danger mb-2 d-inline-block">Left</span>
                                                                 @else
-                                                                    <span class="badge badge-info">Visited</span>
+                                                                    <span class="property-type bg-danger mb-2 d-inline-block">Visited</span>
                                                                 @endif
                                                             </td>
                                                             <td>{{ $history->created_at->format('M d, Y h:i A') }}</td>
                                                             <td>
-                                                                @if($history->is_active)
-                                                                    <span class="badge badge-success">Active</span>
-                                                                @else
-                                                                    <span class="badge badge-secondary">Inactive</span>
+                                                                <p>{{$history->content}}</p>
+                                                            </td>
+                                                            <td>
+                                                                @if(isset($history->house))
+                                                                <span class="property-type bg-danger mb-2 d-inline-block">Go to House</span>
+                                                                @elseif(isAdmin())
+                                                                <span class="property-type bg-danger mb-2 d-inline-block">Go to User</span>
                                                                 @endif
+                                                                
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -59,9 +69,9 @@
                                             </table>
                                         </div>
 
-                                        <div class="d-flex justify-content-center">
+                                        {{-- <div class="d-flex justify-content-center">
                                             {{ $rentalHistory->links() }}
-                                        </div>
+                                        </div> --}}
                                     @endif
                                 </div>
                             </div>

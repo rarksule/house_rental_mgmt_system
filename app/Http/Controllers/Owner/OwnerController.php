@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Owner;
 
+use App\Models\UserHistory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -37,7 +38,16 @@ class OwnerController extends Controller
 
 
     public function History(Request $request){
-        $rentalHistory = collect([]);
+        if(isAdmin()){
+            $rentalHistory = UserHistory::all();
+        }else{
+            $userId = auth()->id();
+            $rentalHistory = User::find($userId)->houseHistories;
+            // $hirentalHistorystories = UserHistory::whereHas('house', function($query) use ($userId) {
+            //     $query->where('user_id', $userId);
+            // })->get();
+        }
+        
         return view('admin.user_history',compact(['rentalHistory']));
     }
 

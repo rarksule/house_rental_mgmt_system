@@ -53,6 +53,19 @@ class User extends Authenticatable implements HasMedia
         return $this->hasOne(House::class, 'tenant_id');
     }
 
+
+    public function houseHistories()
+    {
+        return $this->hasManyThrough(
+            UserHistory::class,
+            House::class,
+            'owner_id', // Foreign key on houses table
+            'house_id', // Foreign key on histories table
+            'id',       // Local key on users table
+            'id'        // Local key on houses table
+        );
+    }
+
     // In User model
     public function sentMessages()
     {

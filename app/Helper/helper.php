@@ -118,7 +118,7 @@ function isAdminPanel()
                 $value = true;
                 break;
         }
-        return $value;
+        return !$value;
     } else {
         return false;
     }

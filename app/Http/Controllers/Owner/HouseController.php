@@ -145,6 +145,16 @@ class HouseController extends Controller
         $pageTitle  = 'Edit House';
         $house =House::find($r);
         
+        $tenants = User::where('role', USER_ROLE_TENANT) 
+    ->where(function($query) {
+        $query->whereHas('sentMessages', function ($q) {
+                $q->where('receiver_id', auth()->id());
+            })
+            ->orWhereHas('receivedMessages', function ($q) {
+                $q->where('sender_id', auth()->id());
+            });
+    })
+    ->get();
         $tenant = User::where('role', USER_ROLE_TENANT) // Assuming you have a 'role' column
     ->where(function($query) {
         $query->whereHas('sentMessages', function ($q) {
@@ -155,7 +165,7 @@ class HouseController extends Controller
             });
     })
     ->get();
-        return view('owner.add-house',compact(['pageTitle','house','tenant']));
+        return view('owner.add-house',compact(['pageTitle','house','tenant','tenants']));
     }
 
     /**
@@ -183,7 +193,8 @@ class HouseController extends Controller
             'acceptMarried' => $request->has('acceptMarried'),
             'hasDog' => $request->has('hasDog'),
         ];
-        if($request->has('renter_email')){
+        $tenant_id = null;
+        if($request->has('renter_email') && isset($request->renter_email)){
             $tenant_id = User::where('email',$request->renter_email)->first()->id;
         }
 
@@ -207,8 +218,7 @@ class HouseController extends Controller
         ]);
         if($previousTenant!=null && $tenant_id==null){
             $this->recordHistory(RELEASED,$previousTenant,$house->id);
-        }
-        if($previousTenant!=null && $tenant_id!=$previousTenant){
+        }else if($previousTenant!=null && $tenant_id!=$previousTenant){
             $this->recordHistory(RENTED,$tenant_id,$house->id);
         }
 

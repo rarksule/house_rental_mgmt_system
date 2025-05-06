@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
 use App\Models\User;
+use App\Models\UserHistory;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
 class House extends Model implements HasMedia
@@ -49,6 +50,10 @@ class House extends Model implements HasMedia
     public function reviews()
     {
         return $this->hasMany(Review::class, 'house_id');
+    }
+
+    public function histories(){
+        $this->hasMany(UserHistory::class,'house_id');
     }
 
 

@@ -1,3 +1,7 @@
 <x-app-layout>
-    {!! $content !!}
+    <div class="hero-section">
+        <div class="container">
+            {!! $content !!}
+        </div>
+    </div>
 </x-app-layout>

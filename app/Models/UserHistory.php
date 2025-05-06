@@ -8,7 +8,19 @@ class UserHistory extends Model
 {
     protected $fillable = ['type','house_id','user_id','content'];
     
-    public function house(){
-        $this->belongsTo(House::class,'house_id');
+    public function house()
+    {
+        return $this->belongsTo(House::class);
     }
+
+    // Relationship with user who created the history
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function links(){
+        return '<span>hell</span>';
+    }
+
 }

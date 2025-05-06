@@ -41,7 +41,7 @@ class HomeController extends Controller
     public function cookie()
     {   
         $setting = Setting::find(1);
-        $content = $setting ? $setting->cookie_policy : '';
+        $content = $setting ? $setting->cookie_policy : '<h1>cookie policy not found</h1>';
         return view('common.cookie',compact(['content']));
     }
 
@@ -52,7 +52,7 @@ class HomeController extends Controller
     {
         
         $setting = Setting::find(1);
-        $content = $setting ? $setting->privacy_policy : '' ;
+        $content = $setting ? $setting->privacy_policy : '<h1>privacy policy not found</h1>' ;
         return view('common.cookie',compact(['content']));
     }
 
@@ -63,7 +63,7 @@ class HomeController extends Controller
     {
         
         $setting = Setting::find(1);
-        $content = $setting ?  $setting->terms_conditions : '';
+        $content = $setting ?  $setting->terms_conditions : '<h1>Ters and conditions not found</h1>';
         return view('common.cookie',compact(['content']));
     }
 

@@ -45,10 +45,10 @@
                             <a href="{{ route(userprefix() .'.tenants')}}" 
                                 class="{{ @$subNavAllTenantActiveClass }}">{{ __('message.all_tenants') }}</a>
                         </li>
-                        {{-- <li class="{{ @$subNavTenantHistoryMMActiveClass }}">
+                        <li class="{{ @$subNavTenantHistoryMMActiveClass }}">
                             <a href="{{ route(userprefix().'.tenantsHistory') }}" 
                                 class="{{ @$subNavTenantHistoryActiveClass }}">{{ __('message.tenant_history') }}</a>
-                        </li> --}}
+                        </li>
                     </ul>
                 </li>
 
@@ -63,10 +63,10 @@
                                 <a href="{{ route('admin.owners' )}}"
                                     class="{{ @$subNavAllTenantActiveClass }}">{{ __('message.all_owners') }}</a>
                             </li>
-                            {{-- <li class="{{ @$subNavTenantHistoryMMActiveClass }}">
+                            <li class="{{ @$subNavTenantHistoryMMActiveClass }}">
                                 <a href="{{ route('admin.ownersHistory')}}"
                                     class="{{ @$subNavTenantHistoryActiveClass }}">{{ __('message.owners_history') }}</a>
-                            </li> --}}
+                            </li>
                         </ul>
                     </li>
                 @endif
