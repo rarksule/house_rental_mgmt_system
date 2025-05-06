@@ -43,9 +43,6 @@ class OwnerController extends Controller
         }else{
             $userId = auth()->id();
             $rentalHistory = User::find($userId)->houseHistories;
-            // $hirentalHistorystories = UserHistory::whereHas('house', function($query) use ($userId) {
-            //     $query->where('user_id', $userId);
-            // })->get();
         }
         
         return view('admin.user_history',compact(['rentalHistory']));

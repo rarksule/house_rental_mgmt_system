@@ -44,11 +44,23 @@
                                                             </td>
                                                             <td>
                                                                 @if($history->type == RENTED)
-                                                                    <span class="property-type bg-danger mb-2 d-inline-block">Rented</span>
+                                                                    <span
+                                                                        class="property-type bg-success mb-2 d-inline-block">Rented</span>
                                                                 @elseif($history->type == RELEASED)
-                                                                    <span class="property-type bg-danger mb-2 d-inline-block">Left</span>
-                                                                @else
-                                                                    <span class="property-type bg-danger mb-2 d-inline-block">Visited</span>
+                                                                    <span
+                                                                        class="property-type bg-danger mb-2 d-inline-block">Left</span>
+                                                                @elseif($history->type == VISITED)
+                                                                    <span
+                                                                        class="property-type bg-info mb-2 d-inline-block">Visited</span>
+                                                                @elseif($history->type == ADDED)
+                                                                    <span
+                                                                        class="property-type bg-success mb-2 d-inline-block">ADDED</span>
+                                                                @elseif($history->type == REGISTERED)
+                                                                    <span
+                                                                        class="property-type bg-success mb-2 d-inline-block">Joined</span>
+                                                                @elseif($history->type == REMOVED)
+                                                                    <span
+                                                                        class="property-type bg-danger mb-2 d-inline-block">Removed</span>
                                                                 @endif
                                                             </td>
                                                             <td>{{ $history->created_at->format('M d, Y h:i A') }}</td>
@@ -57,11 +69,13 @@
                                                             </td>
                                                             <td>
                                                                 @if(isset($history->house))
-                                                                <span class="property-type bg-danger mb-2 d-inline-block">Go to House</span>
+                                                                    <a><span class="property-type bg-primary mb-2 d-inline-block">Go
+                                                                            to House</span></a>
                                                                 @elseif(isAdmin())
-                                                                <span class="property-type bg-danger mb-2 d-inline-block">Go to User</span>
+                                                                    <a><span class="property-type bg-primary mb-2 d-inline-block">Go
+                                                                            to User</span></a>
                                                                 @endif
-                                                                
+
                                                             </td>
                                                         </tr>
                                                     @endforeach
