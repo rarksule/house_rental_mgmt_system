@@ -119,15 +119,15 @@
                                     <small class="text-muted">{{timeAgo($review->created_at)}}</small>
                                 </div>
                                 <div class="mb-3 property-rating">
-                                    @for ($i = 1; $i <= $review->ratting; $i++)
+                                    @for ($i = 1; $i <= $review->rating; $i++)
                                         <i class="fas fa-star"></i>
                                     @endfor
 
-                                    @for ($i = 5; $i > $review->ratting; $i--)
+                                    @for ($i = 5; $i > $review->rating; $i--)
                                         <i class="far fa-star"></i>
                                     @endfor
 
-                                    <span class="ms-1">({{ $review->ratting }} /5)</span>
+                                    <span class="ms-1">({{ $review->rating }} /5)</span>
                                 </div>
                                 <p class="card-text">{{$review->comment}}</p>
 

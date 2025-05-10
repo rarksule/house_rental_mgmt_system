@@ -85,7 +85,7 @@
                                                         <h3>{{$house->price}} Birr / Month</h3>
                                                         <p class="text-muted">{{$house->address}}</p>
                                                         @php
-                                                            $rating = $house->reviews->count() > 0 ? $house->reviews->avg('ratting') : 0;
+                                                            $rating = $house->reviews->count() > 0 ? $house->reviews->avg('rating') : 0;
                                                             $filledStars = floor($rating);
                                                             $halfStar = $rating - $filledStars >= 0.4;
                                                             $emptyStars = 5 - $filledStars - ($halfStar ? 1 : 0);

@@ -30,7 +30,7 @@ Route::group(['prefix' => 'tenant', 'as' => 'tenant.', 'middleware' => ['auth', 
     Route::get('/message', [MessageController::class, 'index'])->name('notification');
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     
-    Route::post('/rate', [HouseController::class, 'storeRatting'])->name('rate');
+    Route::post('/rate', [HouseController::class, 'storeRating'])->name('rate');
     Route::get('/messages', [MessageController::class, 'index'])->name('messages');
     Route::get('/change_password', [PasswordController::class,'index'])->name('change-password');
     Route::group(['prefix' => 'house', 'as' => 'house.'], function () {

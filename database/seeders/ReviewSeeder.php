@@ -20,7 +20,7 @@ class ReviewSeeder extends Seeder
             [
                 'house_id'=>1,
                 'tenant_id'=>3,
-                'ratting'=>4,
+                'rating'=>4,
                 'comment'=>'interesting but expensive',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -28,7 +28,7 @@ class ReviewSeeder extends Seeder
             [
                 'house_id'=>1,
                 'tenant_id'=>6,
-                'ratting'=>4,
+                'rating'=>4,
                 'comment'=>'interesting but expensive',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -37,7 +37,7 @@ class ReviewSeeder extends Seeder
             [
                 'house_id'=>1,
                 'tenant_id'=>8,
-                'ratting'=>4,
+                'rating'=>4,
                 'comment'=>'interesting but expensive',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -46,7 +46,7 @@ class ReviewSeeder extends Seeder
             [
                 'house_id'=>1,
                 'tenant_id'=>9,
-                'ratting'=>4,
+                'rating'=>4,
                 'comment'=>'interesting but expensive',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -55,7 +55,7 @@ class ReviewSeeder extends Seeder
             [
                 'house_id'=>2,
                 'tenant_id'=>3,
-                'ratting'=>4,
+                'rating'=>4,
                 'comment'=>'interesting but expensive',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -64,7 +64,7 @@ class ReviewSeeder extends Seeder
             [
                 'house_id'=>2,
                 'tenant_id'=>6,
-                'ratting'=>4,
+                'rating'=>4,
                 'comment'=>'interesting but expensive',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -73,7 +73,7 @@ class ReviewSeeder extends Seeder
             [
                 'house_id'=>2,
                 'tenant_id'=>8,
-                'ratting'=>4,
+                'rating'=>4,
                 'comment'=>'interesting but expensive',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -82,7 +82,7 @@ class ReviewSeeder extends Seeder
             [
                 'house_id'=>2,
                 'tenant_id'=>9,
-                'ratting'=>4,
+                'rating'=>4,
                 'comment'=>'interesting but expensive',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -91,7 +91,7 @@ class ReviewSeeder extends Seeder
             [
                 'house_id'=>3,
                 'tenant_id'=>3,
-                'ratting'=>3,
+                'rating'=>3,
                 'comment'=>'interesting but expensive',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -100,7 +100,7 @@ class ReviewSeeder extends Seeder
             [
                 'house_id'=>3,
                 'tenant_id'=>6,
-                'ratting'=>3,
+                'rating'=>3,
                 'comment'=>'interesting but expensive',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -109,7 +109,7 @@ class ReviewSeeder extends Seeder
             [
                 'house_id'=>3,
                 'tenant_id'=>8,
-                'ratting'=>3,
+                'rating'=>3,
                 'comment'=>'interesting but expensive',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -118,7 +118,7 @@ class ReviewSeeder extends Seeder
             [
                 'house_id'=>3,
                 'tenant_id'=>9,
-                'ratting'=>3,
+                'rating'=>3,
                 'comment'=>'interesting but expensive',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -127,7 +127,7 @@ class ReviewSeeder extends Seeder
             [
                 'house_id'=>4,
                 'tenant_id'=>6,
-                'ratting'=>4,
+                'rating'=>4,
                 'comment'=>'interesting but expensive',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -136,7 +136,7 @@ class ReviewSeeder extends Seeder
             [
                 'house_id'=>4,
                 'tenant_id'=>8,
-                'ratting'=>4,
+                'rating'=>4,
                 'comment'=>'interesting but expensive',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -145,7 +145,7 @@ class ReviewSeeder extends Seeder
             [
                 'house_id'=>4,
                 'tenant_id'=>9,
-                'ratting'=>5,
+                'rating'=>5,
                 'comment'=>'interesting but expensive',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -154,7 +154,7 @@ class ReviewSeeder extends Seeder
             [
                 'house_id'=>5,
                 'tenant_id'=>9,
-                'ratting'=>4,
+                'rating'=>4,
                 'comment'=>'interesting but expensive',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -163,7 +163,7 @@ class ReviewSeeder extends Seeder
             [
                 'house_id'=>6,
                 'tenant_id'=>8,
-                'ratting'=>4,
+                'rating'=>4,
                 'comment'=>'interesting but expensive',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -172,7 +172,7 @@ class ReviewSeeder extends Seeder
             [
                 'house_id'=>7,
                 'tenant_id'=>3,
-                'ratting'=>4,
+                'rating'=>4,
                 'comment'=>'interesting but expensive',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -181,7 +181,7 @@ class ReviewSeeder extends Seeder
             [
                 'house_id'=>7,
                 'tenant_id'=>3,
-                'ratting'=>5,
+                'rating'=>5,
                 'comment'=>'interesting but expensive',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -190,7 +190,7 @@ class ReviewSeeder extends Seeder
             [
                 'house_id'=>7,
                 'tenant_id'=>9,
-                'ratting'=>4,
+                'rating'=>4,
                 'comment'=>'interesting but expensive',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -199,7 +199,7 @@ class ReviewSeeder extends Seeder
             [
                 'house_id'=>8,
                 'tenant_id'=>3,
-                'ratting'=>1,
+                'rating'=>1,
                 'comment'=>'expensive',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -208,7 +208,7 @@ class ReviewSeeder extends Seeder
             [
                 'house_id'=>8,
                 'tenant_id'=>3,
-                'ratting'=>1,
+                'rating'=>1,
                 'comment'=>'expensive',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -217,7 +217,7 @@ class ReviewSeeder extends Seeder
             [
                 'house_id'=>2,
                 'tenant_id'=>6,
-                'ratting'=>2,
+                'rating'=>2,
                 'comment'=>'interesting but expensive',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -226,7 +226,7 @@ class ReviewSeeder extends Seeder
             [
                 'house_id'=>10,
                 'tenant_id'=>3,
-                'ratting'=>5,
+                'rating'=>5,
                 'comment'=>'interesting I like It',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -235,7 +235,7 @@ class ReviewSeeder extends Seeder
             [
                 'house_id'=>10,
                 'tenant_id'=>8,
-                'ratting'=>5,
+                'rating'=>5,
                 'comment'=>'interesting I like It',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -244,7 +244,7 @@ class ReviewSeeder extends Seeder
             [
                 'house_id'=>10,
                 'tenant_id'=>1,
-                'ratting'=>1,
+                'rating'=>1,
                 'comment'=>'every thing is a lie',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -253,7 +253,7 @@ class ReviewSeeder extends Seeder
             [
                 'house_id'=>1,
                 'tenant_id'=>6,
-                'ratting'=>4,
+                'rating'=>4,
                 'comment'=>'interesting but expensive',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -262,7 +262,7 @@ class ReviewSeeder extends Seeder
             [
                 'house_id'=>1,
                 'tenant_id'=>6,
-                'ratting'=>4,
+                'rating'=>4,
                 'comment'=>'interesting but expensive',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -271,7 +271,7 @@ class ReviewSeeder extends Seeder
             [
                 'house_id'=>1,
                 'tenant_id'=>6,
-                'ratting'=>4,
+                'rating'=>4,
                 'comment'=>'interesting but expensive',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -280,7 +280,7 @@ class ReviewSeeder extends Seeder
             [
                 'house_id'=>1,
                 'tenant_id'=>9,
-                'ratting'=>2,
+                'rating'=>2,
                 'comment'=>'interesting but expensive',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -289,7 +289,7 @@ class ReviewSeeder extends Seeder
             [
                 'house_id'=>1,
                 'tenant_id'=>9,
-                'ratting'=>3,
+                'rating'=>3,
                 'comment'=>'interesting but expensive',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),

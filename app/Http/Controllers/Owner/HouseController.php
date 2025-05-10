@@ -247,7 +247,7 @@ class HouseController extends Controller
     }
 
 
-    public function storeRatting(Request $request)
+    public function storeRating(Request $request)
     {   
         if(!isTenant()){
             return back(404)->with('error', 'message.action_forbidden!');
@@ -265,7 +265,7 @@ class HouseController extends Controller
         Review::create([
             'house_id' => $request->id,
             'tenant_id' => auth()->user()->id,
-            'ratting' => $request->rating,
+            'rating' => $request->rating,
             'comment' =>$request->comment,
             'had_visit' => '0',
         ]);

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign('house_id')->references('id')->on('houses')->onDelete('cascade');
             $table->unsignedBigInteger('tenant_id');
             $table->foreign('tenant_id')->references('id')->on('users')->onDelete('cascade');
-            $table->enum('ratting',[1,2,3,4,5]);
+            $table->enum('rating',[1,2,3,4,5]);
             $table->mediumText('comment');
             $table->enum('had_visit',[1,0])->comment('1-visited 0-notVisited');
             $table->softDeletes();

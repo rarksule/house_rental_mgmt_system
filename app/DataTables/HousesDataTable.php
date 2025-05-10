@@ -53,8 +53,8 @@ class HousesDataTable extends DataTable
                 return $day . $suffix . ' of month';
             })
             ->addColumn('Rating', function ($house) {
-                $ratting = $house->reviews->count() > 0 ? $house->reviews->avg("rating") : 0.0;
-                return '<i class="badge bg-warning fas fa-star me-1">  '.$ratting.'</i>';
+                $rating = $house->reviews->count() > 0 ? $house->reviews->avg("rating") : 0.0;
+                return '<i class="badge bg-warning fas fa-star me-1">  '.$rating.'</i>';
             })
 
             ->addColumn('Tenant', function ($house) {
@@ -149,7 +149,7 @@ class HousesDataTable extends DataTable
         Column::make('address'),
         Column::computed('Location'),
         Column::make('area'),
-        Column::computed('Rating'), // Fixed typo from 'ratting' to 'rating'
+        Column::computed('Rating'), 
         Column::computed('rented'),
         Column::computed('action')
             ->exportable(false)

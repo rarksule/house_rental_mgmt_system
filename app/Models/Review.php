@@ -15,7 +15,7 @@ class Review extends Model
     protected $fillable = [
         'house_id',
         'tenant_id',
-        'ratting',
+        'rating',
         'comment',
         'had_visit',
     ];
@@ -43,7 +43,7 @@ class Review extends Model
      * @var array<string, string>
      */
     protected $casts = [
-        'ratting' => 'integer',
+        'rating' => 'integer',
     ];
 
 

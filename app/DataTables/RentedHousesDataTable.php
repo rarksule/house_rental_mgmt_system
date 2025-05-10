@@ -53,19 +53,14 @@ class RentedHousesDataTable extends DataTable
                 return $day . $suffix . ' of month';
             })
             ->addColumn('Rating', function ($house) {
-                $ratting = $house->reviews->count() > 0 ? $house->reviews->avg("rating") : 0.0;
-                return '<i class="badge bg-warning fas fa-star me-1">  '.$ratting.'</i>';
+                $rating = $house->reviews->count() > 0 ? $house->reviews->avg("rating") : 0.0;
+                return '<i class="badge bg-warning fas fa-star me-1">  '.$rating.'</i>';
             })
 
             ->addColumn('Tenant', function ($house) {
                 return $house->tenant != null
                     ? $house->tenant->first_name
                     : ' --';
-            })
-            ->addColumn('rented', function ($house) {
-                return $house->rented == 1
-                    ? '<span class="badge bg-success">Rented</span>'
-                    : '<span class="badge bg-secondary">Available</span>';
             })
 
             ->addColumn('action', function($house) {
@@ -83,7 +78,7 @@ class RentedHousesDataTable extends DataTable
                 
                 return $buttons;
             })
-            ->rawColumns(['Location', 'rented','Rating', 'action']);
+            ->rawColumns(['Location','Rating', 'action']);
     }
 
     /**
