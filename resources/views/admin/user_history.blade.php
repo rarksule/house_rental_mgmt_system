@@ -9,24 +9,24 @@
                         <div class="col-md-10">
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="mb-0">Your Rental History</h3>
+                                    <h3 class="mb-0">{{__("message.activity_history",["form" => $who])}}</h3>
                                 </div>
 
                                 <div class="card-body">
                                     @if($rentalHistory->isEmpty())
                                         <div class="alert alert-info">
-                                            No rental history found.
+                                            {{__("message.no_rental")}}
                                         </div>
                                     @else
                                         <div class="table-responsive">
                                             <table class="table table-bordered table-hover">
                                                 <thead class="thead-light">
                                                     <tr>
-                                                        <th>Property</th>
-                                                        <th>Action</th>
-                                                        <th>Date</th>
-                                                        <th>description</th>
-                                                        <th>Links</th>
+                                                        <th>{{__('message.house')}}</th>
+                                                        <th>{{__('message.action')}}</th>
+                                                        <th>{{__('message.date')}}</th>
+                                                        <th>{{__("message.description")}}</th>
+                                                        <th>{{__("message.Links")}}</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -45,22 +45,22 @@
                                                             <td>
                                                                 @if($history->type == RENTED)
                                                                     <span
-                                                                        class="property-type bg-success mb-2 d-inline-block">Rented</span>
+                                                                        class="property-type bg-success mb-2 d-inline-block">{{__("message.rented")}}</span>
                                                                 @elseif($history->type == RELEASED)
                                                                     <span
-                                                                        class="property-type bg-danger mb-2 d-inline-block">Left</span>
+                                                                        class="property-type bg-danger mb-2 d-inline-block">{{__("message.left")}}</span>
                                                                 @elseif($history->type == VISITED)
                                                                     <span
-                                                                        class="property-type bg-info mb-2 d-inline-block">Visited</span>
+                                                                        class="property-type bg-info mb-2 d-inline-block">{{__("message.visited")}}</span>
                                                                 @elseif($history->type == ADDED)
                                                                     <span
-                                                                        class="property-type bg-success mb-2 d-inline-block">ADDED</span>
+                                                                        class="property-type bg-success mb-2 d-inline-block">{{__("message.added")}}</span>
                                                                 @elseif($history->type == REGISTERED)
                                                                     <span
-                                                                        class="property-type bg-success mb-2 d-inline-block">Joined</span>
+                                                                        class="property-type bg-success mb-2 d-inline-block">{{__("message.joined")}}</span>
                                                                 @elseif($history->type == REMOVED)
                                                                     <span
-                                                                        class="property-type bg-danger mb-2 d-inline-block">Removed</span>
+                                                                        class="property-type bg-danger mb-2 d-inline-block">{{__("message.removed")}}</span>
                                                                 @endif
                                                             </td>
                                                             <td>{{ $history->created_at->format('M d, Y h:i A') }}</td>
@@ -69,10 +69,9 @@
                                                             </td>
                                                             <td>
                                                                 @if(isset($history->house))
-                                                                    <a><span class="property-type bg-primary mb-2 d-inline-block">Go
-                                                                            to House</span></a>
+                                                                    <a href="{{route('house_detail',[$history->house->id])}}"><span class="property-type bg-primary mb-2 d-inline-block">{{__("message.goto_house")}}</span></a>
                                                                 @elseif(isAdmin())
-                                                                    <a><span class="property-type bg-primary mb-2 d-inline-block">Go
+                                                                    <a href="{{route('house_detail',[$history->user->id])}}" ><span class="property-type bg-primary mb-2 d-inline-block">Go
                                                                             to User</span></a>
                                                                 @endif
 
@@ -82,10 +81,6 @@
                                                 </tbody>
                                             </table>
                                         </div>
-
-                                        {{-- <div class="d-flex justify-content-center">
-                                            {{ $rentalHistory->links() }}
-                                        </div> --}}
                                     @endif
                                 </div>
                             </div>

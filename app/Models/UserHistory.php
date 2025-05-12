@@ -19,8 +19,4 @@ class UserHistory extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function links(){
-        return '<span>hell</span>';
-    }
-
 }

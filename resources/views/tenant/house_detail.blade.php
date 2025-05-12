@@ -7,7 +7,7 @@
                     <p class="lead text-muted">{{$house->address}}</p>
                 </div>
                 <div class="col-md-4 text-md-end">
-                    <h2 class="text-primary display-6">{{$house->price}}<small class="text-muted">/ Month</small></h2>
+                    <h2 class="text-primary display-6">{{$house->price}}<small class="text-muted">{{__("message.per")}}</small></h2>
                     <div class="mt-3">
                         <button class="{{tourRequested() ? 'btn btn-success' : 'btn btn-outline-secondary' }} me-2"
                             id="req-tour"><i
@@ -74,7 +74,7 @@
                                 @foreach ($house->amenities as $key => $value)
                                     <li><i
                                             class="{{$value ? 'bi bi-check-circle text-success me-2' : 'bi bi-x-circle text-danger me-2'}}"></i>
-                                        {{$key}}</li>
+                                        {{__("message.".$key,["form" => $value ? '' : __('message.dont')])}}</li>
                                 @endforeach
                             </ul>
                         </div>
@@ -98,12 +98,12 @@
                         <input type="hidden" name="id" class="form-control" value="{{ $house->id}}">
                         <!-- Comment Form -->
                         <div class="mb-3">
-                            <label for="comment" class="form-label">Your Review</label>
+                            <label for="comment" class="form-label">{{__("message.your_review")}}</label>
                             <textarea class="form-control" id="comment" name="comment" rows="3"
-                                placeholder="Share your experience..." required></textarea>
+                                placeholder="{{__("message.your_review")}}" required></textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-primary" id="submit-rating">Submit Review</button>
+                        <button type="submit" class="btn btn-primary" id="submit-rating">{{__("message.submit_review")}}</button>
                     </div>
 
                 </form>
@@ -222,7 +222,6 @@
     </div>
 
     @push('script')
-
         <script>
             const tourRequested = {{ tourRequested() }}
                     const isTenant = {{ isTenant() }}

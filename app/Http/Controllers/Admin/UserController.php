@@ -18,7 +18,7 @@ class UserController extends Controller
         $title = 'owners';
         $columns = $dataTable->getViewColumns();
         $button = isAdmin() ? '<a href="'.route('admin.adduser' , ['role'=>USER_ROLE_OWNER]) .'" class="btn btn-success btn-sm">
-        <i class="fas fa-plus"></i>'.__('message.add_new',[__('message.owner.0')]).'</a>' : '';
+        <i class="fas fa-plus"></i>'.__('message.add_new',["form" => __('message.owner.0')]).'</a>' : '';
         return $dataTable->render('common.tables', compact(['columns','title','pageTitle','button']));
     
     }
@@ -44,7 +44,7 @@ class UserController extends Controller
         $data = $request->all();
         $data['password'] = Hash::make($data['password']);
         $user = User::create($data);
-        return redirect()->route($request->role==USER_ROLE_TENANT ? 'admin.tenants' : 'admin.owners')->with('success',  __('message.saved',[$request->role==USER_ROLE_TENANT ? __('message.tenant') : __('message.owner.0')]));
+        return redirect()->route($request->role==USER_ROLE_TENANT ? 'admin.tenants' : 'admin.owners')->with('success',  __('message.saved',["form" => $request->role==USER_ROLE_TENANT ? __('message.tenant') : __('message.owner.0')]));
     }
 
     public function tenants(TenantsDataTable $dataTable)
@@ -72,7 +72,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->status = $user->status ? 0 : 1;
         $user->save();
-        return back()->with('success',__('message.user_active',[$user->status ? __('message.activate') : __('message.deactivate')]));
+        return back()->with('success',__('message.user_active',["form" => $user->status ? __('message.activate') : __('message.deactivate')]));
         
     }
 
@@ -82,7 +82,7 @@ class UserController extends Controller
         }
         $user = User::findOrFail($id);
         $user->delete();
-        return back()->with('success','user deleted succesfully');
+        return back()->with('success',__("message.user_active" [__("message.deleted")]));
 
     }
 }

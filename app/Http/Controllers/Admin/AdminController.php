@@ -10,6 +10,7 @@ use App\Models\House;
 use App\Models\Message;
 use App\Models\Setting;
 use App\Models\Language;
+use App\Models\UserHistory;
 use Auth;
 use Mews\Purifier\Facades\Purifier;
 
@@ -44,7 +45,7 @@ class AdminController extends Controller
             $lang->status = isset($request->languages[$lang->id]);
             $lang->save();
         }
-        return back()->with('success', 'language saved');
+        return back()->with('success', __("message.language saved"));
     }
 
     public function policy(Request $request)
@@ -55,7 +56,18 @@ class AdminController extends Controller
         $cleanterms_conditions = Purifier::clean($request->input('terms_conditions'));
         $settings = Setting::firstOrCreate(['id' => 1]);
         $settings->update(['privacy_policy' => $cleanprivacy_policy, 'cookie_policy' => $cleancookie_policy, 'terms_conditions' => $cleanterms_conditions]);
-        return back()->with('success', 'policy saved saved');
+        return back()->with('success', __("message.policy saved saved"));
+    }
+
+    public function ownerHistory(Request $request){
+        if(isAdmin()){
+            $rentalHistory = UserHistory::whereHas('user', function($query) {
+                $query->where('role', USER_ROLE_OWNER); // assuming 'role' column exists in users table
+            })->get();
+        }
+        $who = __("message.owners");
+        
+        return view('admin.user_history',compact(['rentalHistory',"who"]));
     }
 
 

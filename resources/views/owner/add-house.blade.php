@@ -45,7 +45,7 @@
                                             <input type="text" class="form-control form-control-lg" id="name"
                                                 name="name" placeholder="Title (Name)"
                                                 value="{{ old('name', $house->name ?? '') }}" required>
-                                            <div class="invalid-feedback">Please provide a title for the house.</div>
+                                            <div class="invalid-feedback">{{__("message.invalid",["form" => __("message.title")])}}</div>
                                         </div>
                                         <div class="mb-3 mt-3">
                                             <label for="address" class="form-label fw-bold">house
@@ -53,14 +53,14 @@
                                             <input type="text" class="form-control form-control-lg" name="address"
                                                 placeholder="house address" id="address"
                                                 value="{{ old('address', $house->address ?? '') }}" required>
-                                            <div class="invalid-feedback">Please specify the house location.</div>
+                                            <div class="invalid-feedback">{{__("message.invalid",["form" => __("message.location")])}}</div>
                                         </div>
 
                                         <div class="mb-3 mt-3">
                                             <label for="description" class="form-label fw-bold">Description</label>
                                             <textarea class="form-control" id="description" name="description" rows="6"
                                                 required>{{ old('description', $house->description ?? '') }}</textarea>
-                                            <div class="invalid-feedback">Please provide a description of the house.
+                                            <div class="invalid-feedback">{{__("message.invalid",["form" => __("message.description")])}}
                                             </div>
                                         </div>
                                         <h5 class="mt-3 fw-bold">Upload Images</h5>
@@ -81,7 +81,7 @@
                                                 <button type="button" class="btn btn-primary mt-2">Select File</button>
                                             </div>
                                         </div>
-                                        <div class="invalid-feedback">Please provide a images.
+                                        <div class="invalid-feedback">{{__("message.invalid",["form" => __("message.images")])}}
                                         </div>
 
                                         <!-- Image preview container -->
@@ -127,7 +127,7 @@
                                                 <input type="text" class="form-control" id="latitude" name="latitude"
                                                     placeholder="Ex: 1.462260"
                                                     value="{{ old('latitude', $house->latitude ?? '') }}" required>
-                                                <div class="invalid-feedback">Please provide the latitude coordinate.
+                                                <div class="invalid-feedback">{{__("message.invalid",["form" => __("message.latitude")])}}
                                                 </div>
                                                 <a href="https://www.latlong.net/" target="blank"><small
                                                         class="text-muted">Go here to get Latitude from
@@ -138,7 +138,7 @@
                                                 <input type="text" class="form-control" id="longitude" name="longitude"
                                                     placeholder="Ex: 103.812530"
                                                     value="{{ old('longitude', $house->longitude ?? '') }}" required>
-                                                <div class="invalid-feedback">Please provide the longitude coordinate.
+                                                <div class="invalid-feedback">{{__("message.invalid",["form" => __("message.longtiude")])}}
                                                 </div>
                                                 <a href="https://www.latlong.net/" target="blank"><small
                                                         class="text-muted">Go here to get Longitude from
@@ -152,13 +152,13 @@
                                                 <label for="rooms" class="form-label fw-bold">Number rooms</label>
                                                 <input type="number" class="form-control" id="rooms" name="rooms"
                                                     min="0" value="{{ old('rooms', $house->rooms ?? '') }}" required>
-                                                <div class="invalid-feedback">Please specify the number of rooms.</div>
+                                                <div class="invalid-feedback">{{__("message.invalid",["form" => __("message.rooms")])}}</div>
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="area" class="form-label fw-bold">area in (m²)</label>
                                                 <input type="number" class="form-control" id="area" name="area" min="0"
                                                     value="{{ old('area', $house->area ?? '') }}" required>
-                                                <div class="invalid-feedback">Please specify the house area.</div>
+                                                <div class="invalid-feedback">{{__("message.invalid",["form" => __("message.area")])}}</div>
                                             </div>
                                         </div>
                                         <div class="row g-3 mb-3 mt-3">
@@ -193,25 +193,41 @@
                                                     <label class="form-check-label" for="hasDog">I have Dog</label>
                                                 </div>
                                             </div>
+                                            
                                         </div>
                                         <div class="row g-3 mt-3 mb-3">
                                             <div class="col-md-6">
                                                 <label for="price" class="form-label fw-bold">Price</label>
                                                 <div class="input-group">
-                                                    <span class="input-group-text bg-light">Birr</span>
                                                     <input type="number" class="form-control" id="price" name="price"
                                                         min="0" value="{{ old('price', $house->price ?? '') }}"
                                                         required>
-                                                    <span class="input-group-text bg-light">/Month</span>
-                                                    <div class="invalid-feedback">Please specify the rental price.</div>
+                                                    <span class="input-group-text bg-light">{{__("message.per")}}</span>
+                                                    <div class="invalid-feedback">{{__("message.invalid",["form" => __("message.price")])}}</div>
                                                 </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                            <label for="visitor" class="form-label fw-bold">{{__('message.visited').' '.__('message.tenant').' '.__('message.email')}}</label>
+                                                <input type="text" class="form-control form-control-lg"
+                                                    name="visitor_email" placeholder="visitor"
+                                                    id="visitor"
+                                                    list="visitor"
+                                                    value="{{ old('renter', isset($house->renter) ? $house->renter->name : '') }}">
+                                                    <datalist id="visitor">
+                                                        @foreach ($tenants as $tenant)
+                                                        <option value="{{ $tenant->email }}">{{ $tenant->name }}</option>
+                                                        @endforeach
+                                                    </datalist>
+
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
                                 <!-- Additional Information Section -->
-                                <div class="card mb-4 border-0 shadow p-4">
+                                <div class="card mb-4 border-0 shadow">
+
+                                <div class="card-body">
                                     <div class="mb-3 ">
                                         <label for="privateNotes" class="form-label fw-bold">Private notes</label>
                                         <textarea class="form-control border-primary" id="privateNotes" name="privateNotes"
@@ -220,25 +236,24 @@
                                             shown
                                             on the frontend.</small>
                                     </div>
-                                    <div class="row mb-3 justify-content-between">
                                         <div class="form-check form-switch ">
                                             <input class="form-check-input" type="checkbox" id="rented" name="rented" {{ old('rented', isset($house->rented) ? 'checked' : '') }}>
                                             <label class="form-check-label fw-bold h5" for="rented">Rented</label>
                                         </div>
-
-                                        <div class="row mb-3 mt-3" id="paymentDateContainer">
+                                        <div class="mb-1"  id="paymentDateContainer">
+                                            <div class="row g-3 mt-3 mb-3">
                                             <div class="col-md-6">
                                                 <label for="payment_date" class="form-label fw-bold">Payment Date</label>
                                                 <input type="date" class="form-control form-control-lg"
                                                     name="payment_date" placeholder="payment_date"
                                                     id="payment_date"
                                                     value="{{ old('payment_date', isset($house->payment_date) ? $house->payment_date->format('Y-m-d') : '') }}">
-                                                <div class="invalid-feedback">Please specify payment Date.</div>
+                                                <div class="invalid-feedback">{{ __("message.invalid",["form" => __("message.date")])}}</div>
                                             </div>
                                             <div class="col-md-6">
-                                                <label for="renter" class="form-label fw-bold">{{__('message.tenant').' '.__('message.email')}}</label>
+                                                <label for="renter" class="form-label fw-bold">{{ __('message.tenant').' '.__('message.email') }}</label>
                                                 <input type="text" class="form-control form-control-lg"
-                                                    name="renter_email" placeholder="renter" id="renter"
+                                                    name="renter_email" placeholder="renter"
                                                     id="renter"
                                                     list="renters"
                                                     value="{{ old('renter', isset($house->renter) ? $house->renter->name : '') }}">
@@ -251,10 +266,10 @@
                                                 
                                             
                                             </div>
+
+                                            </div>
                                         </div>
-
-                                    </div>
-
+                                        </div>
                                 </div>
 
                                 <!-- Footer Buttons -->

@@ -3,11 +3,10 @@
 use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\Auth\PasswordController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\owner\OwnerController;
+use App\Http\Controllers\Owner\OwnerController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\owner\HouseController;
+use App\Http\Controllers\Owner\HouseController;
 use App\Http\Controllers\MessageController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -51,7 +50,7 @@ Route::group(['prefix' => 'owner', 'as' => 'owner.', 'middleware' => ['auth', 'o
     Route::get('/profile', [ProfileController::class, 'index'])->name(name: 'profile');
     
     
-    Route::get('/tenantsHistory', [OwnerController::class, 'History'])->name('tenantsHistory');
+    Route::get('/tenantsHistory', [OwnerController::class, 'tenatHistory'])->name('tenantsHistory');
     
     Route::get('/tenants', [UserController::class, 'tenants'])->name('tenants');
     Route::get('/messages',[MessageController::class,'index'])->name('messages');

@@ -31,8 +31,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'a
     Route::delete('/deleteUser/{id}', [UserController::class, 'destroy'])->name('deleteUser');
     Route::delete('/deleteHouse/{id}', [HouseController::class, 'destroy'])->name('deleteHouse');
     
-    Route::get('/tenantsHistory', [OwnerController::class, 'History'])->name('tenantsHistory');
-    Route::get('/ownersHistory', [OwnerController::class, 'History'])->name('ownersHistory');
+    Route::get('/tenantsHistory', [OwnerController::class, 'tenatHistory'])->name('tenantsHistory');
+    Route::get('/ownersHistory', [AdminController::class, 'ownerHistory'])->name('ownersHistory');
     
     Route::patch('/activate/{id}', [UserController::class, 'activte'])->name('activate');
     Route::get('change-password', [PasswordController::class, 'index'])

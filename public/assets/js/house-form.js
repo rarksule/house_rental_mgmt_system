@@ -79,6 +79,7 @@ const myDropzone = new Dropzone("#myDropzone", {
 const rentedCheckbox = document.getElementById('rented');
 const paymentContainer = document.getElementById('paymentDateContainer');
 const paymentInput = document.getElementById('payment_date');
+const renter = document.getElementById('renter');
 
 if (!rentedCheckbox.checked) {
     paymentContainer.style.display = 'none';
@@ -89,9 +90,11 @@ rentedCheckbox.addEventListener('change', function () {
     if (this.checked) {
         paymentContainer.style.display = 'block';
         paymentInput.required = true;
+        renter.required = true;
     } else {
         paymentContainer.style.display = 'none';
         paymentInput.required = false;
+        renter.required = true;
     }
 });
 

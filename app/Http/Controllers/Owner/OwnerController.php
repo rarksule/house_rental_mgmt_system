@@ -37,15 +37,19 @@ class OwnerController extends Controller
     }
 
 
-    public function History(Request $request){
+    public function tenatHistory(Request $request){
         if(isAdmin()){
-            $rentalHistory = UserHistory::all();
+            $rentalHistory = UserHistory::whereHas('user', function($query) {
+                $query->where('role', USER_ROLE_TENANT); // assuming 'role' column exists in users table
+            })->get();
+            $who = __("message.tenants");
         }else{
             $userId = auth()->id();
             $rentalHistory = User::find($userId)->houseHistories;
+            $who = __("message.your");
         }
         
-        return view('admin.user_history',compact(['rentalHistory']));
+        return view('admin.user_history',compact(['rentalHistory','who']));
     }
 
     

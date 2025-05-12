@@ -82,7 +82,7 @@
                                                     <div class="card-body">
 
                                                         <span class="property-type bg-danger mb-2 d-inline-block">Rent</span>
-                                                        <h3>{{$house->price}} Birr / Month</h3>
+                                                        <h3>{{$house->price __("message.per")}} </h3>
                                                         <p class="text-muted">{{$house->address}}</p>
                                                         @php
                                                             $rating = $house->reviews->count() > 0 ? $house->reviews->avg('rating') : 0;

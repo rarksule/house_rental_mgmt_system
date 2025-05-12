@@ -90,9 +90,21 @@ class HouseController extends Controller
         ];
         $tenant_id=null;
         if($request->has('renter_email') && isset($request->renter_email)){
-            $tenant_id = User::where('email',$request->renter_email)->first()->id;
+            $tennt = User::where('email',$request->renter_email)->first();
+            if(!$tennt){
+                return back()->with("error",__("message.invalid",["form" => __("message.email")]));
+            }
+            $tenant_id = $tennt->id;
+            unset($tennt);
         }
-        
+        // 
+        if($request->has('visitor_email') && isset($request->visitor_email)){
+            $tennt = User::where('email',$request->visitor_email)->first();
+            if(!$tennt){
+                return back()->with("error",__("message.invalid",["form" => __("message.email")]));
+            }
+            $visitor_id = $tennt->id;
+        }
 
         $cleanDescription = Purifier::clean($request->input('description'));
         // // Create the house record
@@ -116,6 +128,17 @@ class HouseController extends Controller
         $this->recordHistory(ADDED,auth()->user()->id,$house->id);
         if($tenant_id!=null){
             $this->recordHistory(RENTED,$tenant_id,$house->id);
+        }
+
+        if($visitor_id !=null){
+            
+            if(!$house->histories()
+            ->where('user_id', $visitor_id)
+            ->where('type', VISITED)
+            ->exists()){
+
+            $this->recordHistory(VISITED,$visitor->id,$house->id);
+            }
         }
 
         if ($request->hasFile('images')) {
@@ -195,7 +218,21 @@ class HouseController extends Controller
         ];
         $tenant_id = null;
         if($request->has('renter_email') && isset($request->renter_email)){
-            $tenant_id = User::where('email',$request->renter_email)->first()->id;
+            $tennt = User::where('email',$request->renter_email)->first();
+            if(!$tennt){
+                return back()->with("error",__("message.invalid",["form" => __("message.email")]));
+            }
+            $tenant_id = $tennt->id;
+            unset($tennt);
+        }
+
+        if($request->has('visitor_email') && isset($request->visitor_email)){
+            $visitor = User::where('email',$request->visitor_email)->first();
+            if(!$visitor){
+                return back()->with("error",__("message.invalid",["form" => __("message.email")]));
+            }
+            $visitor_id  = $visitor->id;
+            
         }
 
         $cleanDescription = Purifier::clean($request->input('description'));
@@ -220,6 +257,16 @@ class HouseController extends Controller
             $this->recordHistory(RELEASED,$previousTenant,$house->id);
         }else if($previousTenant!=null && $tenant_id!=$previousTenant){
             $this->recordHistory(RENTED,$tenant_id,$house->id);
+        }
+        if($visitor_id  !=null){
+            
+            if(!$house->histories()
+            ->where('user_id', $visitor_id)
+            ->where('type', VISITED)
+            ->exists()){
+
+            $this->recordHistory(VISITED,$visitor->id,$house->id);
+            }
         }
 
         if ($request->hasFile('images')) {

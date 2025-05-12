@@ -35,7 +35,7 @@
                                     <div class="d-flex">
                                         <img src="{{ asset('assets/images/lang.jpg') }}"
                                             class="me-3 rounded-circle avatar-xs" alt="user-pic">
-                                        <div class="flex-1">{{ $language->name ?? 'English' }}</div>
+                                        <div class="flex-1">{{ $language->name ?? English }}</div>
                                     </div>
                                 </a>
                             @endforeach
@@ -105,29 +105,24 @@
                         <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                             @if (isAdmin() || isOwner())
                                 <li class="nav-item">
-                                    <a class="nav-link active h2" href="{{route('dashboard')}}">Dashboard</a>
+                                    <a class="nav-link active h2" href="{{route('dashboard')}}">{{__("message.dashboard")}}</a>
                                 </li>
                             @endif
 
                             <li class="nav-item">
-                                <a class="nav-link text-nowrap h3" href="#about">Contact Us</a>
+                                <a class="nav-link text-nowrap h3" href="#about">{{__("message.Contact_Us")}}</a>
                             </li>
                             <li class="nav-item me-2">
-                                <a class="nav-link text-nowrap h3" href="#about">About Us</a>
-                            </li>
-                            <li class="nav-item me-2">
-                                <a class="nav-link text-nowrap h3" href="#about">Faq</a>
+                                <a class="nav-link text-nowrap h3" href="#about">{{__("message.About_Us")}}</a>
                             </li>
 
                             @if (!Auth::check())
 
                                 <li class="nav-item me-2">
-                                    <a class="btn btn-outline-dark text-nowrap mb-2" href="{{ route('register') }}">Sign
-                                        Up</a>
+                                    <a class="btn btn-outline-dark text-nowrap mb-2" href="{{ route('register') }}">{{__("message.sign_up")}}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('login')}}"><button class="btn btn-success text-nowrap mb-2">Sign
-                                            In</button></a>
+                                    <a href="{{route('login')}}"><button class="btn btn-success text-nowrap mb-2">{{__("message.sign_in")}}</button></a>
                                 </li>
                             @endif
 
