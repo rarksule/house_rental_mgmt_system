@@ -64,16 +64,11 @@
                                 </div>
                             </form>
                         </div>
-                        <!-- Profile Page Content Area End -->
                     </div>
-                    <!-- Profile Page Area row End -->
                 </div>
-                <!-- Page Content Wrapper End -->
             </div>
         </div>
-        <!-- End Page-content -->
     </div>
-    <!-- Right Content End -->
     @push('script')
         <script>
             document.getElementById('passwordForm').addEventListener('submit', function (e) {
