@@ -71,7 +71,7 @@
                                                                 @if(isset($history->house))
                                                                     <a href="{{route('house_detail',[$history->house->id])}}"><span class="property-type bg-primary mb-2 d-inline-block">{{__("message.goto_house")}}</span></a>
                                                                 @elseif(isAdmin())
-                                                                    <a href="{{route('editUsers',[$history->user->id])}}" ><span class="property-type bg-primary mb-2 d-inline-block">{{__("message.goto_user")}}</span></a>
+                                                                    <a href="{{route('admin.editUsers',[$history->user->id])}}" ><span class="property-type bg-primary mb-2 d-inline-block">{{__("message.goto_user")}}</span></a>
                                                                 @endif
 
                                                             </td>
