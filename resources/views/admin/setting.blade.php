@@ -2,7 +2,7 @@
     <div class="main-content">
         <div class="page-content">
             <div class="container-fluid">
-                <div class="page-content-wrapper bg-white p-30 radius-20">
+                <div class="page-content-wrapper bg-white p-4 radius-20">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card shadow">
@@ -75,7 +75,7 @@
                                             </div>
                                         </div>
 
-                                        <button type="submit" class="btn btn-primary mt-30">
+                                        <button type="submit" class="btn btn-primary mt-5">
                                             <i class="fas fa-save"></i> Save Policies
                                         </button>
                                     </form>

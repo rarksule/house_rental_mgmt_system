@@ -22,7 +22,7 @@
                                                     <label class="form-label">Phone Number</label>
 
                                                     <div class="input-group">
-                                                        <span class="input-group-text bg-light border-dark">+251</span>
+                                                        <span class="input-group-text fs-6 bg-light border-dark">+251</span>
                                                         <input type="text" class="form-control" id="phone" name="phone"
                                                             value="{{ $phone }}" readonly>
                                                     </div>
@@ -60,12 +60,12 @@
                     </div>
                     <div class="col-md-4 d-none d-md-block">
                         <div class="sign-up-left-content position-relative text-center">
-                            <div class="sign-up-bottom-img mb-25">
+                            <div class="sign-up-bottom-img mb-4">
                                 <img src="{{ getSettingImage('sign_in_image') }}" alt="{{ 'app_name' }}"
                                     class="img-fluid">
                             </div>
                             <h1 class="text-white">{{ __('message.sign_in_text_title') }}</h1>
-                            <p class="mt-25 w-75 mx-auto">{{ __('message.sign_in_text_subtitle') }}</p>
+                            <p class="mt-4 w-75 mx-auto">{{ __('message.sign_in_text_subtitle') }}</p>
                         </div>
                     </div>
                 </div>

@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="property-header">
+    <div class="house-header">
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
@@ -87,7 +87,7 @@
                         <h4>{{__('message.rate_this')}}</h4>
 
                         <!-- Star Rating -->
-                        <div class="star-rating mb-3 h2 property-rating">
+                        <div class="star-rating mb-3 h2 house-rating">
                             @for($i = 1; $i <= 5; $i++)
                                 <span class="star" data-value="{{ $i }}">
                                     <i class="far fa-star"></i>
@@ -118,7 +118,7 @@
                                     <h5 class="card-title">{{$review->tenant->first_name}}</h5>
                                     <small class="text-muted">{{timeAgo($review->created_at)}}</small>
                                 </div>
-                                <div class="mb-3 property-rating">
+                                <div class="mb-3 house-rating">
                                     @for ($i = 1; $i <= $review->rating; $i++)
                                         <i class="fas fa-star"></i>
                                     @endfor

@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->unsignedBigInteger('tenant_id')->nullable();
             $table->unsignedBigInteger('owner_id')->nullable();
-            $table->foreign('tenant_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('owner_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('tenant_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('owner_id')->references('id')->on('users')->onDelete('cascade');
             $table->double('price')->default(0);
             $table->date('payment_date')->nullable();
             $table->text('address');

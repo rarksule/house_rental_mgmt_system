@@ -4,12 +4,12 @@
         <div class="page-content">
             <div class="container">
                 <!-- Page Content Wrapper Start -->
-                <div class="page-content-wrapper bg-white p-30 radius-20">
+                <div class="page-content-wrapper bg-white p-4 radius-20">
                     <!-- start page title -->
                     <div class="row">
                         <div class="col-12">
                             <div
-                                class="page-title-box d-sm-flex align-items-center justify-content-between border-bottom mb-20">
+                                class="page-title-box d-sm-flex align-items-center justify-content-between border-bottom mb-3">
                                 <div class="page-title-left">
                                     <h3 class="mb-sm-0">{{ $pageTitle }}</h3>
                                 </div>
@@ -29,7 +29,7 @@
                     <div class="settings-page-layout-wrap position-relative">
                         <div class="row">
                             <div class="col-md-12 col-lg-12 col-xl-12 col-xxl-12">
-                                <div class="account-settings-rightside bg-off-white theme-border radius-4 p-25">
+                                <div class="account-settings-rightside bg-off-white theme-border rounded-3 p-4">
                                     <div class="language-settings-page-area">
                                         <div class="profile-page-content-area">
                                             @if (isset($user))
@@ -39,18 +39,18 @@
                                             <form action="{{ route('admin.adduser') }}" method="POST" enctype="multipart/form-data">
                                                 @endif
                                                 @csrf
-                                                <div class="settings-inner-box bg-white theme-border radius-4 mb-25">
+                                                <div class="settings-inner-box bg-white theme-border rounded-3 mb-4">
                                                     <div class="settings-inner-box-fields pb-0">
-                                                        <div class="settings-inner-box-title border-bottom p-20">
+                                                        <div class="settings-inner-box-title border-bottom p-3">
                                                             <h4>{{ __('message.personal_information') }}</h4>
                                                         </div>
                                                     </div>
-                                                    <div class="settings-inner-box-fields p-20 pb-0">
+                                                    <div class="settings-inner-box-fields p-3 pb-0">
                                                         <div class="row justify-content-between">
-                                                            <div class="col-md-6 mb-25">
+                                                            <div class="col-md-6 mb-4">
                                                                 <!-- Upload Profile Photo Box Start -->
                                                                 <div
-                                                                    class="upload-profile-photo-box upload-profile-photo-with-delete-btn mb-25">
+                                                                    class="upload-profile-photo-box upload-profile-photo-with-delete-btn mb-4">
                                                                     <div
                                                                         class="profile-user position-relative d-inline-block">
 
@@ -87,7 +87,7 @@
                                                             @else
                                                             <div class="col-md-3"></div>
                                                             @endif
-                                                            <div class="col-md-4 mb-25">
+                                                            <div class="col-md-4 mb-4">
                                                                 <label
                                                                     class="label-text-title color-heading font-medium mb-2">{{ __('message.first_name') }}<su style="color: red;"> *</su></label>
                                                                 <input type="text" class="form-control"
@@ -99,7 +99,7 @@
                                                                     <span class="text-danger">{{ $message }}</span>
                                                                 @enderror
                                                             </div>
-                                                            <div class="col-md-4 mb-25">
+                                                            <div class="col-md-4 mb-4">
                                                                 <label
                                                                     class="label-text-title color-heading font-medium mb-2">{{ __('message.last_name') }}<su style="color: red;"> *</su></label>
                                                                 <input type="text" class="form-control" name="last_name"
@@ -110,7 +110,7 @@
                                                                     <span class="text-danger">{{ $message }}</span>
                                                                 @enderror
                                                             </div>
-                                                            <div class="col-md-4 mb-25">
+                                                            <div class="col-md-4 mb-4">
                                                                 <label
                                                                     class="label-text-title color-heading font-medium mb-2">{{ __('message.email') }}<su style="color: red;"> *</su></label>
                                                                 <input type="email" class="form-control" name="email"
@@ -121,7 +121,7 @@
                                                                     <span class="text-danger">{{ $message }}</span>
                                                                 @enderror
                                                             </div>
-                                                            <div class="col-md-4 mb-25">
+                                                            <div class="col-md-4 mb-4">
                                                                 <label
                                                                     class="label-text-title color-heading font-medium mb-2">{{ __('message.contact_number') }}<su style="color: red;"> *</su></label>
                                                                 <input type="text" class="form-control"
@@ -133,7 +133,7 @@
                                                                     <span class="text-danger">{{ $message }}</span>
                                                                 @enderror
                                                             </div>
-                                                            <div class="col-md-4 mb-25">
+                                                            <div class="col-md-4 mb-4">
                                                                 <label
                                                                     class="label-text-title color-heading font-medium mb-2">{{ __('message.greetings') }}</label>
                                                                 <input type="text" class="form-control"
@@ -144,7 +144,7 @@
                                                                     <span class="text-danger">{{ $message }}</span>
                                                                 @enderror
                                                             </div>
-                                                            <div class="col-md-4 mb-25">
+                                                            <div class="col-md-4 mb-4">
                                                                 <label
                                                                     class="label-text-title color-heading font-medium mb-2">{{ __('message.nid_number') }}</label>
                                                                 <input type="text" class="form-control"
@@ -156,19 +156,19 @@
                                                                 @enderror
                                                             </div>
                                                             @if (isAdmin() && isset($role))
-                                                            <div class="col-md-4 mb-25">
+                                                            <div class="col-md-4 mb-4">
                                                                 <label class="label-text-title color-heading font-medium mb-2">{{ __('message.new_password') }}</label>
                                                                 <input type="password" name="password" class="form-control" value="{{ old('password') }}" id="new_password" placeholder="********" required>
                                                                 @error('password')
                                                                     <span class="text-danger">{{ $message ?? ''}}</span>
                                                                 @enderror
                                                             </div>
-                                                            <div class="col-md-4 mb-25">
+                                                            <div class="col-md-4 mb-4">
                                                                 <label class="label-text-title color-heading font-medium mb-2">{{ __('message.confirm_password') }}</label>
                                                                 <input type="password" name="password_confirmation" value="{{ old('password_confirmation') }}" class="form-control" id="confirm_password" placeholder="********" required>
                                                                 <div id="confirm_password_error" class="text-danger" style="display: none;"></div>
                                                             </div>
-                                                            <div class="col-md-4 mb-25">
+                                                            <div class="col-md-4 mb-4">
                                                                 <label class="label-text-title color-heading font-medium mb-2">{{ __('message.status') }}</label>
                                                                  <select id="status" name="status" class="form-control border-dark"> 
                                                                     <option value={{USER_STATUS_ACTIVE}}>{{__('message.active')}}</option>
@@ -180,16 +180,16 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="settings-inner-box bg-white theme-border radius-4 mb-25">
+                                                <div class="settings-inner-box bg-white theme-border rounded-3 mb-4">
                                                     <div class="settings-inner-box-fields pb-0">
-                                                        <div class="settings-inner-box-title border-bottom p-20">
+                                                        <div class="settings-inner-box-title border-bottom p-3">
                                                             <h4>{{isOwner($user ?? null,$role ?? null) ? __('message.permanent_address') : __('message.previous_address') }}
                                                             </h4>
                                                         </div>
                                                     </div>
-                                                    <div class="settings-inner-box-fields p-20 pb-0">
+                                                    <div class="settings-inner-box-fields p-3 pb-0">
                                                         <div class="row">
-                                                            <div class="col-md-4 mb-25">
+                                                            <div class="col-md-4 mb-4">
                                                                 <label
                                                                     class="label-text-title color-heading font-medium mb-2">{{ __('message.address') }}<su style="color: red;"> *</su></label>
                                                                 <input type="text" class="form-control" name="address"
@@ -200,7 +200,7 @@
                                                                     <span class="text-danger">{{ $message }}</span>
                                                                 @enderror
                                                             </div>
-                                                            <div class="col-md-4 mb-25">
+                                                            <div class="col-md-4 mb-4">
                                                                 <label
                                                                     class="label-text-title color-heading font-medium mb-2">{{ __('message.city') }}<su style="color: red;"> *</su></label>
                                                                 <input type="text" class="form-control" name="city"
@@ -211,7 +211,7 @@
                                                                     <span class="text-danger">{{ $message }}</span>
                                                                 @enderror
                                                             </div>
-                                                            <div class="col-md-4 mb-25">
+                                                            <div class="col-md-4 mb-4">
                                                                 <label
                                                                     class="label-text-title color-heading font-medium mb-2">{{ __('message.house_number') }}</label>
                                                                 <input type="text" class="form-control"
@@ -226,15 +226,15 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="settings-inner-box bg-white theme-border radius-4 mb-25">
+                                                <div class="settings-inner-box bg-white theme-border rounded-3 mb-4">
                                                     <div class="settings-inner-box-fields pb-0">
-                                                        <div class="settings-inner-box-title border-bottom p-20">
+                                                        <div class="settings-inner-box-title border-bottom p-3">
                                                             <h4>{{ __('message.other_information') }}</h4>
                                                         </div>
                                                     </div>
-                                                    <div class="settings-inner-box-fields p-20 pb-0">
+                                                    <div class="settings-inner-box-fields p-3 pb-0">
                                                         <div class="row">
-                                                            <div class="col-md-4 mb-25">
+                                                            <div class="col-md-4 mb-4">
                                                                 <label
                                                                     class="label-text-title color-heading font-medium mb-2">{{ __('message.employment') }}<su style="color: red;"> *</su></label>
                                                                 <input type="text" class="form-control" name="employment"
@@ -245,7 +245,7 @@
                                                                     <span class="text-danger">{{ $message }}</span>
                                                                 @enderror
                                                             </div>
-                                                            <div class="col-md-4 mb-25">
+                                                            <div class="col-md-4 mb-4">
                                                                 <label
                                                                     class="label-text-title color-heading font-medium mb-2">{{ __('message.family_member') }}<su style="color: red;"> *</su></label>
                                                                 <input type="number" class="form-control"
@@ -257,7 +257,7 @@
                                                                     <span class="text-danger">{{ $message }}</span>
                                                                 @enderror
                                                             </div>
-                                                            <div class="col-md-4 mb-25">
+                                                            <div class="col-md-4 mb-4">
                                                                 <label
                                                                     class="label-text-title color-heading font-medium mb-2">{{ __('message.kids') }}<su style="color: red;"> *</su></label>
                                                                 <input type="number" class="form-control" name="kids"
@@ -272,7 +272,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-md-12 mb-25 d-flex justify-content-end">
+                                                    <div class="col-md-12 mb-4 d-flex justify-content-end">
                                                         <button type="submit" class="theme-btn"
                                                             title="{{ isset($user) ?  __('message.update') : __('message.save') }}">{{ isset($user) ?  __('message.update') : __('message.save')}}</button>
                                                     </div>
@@ -292,7 +292,7 @@
     @if (isset($user))
     <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
+            <div class="modal-content p-4">
                 <div class="modal-header">
                     <h4 class="modal-title" id="deleteModalLabel">{{ __('message.information') }}</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
@@ -305,7 +305,7 @@
                         @csrf
                         <div class="modal-inner-form-box">
                             <div class="row">
-                                <div class="col-md-12 mb-25">
+                                <div class="col-md-12 mb-4">
                                     <p>Please type your email of this account <span
                                             class="fw-bold">({{ $user->email }})</span> to confirm its deletion
                                         from this application. After successful deletion, you can't recover this
@@ -316,7 +316,7 @@
                                     <input type="text" class="form-control" name="email" autocomplete="off"
                                         placeholder="{{ __('message.email') }}">
                                 </div>
-                                <div class="col-md-12 mb-25">
+                                <div class="col-md-12 mb-4">
                                     <label
                                         class="label-text-title color-heading font-medium mb-2">{{ __('message.password') }}
                                         <strong class="text-danger">*</strong></label>

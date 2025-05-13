@@ -1,8 +1,8 @@
 document
-    .querySelector("#profile-img-file-input")
+    .querySelector("#default-profile-img-file-input")
     .addEventListener("change", function () {
-        var o = document.querySelector(".user-profile-image"),
-            e = document.querySelector(".profile-img-file-input").files[0],
+        var o = document.querySelector(".default-user-profile-image"),
+            e = document.querySelector(".default-profile-img-file-input").files[0],
             i = new FileReader();
         i.addEventListener(
             "load",

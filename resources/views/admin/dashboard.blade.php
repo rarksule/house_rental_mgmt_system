@@ -2,7 +2,7 @@
     <div class="main-content">
         <div class="page-content">
             <div class="container-fluid">
-                <div class="page-content-wrapper bg-white p-30 radius-20">
+                <div class="page-content-wrapper bg-white p-4 radius-20">
                     <div class="row">
                         <div class="col-12">
                             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
@@ -16,9 +16,9 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-6 col-lg-4 col-xl-3">
-                            <div class="dashboard-feature-item bg-off-white theme-border radius-4 p-20 mb-25">
+                            <div class="dashboard-feature-item bg-off-white theme-border rounded-3 p-3 mb-4">
                                 <div
-                                    class="dashboard-feature-item-icon-wrap font-20 d-flex align-items-center justify-content-center bg-white radius-4">
+                                    class="dashboard-feature-item-icon-wrap font-20 d-flex align-items-center justify-content-center bg-white rounded-3">
                                     <span class="iconify orange-color" data-icon="material-symbols:patient-list"></span>
                                 </div>
                                 <p class="mt-2">{{ __('message.Total_Owner') }}</p>
@@ -27,9 +27,9 @@
                             </div>
                         </div>
                         <div class="col-sm-6 col-lg-4 col-xl-3">
-                            <div class="dashboard-feature-item bg-off-white theme-border radius-4 p-20 mb-25">
+                            <div class="dashboard-feature-item bg-off-white theme-border rounded-3 p-3 mb-4">
                                 <div
-                                    class="dashboard-feature-item-icon-wrap font-20 d-flex align-items-center justify-content-center bg-white radius-4">
+                                    class="dashboard-feature-item-icon-wrap font-20 d-flex align-items-center justify-content-center bg-white rounded-3">
                                     <span class="iconify primary-color" data-icon="bxs:home-circle"></span>
                                 </div>
                                 <p class="mt-2">{{ __('message.Total_houses') }}</p>
@@ -38,9 +38,9 @@
                             </div>
                         </div>
                         <div class="col-sm-6 col-lg-4 col-xl-3">
-                            <div class="dashboard-feature-item bg-off-white theme-border radius-4 p-20 mb-25">
+                            <div class="dashboard-feature-item bg-off-white theme-border rounded-3 p-3 mb-4">
                                 <div
-                                    class="dashboard-feature-item-icon-wrap font-20 d-flex align-items-center justify-content-center bg-white radius-4">
+                                    class="dashboard-feature-item-icon-wrap font-20 d-flex align-items-center justify-content-center bg-white rounded-3">
                                     <span class="iconify orange-color" data-icon="material-symbols:garage-home"></span>
                                 </div>
                                 <p class="mt-2">{{ __('message.Total_communication') }}</p>
@@ -49,9 +49,9 @@
                             </div>
                         </div>
                         <div class="col-sm-6 col-lg-4 col-xl-3">
-                            <div class="dashboard-feature-item bg-off-white theme-border radius-4 p-20 mb-25">
+                            <div class="dashboard-feature-item bg-off-white theme-border rounded-3 p-3 mb-4">
                                 <div
-                                    class="dashboard-feature-item-icon-wrap font-20 d-flex align-items-center justify-content-center bg-white radius-4">
+                                    class="dashboard-feature-item-icon-wrap font-20 d-flex align-items-center justify-content-center bg-white rounded-3">
                                     <span class="iconify green-color" data-icon="mdi:user"></span>
                                 </div>
                                 <p class="mt-2">{{ __('message.Total_Tenant') }}</p>
@@ -61,11 +61,11 @@
                     </div>
                         <div class="row">
                             <div class="col-lg-6">
-                                <div class="dashboard-properties-table bg-off-white theme-border p-20 radius-4 mb-25">
+                                <div class="dashboard-properties-table bg-off-white theme-border p-3 rounded-3 mb-4">
                                     <div class="">
                                         <div class="row align-items-center">
                                             <div class="col-12">
-                                                <div class="d-flex align-items-center justify-content-between mb-25">
+                                                <div class="d-flex align-items-center justify-content-between mb-4">
                                                     <h4 class="mb-0">{{ __('message.new_tenants') }}</h4>
                                                     <div>
                                                         <a class="theme-link font-14 font-medium d-flex align-items-center justify-content-center"
@@ -79,7 +79,7 @@
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="table-responsive">
-                                                    <table class="table theme-border p-20">
+                                                    <table class="table theme-border p-3">
                                                         <thead>
                                                             <tr>
                                                                 <th>{{ __('message.first_name') }}</th>
@@ -119,11 +119,11 @@
                                 </div>
                             </div>
                             <div class="col-lg-6">
-                                <div class="dashboard-properties-table bg-off-white theme-border p-20 radius-4 mb-25">
+                                <div class="dashboard-properties-table bg-off-white theme-border p-3 rounded-3 mb-4">
                                     <div class="">
                                         <div class="row align-items-center">
                                             <div class="col-12">
-                                                <div class="d-flex align-items-center justify-content-between mb-25">
+                                                <div class="d-flex align-items-center justify-content-between mb-4">
                                                     <h4 class="mb-0">{{ __('message.new_owners') }}</h4>
                                                     <div>
                                                         <a class="theme-link font-14 font-medium d-flex align-items-center justify-content-center"
@@ -137,7 +137,7 @@
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="table-responsive">
-                                                    <table class="table theme-border p-20">
+                                                    <table class="table theme-border p-3">
                                                         <thead>
                                                             <tr>
                                                                 <th>{{ __('message.first_name') }}</th>

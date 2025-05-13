@@ -8,11 +8,11 @@
                         <div class="sign-up-right-content bg-white mx-4">
                             <form action="register" method="post">
                                 @csrf
-                                <h1 class="mb-25">{{ __('message.sign_up') }}</h1>
+                                <h1 class="mb-4">{{ __('message.sign_up') }}</h1>
                                 <p class="font-16 mb-30">{{ __('message.already_have_account') }} <a
                                         href="{{ route('login') }}"
                                         class="secondary-color font-medium">{{ __('message.sign_in') }}</a></p>
-                                <div class="row mb-25">
+                                <div class="row mb-4">
                                     <div class="col-md-6">
                                         <label
                                             class="label-text-title color-heading font-medium mb-2">{{ __('message.first_name') }}
@@ -37,7 +37,7 @@
                                     </div>
                                 </div>
 
-                                <div class="row mb-25">
+                                <div class="row mb-4">
                                     <div class="col-md-8">
 
                                         <label
@@ -45,7 +45,7 @@
                                             <su style="color: red;"> *</su>
                                         </label>
                                         <div class="input-group">
-                                            <span class="input-group-text bg-light border-dark">+251</span>
+                                            <span class="input-group-text fs-6 bg-light border-dark">+251</span>
                                             <input type="text" class="form-control" required
                                                 placeholder="{{ __('message.contact_number') }}" name="contact_number"
                                                 value="{{ old('contact_number') }}">
@@ -72,7 +72,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="row mb-25">
+                                <div class="row mb-4">
                                     <div class="col-md-12">
                                         <label
                                             class="label-text-title color-heading font-medium mb-2">{{ __('message.email') }}
@@ -86,8 +86,8 @@
                                     </div>
                                 </div>
 
-                                <div class="row mb-25">
-                                    <div class="col-md-12 mb-25">
+                                <div class="row mb-4">
+                                    <div class="col-md-12 mb-4">
                                         <label
                                             class="label-text-title color-heading font-medium mb-2">{{ __('message.password') }}
                                             <su style="color: red;"> *</su>
@@ -112,7 +112,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row mb-25">
+                                <div class="row mb-4">
                                     <div class="col-md-12">
                                         <button type="submit"
                                             class="btn btn-primary font-15 fw-bold w-100"
@@ -124,11 +124,11 @@
                     </div>
                     <div class="col-md-6 d-none d-md-block">
                         <div class="sign-up-left-content position-relative text-center">
-                            <div class="sign-up-bottom-img mb-25">
+                            <div class="sign-up-bottom-img mb-4">
                                 <img src="{{ getSettingImage('sign_in_image') }}" alt="app_name" class="img-fluid">
                             </div>
                             <h1 class="text-white">{{ __('message.sign_up_text_title') }}</h1>
-                            <p class="mt-25 w-75 mx-auto">{{ __('message.sign_up_text_subtitle') }}</p>
+                            <p class="mt-4 w-75 mx-auto">{{ __('message.sign_up_text_subtitle') }}</p>
                         </div>
                     </div>
                 </div>

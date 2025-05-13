@@ -32,7 +32,7 @@ const myDropzone = new Dropzone("#myDropzone", {
             previewDiv.className = 'col-auto position-relative';
 
             const wrapperDiv = document.createElement('div');
-            wrapperDiv.className = 'dropzone-img-wrap radius-4 position-relative';
+            wrapperDiv.className = 'dropzone-img-wrap rounded-3 position-relative';
 
             const img = document.createElement('img');
             img.className = 'img-fluid rounded img-thumbnail';

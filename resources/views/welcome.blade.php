@@ -72,16 +72,16 @@
                 <div class="row">
                     @foreach ($houses as $house)
                                         <div class="col-md-4 col-lg-3 my-4">
-                                            <div class="card property-card h-100">
+                                            <div class="card house-card h-100">
                                                 <a href="{{ route('house_detail', ['id' => $house->id]) }}"
                                                     class="text-decoration-none text-reset stretched-link">
 
-                                                    <div class="property-image">
+                                                    <div class="house-image">
                                                         <span><img src="{{getSingleImage($house)}}" alt="image"></span>
                                                     </div>
                                                     <div class="card-body">
 
-                                                        <span class="property-type bg-danger mb-2 d-inline-block">Rent</span>
+                                                        <span class="badge-type bg-danger mb-2 d-inline-block">Rent</span>
                                                         <h3>{{$house->price .__("message.per")}} </h3>
                                                         <p class="text-muted">{{$house->address}}</p>
                                                         @php
@@ -92,7 +92,7 @@
                                                             $totalReviews = $house->reviews->count(); 
                                                         @endphp
 
-                                                        <div class="mb-3 property-rating">
+                                                        <div class="mb-3 house-rating">
                                                             @for ($i = 1; $i <= $filledStars; $i++)
                                                                 <i class="fas fa-star"></i>
                                                             @endfor

@@ -8,7 +8,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div
-                                    class="page-title-box d-sm-flex align-items-center justify-content-between border-bottom mb-20">
+                                    class="page-title-box d-sm-flex align-items-center justify-content-between border-bottom mb-3">
                                     <div class="page-title-left">
                                         <h5 class="mb-sm-0 ms-1 fw-bold">{{ $pageTitle }}</h5>
                                     </div>
@@ -202,7 +202,7 @@
                                                     <input type="number" class="form-control" id="price" name="price"
                                                         min="0" value="{{ old('price', $house->price ?? '') }}"
                                                         required>
-                                                    <span class="input-group-text bg-light">{{__("message.per")}}</span>
+                                                    <span class="input-group-text fs-6 bg-light">{{__("message.per")}}</span>
                                                     <div class="invalid-feedback">{{__("message.invalid",["form" => __("message.price")])}}</div>
                                                 </div>
                                             </div>

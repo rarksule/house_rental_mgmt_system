@@ -7,11 +7,11 @@
                         <div class="sign-up-right-content bg-white mx-4">
                             <form action="{{ route('login') }}" method="post">
                                 @csrf
-                                <h1 class="mb-25">{{ __('message.Sign In') }}</h1>
+                                <h1 class="mb-4">{{ __('message.Sign In') }}</h1>
                                 <p class="font-16 mb-30">{{ __('message.New User?') }} <a href="{{ route('register') }}"
                                         class="secondary-color font-medium">{{ __('message.Sign Up') }}</a></p>
 
-                                <div class="row mb-25">
+                                <div class="row mb-4">
                                     <div class="col-md-12">
                                         <label
                                             class="label-text-title color-heading font-medium mb-2">{{ __('message.Email') }}</label>
@@ -22,28 +22,28 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="row mb-25">
+                                <div class="row mb-4">
                                     <div class="col-md-12">
                                         <label
                                             class="label-text-title color-heading font-medium mb-2">{{ __('message.Password') }}</label>
                                         <div class="form-group mb-0 position-relative">
                                             <input class="form-control password" name="password" value="{{ old('Password') }}"
                                                 placeholder="{{ __('message.Password') }}" type="password">
-                                            <span class="toggle cursor fas fa-eye pass-icon"></span>
+                                            <span class="toggle fas fa-eye pass-icon" style="cursor: pointer;"></span>
                                         @error('password')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row mb-25">
+                                <div class="row mb-4">
                                     <div class="col-md-6">
                                     </div>
                                     <div class="col-md-6"><a href="#" id="forgotPassword"
                                             class="theme-link d-block text-start text-md-end"
                                             title="{{ __('message.Forgot Password?') }}">{{ __('message.Forgot Password?') }}</a></div>
                                 </div>
-                                <div class="row mb-25">
+                                <div class="row mb-4">
                                     <div class="col-md-12">
                                         <button type="submit"
                                             class="theme-btn theme-button1 theme-button3 font-15 fw-bold w-100"
@@ -55,11 +55,11 @@
                     </div>
                     <div class="col-md-6 d-none d-md-block">
                         <div class="sign-up-left-content position-relative text-center">
-                            <div class="sign-up-bottom-img mb-25">
+                            <div class="sign-up-bottom-img mb-4">
                                 <img src="{{ getSettingImage() }}" alt="{{ 'app_name' }}" class="img-fluid">
                             </div>
                             <h1 class="text-white">{{ __('message.sign_in_text_title') }}</h1>
-                            <p class="mt-25 w-75 mx-auto">{{ __('message.sign_in_text_subtitle') }}</p>
+                            <p class="mt-4 w-75 mx-auto">{{ __('message.sign_in_text_subtitle') }}</p>
                         </div>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
     <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
+            <div class="modal-content p-4">
                 <div class="modal-header">
                     <h4 class="modal-title" id="forgotPasswordModalLabel">{{ __('message.Forgot Password?') }}</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
@@ -84,12 +84,12 @@
                         @csrf
                         <div class="modal-inner-form-box">
                             <div class="row justify-content-start">
-                                <div class="mb-25 col-12">
+                                <div class="mb-4 col-12">
                                     <p>{{ __('message.reset_password_note') }}</p>
                                 </div>
 
-                                <div class="col-md-12 input-group mb-25 ">
-                                    <span class="input-group-text bg-light border-dark">+251</span>
+                                <div class="col-md-12 input-group mb-4 ">
+                                    <span class="input-group-text fs-6 bg-light border-dark">+251</span>
                                     <input type="text" class="form-control" name="phone" autocomplete="off" id="phone"
                                         placeholder="{{ __('message.contact_number') }}" required>
                                     <button class="btn btn-primary" id="getCode"
@@ -97,7 +97,7 @@
                                 </div>
 
                                 <div id="OTP-field" style="display: none;">
-                                    <div class="col-md-12 mb-25">
+                                    <div class="col-md-12 mb-4">
                                         <div class="mb-4 d-flex justify-content-between">
                                             @for ($i = 0; $i < 6; $i++)
                                                 <input type="text" name="otp[]" maxlength="1"
@@ -106,7 +106,7 @@
                                             @endfor
                                         </div>
                                     </div>
-                                    <div class="col-md-12 mb-25">
+                                    <div class="col-md-12 mb-4">
                                         <label
                                             class="label-text-title color-heading font-medium mb-2">{{ __('message.new_password') }}</label>
                                         <input type="password" name="password" class="form-control" id="new_password"
@@ -115,7 +115,7 @@
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
-                                    <div class="col-md-12 mb-25">
+                                    <div class="col-md-12 mb-4">
                                         <label
                                             class="label-text-title color-heading font-medium mb-2">{{ __('message.confirm_password') }}</label>
                                         <input type="password" name="password_confirmation" class="form-control"

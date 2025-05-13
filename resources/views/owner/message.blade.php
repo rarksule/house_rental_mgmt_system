@@ -1,8 +1,8 @@
 <x-app-layout>
     <div class="main-content">
         <div class="container-fluid">
-            <div class="page-content-wrapper mt-20 radius-20">
-                <nav class="navbar navbar-expand navbar-light bg-light p-0 d-flex justify-content-center">
+            <div class="page-content-wrapper mt-4 radius-20">
+                <nav class="navbar navbar-expand bg-light p-0 d-flex justify-content-center">
                     <div class="user-scroll w-auto  overflow-auto text-nowrap">
                         <div class="d-inline-flex m-3">
                             @foreach ($users as $user)

@@ -4,7 +4,7 @@
         <div class="page-content">
             <div class="container">
                 <!-- Page Content Wrapper Start -->
-                <div class="page-content-wrapper bg-white p-30 radius-20">
+                <div class="page-content-wrapper bg-white p-4 radius-20">
                     <div class="row justify-content-center">
                         <div class="col-md-10">
                             <div class="card">
@@ -45,22 +45,22 @@
                                                             <td>
                                                                 @if($history->type == RENTED)
                                                                     <span
-                                                                        class="property-type bg-success mb-2 d-inline-block">{{__("message.rented")}}</span>
+                                                                        class="badge-type bg-success mb-2 d-inline-block">{{__("message.rented")}}</span>
                                                                 @elseif($history->type == RELEASED)
                                                                     <span
-                                                                        class="property-type bg-danger mb-2 d-inline-block">{{__("message.left")}}</span>
+                                                                        class="badge-type bg-danger mb-2 d-inline-block">{{__("message.left")}}</span>
                                                                 @elseif($history->type == VISITED)
                                                                     <span
-                                                                        class="property-type bg-info mb-2 d-inline-block">{{__("message.visited")}}</span>
+                                                                        class="badge-type bg-info mb-2 d-inline-block">{{__("message.visited")}}</span>
                                                                 @elseif($history->type == ADDED)
                                                                     <span
-                                                                        class="property-type bg-success mb-2 d-inline-block">{{__("message.added")}}</span>
+                                                                        class="badge-type bg-success mb-2 d-inline-block">{{__("message.added")}}</span>
                                                                 @elseif($history->type == REGISTERED)
                                                                     <span
-                                                                        class="property-type bg-success mb-2 d-inline-block">{{__("message.joined")}}</span>
+                                                                        class="badge-type bg-success mb-2 d-inline-block">{{__("message.joined")}}</span>
                                                                 @elseif($history->type == REMOVED)
                                                                     <span
-                                                                        class="property-type bg-danger mb-2 d-inline-block">{{__("message.removed")}}</span>
+                                                                        class="badge-type bg-danger mb-2 d-inline-block">{{__("message.removed")}}</span>
                                                                 @endif
                                                             </td>
                                                             <td>{{ $history->created_at->format('M d, Y h:i A') }}</td>
@@ -69,9 +69,9 @@
                                                             </td>
                                                             <td>
                                                                 @if(isset($history->house))
-                                                                    <a href="{{route('house_detail',[$history->house->id])}}"><span class="property-type bg-primary mb-2 d-inline-block">{{__("message.goto_house")}}</span></a>
+                                                                    <a href="{{route('house_detail',[$history->house->id])}}"><span class="badge-type bg-primary mb-2 d-inline-block">{{__("message.goto_house")}}</span></a>
                                                                 @elseif(isAdmin())
-                                                                    <a href="{{route('admin.editUsers',[$history->user->id])}}" ><span class="property-type bg-primary mb-2 d-inline-block">{{__("message.goto_user")}}</span></a>
+                                                                    <a href="{{route('admin.editUsers',[$history->user->id])}}" ><span class="badge-type bg-primary mb-2 d-inline-block">{{__("message.goto_user")}}</span></a>
                                                                 @endif
 
                                                             </td>

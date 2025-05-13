@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="main-content">
         <div class="content">
-            <div class="page-content-wrapper pt-30 radius-20">
+            <div class="page-content-wrapper pt-4 radius-20">
                 <div class="row justify-content-center">
                     <div class="col-md-12">
                         <div class="card">

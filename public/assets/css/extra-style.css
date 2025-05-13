@@ -22,7 +22,7 @@
     margin-bottom: 15px;
 }
 
-.property-card {
+.house-card {
     border: 1px solid #ddd;
     border-radius: 8px;
     overflow: hidden;
@@ -30,7 +30,7 @@
     margin-bottom: 30px;
 }
 
-.property-image {
+.house-image {
     height: 200px;
     background-color: #eee;
     display: flex;
@@ -40,7 +40,7 @@
 
 
 
-.property-type {
+.badge-type {
     background-color: #e74c3c;
     color: white;
     padding: 3px 10px;
@@ -48,16 +48,16 @@
     font-size: 0.8rem;
 }
 
-.property-rating {
+.house-rating {
     color: #f39c12;
     margin: 10px 0;
 }
 
-.property-card:hover {
+.house-card:hover {
     transform: translateY(-5px);
 }
 
-.property-header {
+.house-header {
     background-color: #f8f9fa;
     padding: 2rem;
     margin-top: 4rem;

@@ -82,7 +82,7 @@ class UserController extends Controller
         }
         $user = User::findOrFail($id);
         $user->delete();
-        return back()->with('success',__("message.user_active" [__("message.deleted")]));
+        return back()->with('success',__("message.user_active" ,["form"=>__("message.deleted")]));
 
     }
 }

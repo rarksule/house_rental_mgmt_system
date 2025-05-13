@@ -2,7 +2,7 @@
     <div class="main-content">
         <div class="page-content">
             <div class="container-fluid">
-                <div class="page-content-wrapper bg-white p-30 radius-20">
+                <div class="page-content-wrapper bg-white p-4 radius-20">
                     <div class="row">
                         <div class="col-12">
                             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
@@ -20,9 +20,9 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-6 col-lg-4 col-xl-4">
-                            <div class="dashboard-feature-item bg-off-white theme-border radius-4 p-20 mb-25">
+                            <div class="dashboard-feature-item bg-off-white theme-border rounded-3 p-3 mb-4">
                                 <div
-                                    class="dashboard-feature-item-icon-wrap font-20 d-flex align-items-center justify-content-center bg-white radius-4">
+                                    class="dashboard-feature-item-icon-wrap font-20 d-flex align-items-center justify-content-center bg-white rounded-3">
                                     <span class="iconify orange-color" data-icon="bxs:home-circle"></span>
                                 </div>
                                 <p class="mt-2">{{ __('message.Total_houses') }}</p>
@@ -31,9 +31,9 @@
                             </div>
                         </div>
                         <div class="col-sm-6 col-lg-4 col-xl-4">
-                            <div class="dashboard-feature-item bg-off-white theme-border radius-4 p-20 mb-25">
+                            <div class="dashboard-feature-item bg-off-white theme-border rounded-3 p-3 mb-4">
                                 <div
-                                    class="dashboard-feature-item-icon-wrap font-20 d-flex align-items-center justify-content-center bg-white radius-4">
+                                    class="dashboard-feature-item-icon-wrap font-20 d-flex align-items-center justify-content-center bg-white rounded-3">
                                     <span class="iconify orange-color" data-icon="bi:bar-chart-line-fill"></span>
                                 </div>
                                 <p class="mt-2">{{ __('message.Total_Tenant') }}</p>
@@ -42,9 +42,9 @@
                             </div>
                         </div>
                         <div class="col-sm-6 col-lg-4 col-xl-4">
-                            <div class="dashboard-feature-item bg-off-white theme-border radius-4 p-20 mb-25">
+                            <div class="dashboard-feature-item bg-off-white theme-border rounded-3 p-3 mb-4">
                                 <div
-                                    class="dashboard-feature-item-icon-wrap font-20 d-flex align-items-center justify-content-center bg-white radius-4">
+                                    class="dashboard-feature-item-icon-wrap font-20 d-flex align-items-center justify-content-center bg-white rounded-3">
                                     <span class="iconify green-color" data-icon="material-symbols:patient-list"></span>
                                 </div>
                                 <p class="mt-2">{{ __('message.tenant_lead') }}</p>
@@ -57,7 +57,7 @@
                     <!-- Chart row -->
                     <div class="row">
                         <div class="col-12 col-lg-12 col-xl-12">
-                            <div class="bg-off-white radius-4 mb-25 theme-border p-20 w-100">
+                            <div class="bg-off-white rounded-3 mb-4 theme-border p-3 w-100">
                                 <div class="bg-transparent">
                                     <div class="row align-items-center">
                                         <div class="col-12">
@@ -80,11 +80,11 @@
 
                     <div class="row">
                         <div class="col-lg-7">
-                            <div class="dashboard-properties-table bg-off-white theme-border p-20 radius-4 mb-25">
+                            <div class="dashboard-properties-table bg-off-white theme-border p-3 rounded-3 mb-4">
                                 <div class="">
                                     <div class="row align-items-center">
                                         <div class="col-12">
-                                            <div class="d-flex align-items-center justify-content-between mb-25">
+                                            <div class="d-flex align-items-center justify-content-between mb-4">
                                                 <h4 class="mb-0">{{ __('message.upcoming_rent') }}</h4>
                                             </div>
                                         </div>
@@ -92,7 +92,7 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="table-responsive">
-                                                <table class="table theme-border p-20">
+                                                <table class="table theme-border p-3">
                                                     <thead>
                                                         <tr>
                                                             <th>{{ __('message.name') }}</th>
@@ -133,7 +133,7 @@
                                                 </table>
 
                                                 <div>
-                                                    <a class="theme-link font-14 font-medium d-flex align-items-center justify-content-center mt-20"
+                                                    <a class="theme-link font-14 font-medium d-flex align-items-center justify-content-center mt-4"
                                                         href="{{ route('owner.tenants') }}">
                                                         {{ __('message.view_all') }}<i class="ri-arrow-right-line ms-2"></i>
                                                     </a>
