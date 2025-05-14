@@ -127,10 +127,8 @@
                         .catch(error => console.error('Error:', error));
                 });
 
-                // Initial scroll to bottom
                 messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
-                // Optional: Poll for new messages (replace with Pusher or similar for real-time)
                 setInterval(function () {
                     fetch("{{route(userPrefix() . '.messages')}}")
                         .then(response => response.json())

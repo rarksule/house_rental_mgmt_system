@@ -3,9 +3,7 @@
     <div class="main-content">
         <div class="page-content">
             <div class="container">
-                <!-- Page Content Wrapper Start -->
                 <div class="page-content-wrapper bg-white p-4 radius-20">
-                    <!-- start page title -->
                     <div class="row">
                         <div class="col-12">
                             <div
@@ -15,9 +13,11 @@
                                 </div>
                                 <div class="page-title-right">
                                     <ol class="breadcrumb mb-0">
+                                        @if(!isTenant())
                                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"
                                                 title="{{ __('message.dashboard') }}">{{ __('message.dashboard') }}</a>
                                         </li>
+                                        @endif
                                         <li class="breadcrumb-item">
                                             {{ isAdmin() ? __('message.admin') : __('message.profile') }}</li>
                                         <li class="breadcrumb-item active" aria-current="page">{{ $pageTitle }}</li>
@@ -117,7 +117,7 @@
                                                             <label
                                                                 class="label-text-title color-heading font-medium mb-2">{{ __('message.email') }}
                                                                 <su style="color: red;"> *</su>
-                                                            </label>
+                                                            </label>Drop files here or click to upload
                                                             <input type="email" class="form-control" name="email"
                                                                 placeholder="{{ __('message.email') }}" required
                                                                 value="{{ old('email', isset($user) ? $user->email : '') }}"
@@ -338,10 +338,7 @@
                             <div class="modal-inner-form-box">
                                 <div class="row">
                                     <div class="col-md-12 mb-4">
-                                        <p>Please type your email of this account <span
-                                                class="fw-bold">({{ $user->email }})</span> to confirm its deletion
-                                            from this application. After successful deletion, you can't recover this
-                                            account.</p>
+                                        <p>{{__('message.notice_delete',['form'=> $user->email])}}</p>
                                         <label
                                             class="label-text-title color-heading font-medium mb-2">{{ __('message.email') }}
                                             <strong class="text-danger">*</strong></label>
@@ -379,7 +376,7 @@
                 if (password !== confirmPassword) {
                     e.preventDefault(); // Prevent form submission
                     errorElement.style.display = 'block';
-                    errorElement.textContent = {{ __('message.pass_noMatch') }};
+                    errorElement.textContent = @lang('message.pass_noMatch');
                 } else {
                     errorElement.style.display = 'none';
                 }

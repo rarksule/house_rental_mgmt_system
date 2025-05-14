@@ -114,12 +114,12 @@
                                                                 <td>@if($renter->rentedHouse->payment_date->isPast())
                                                                     <!-- For past dates -->
                                                                     <span class="text-danger">
-                                                                        Due {{ $renter->rentedHouse->payment_date->diffForHumans() }}
+                                                                        {{ $renter->rentedHouse->payment_date->diffForHumans() }}
                                                                     </span>
                                                                 @else
                                                                     <!-- For future dates -->
                                                                     <span class="text-success">
-                                                                        Due in {{ $renter->rentedHouse->payment_date->diffForHumans() }}
+                                                                        {{ $renter->rentedHouse->payment_date->diffForHumans() }}
                                                                     </span>
                                                                 @endif</td>
                                                             </tr>

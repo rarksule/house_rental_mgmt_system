@@ -24,7 +24,7 @@
                     <p class="mb-0">©2025 All rights reserved.</p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <button class="btn btn-outline-light"><i class="fas fa-arrow-up"><a href="#">{{__("message.go_up")}}</a></i></button>
+                    <button class="btn btn-outline-light"><i class="fas fa-arrow-up"><a href="#">{{' '.__("message.go_up")}}</a></i></button>
                 </div>
             </div>
         </div>

@@ -25,7 +25,6 @@
         @if(!isTenant())
             @include('common.layouts.sidebar')
         @endif
-        {{-- @yield('content') --}}
         {{ $slot }}
     </div>
     @if (!isAdminPanel())

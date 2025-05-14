@@ -145,7 +145,7 @@
                 if (new_password.value !== confirm_password.value) {
                     e.preventDefault(); // Prevent form submission
                     errorElement.style.display = 'block';
-                    errorElement.textContent = 'Passwords do not match';
+                    errorElement.textContent = "@lang('message.pass_noMatch')";
                 } else {
                     errorElement.style.display = 'none';
                 }
@@ -186,7 +186,7 @@
                     return;
                 }
                 if (phoneNumber.length != 9) {
-                    toastr.error("@lang('message.phone')");
+                    toastr.error("@lang('message.invalid_phone')");
                     return;
                 }
 
@@ -221,8 +221,6 @@
             }
 
 
-
-            // Original button click event (optional, keep if you still want manual trigger)
             getCodeBtn.addEventListener('click', function() {
                 sendOtpRequest();
             });

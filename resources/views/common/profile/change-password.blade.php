@@ -16,10 +16,12 @@
                                 </div>
                                 <div class="page-title-right">
                                     <ol class="breadcrumb mb-0">
-                                        <li class="breadcrumb-item"><a href="{{ route('owner.dashboard') }}"
+                                        @if(!isTenant())
+                                        <li class="breadcrumb-item"><a href="{{  route(userprefix().'.dashboard') }}"
                                                 title="{{ __('message.dashboard') }}">{{ __('message.dashboard') }}</a>
                                         </li>
-                                        <li class="breadcrumb-item">{{ __('Profile') }}</li>
+                                        @endif
+                                        <li class="breadcrumb-item">{{ __('message.profile') }}</li>
                                         <li class="breadcrumb-item active" aria-current="page">{{ $pageTitle }}</li>
                                     </ol>
                                 </div>
@@ -80,7 +82,7 @@
                 if (password !== confirmPassword) {
                     e.preventDefault(); // Prevent form submission
                     errorElement.style.display = 'block';
-                    errorElement.textContent = {{ __('message.pass_noMatch') }};
+                    errorElement.textContent = @lang('message.pass_noMatch');
                 } else {
                     errorElement.style.display = 'none';
                 }

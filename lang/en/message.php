@@ -55,7 +55,7 @@ return [
     'status' => 'Status',
     'new_owners' => 'Recent Owners',
     'search' => [
-        '0'=>'Search',
+        '0' => 'Search',
         'location' => 'Search for a location',
         'neighbor' => 'Search Neighborhoods...',
         'min_price' => 'Min Price',
@@ -64,11 +64,11 @@ return [
         'no_Max' => 'No Max'
     ],
     'owner' => [
-        '0'=>'Owner',
+        '0' => 'Owner',
         'contact' => 'Contact Owner',
         'managment' => 'Owners managment',
     ],
-    'reset_password_note'=> 'enter email or phone and wait for confirmation code and write your received code with your new password',
+    'reset_password_note' => 'enter email or phone and wait for confirmation code and write your received code with your new password',
     'active' => 'ACTIVE',
     'inactive' => 'INACTIVE',
     'activate' => 'Activated',
@@ -143,9 +143,10 @@ return [
     'sign_in_text_subtitle' => 'Please sign in to continue.',
     'add_new' => 'Add New :form',
     'Welcome_back' => 'Welcome back'
-    ,'req_tour'=> 'Request Tour',
+    ,
+    'req_tour' => 'Request Tour',
     'reqd_tour' => 'Tour Requested',
-    'reply'=>'reply',
+    'reply' => 'reply',
     "policy" => "Policy",
     "language" => "Language",
     "Contact_Us" => "Contact Us",
@@ -177,9 +178,9 @@ return [
     "kitchen" => "I :form have Kitchen",
     "acceptMarried" => "I :form accept Married Tenants",
     "hasDog" => "I :form have dog",
-    "kids" => "I :form tolarate kids", // I Don't tolarate kids  
+    // "kids" => "I :form tolarate kids", // I Don't tolarate kids  
     "dont" => "Don't",
-    "per" => " Birr / Month", 
+    "per" => " Birr / Month",
     'title' => "Title",
     "latitude" => 'Latitude',
     "longtiude" => 'Longitude',
@@ -199,13 +200,14 @@ return [
     'edit_profile' => 'Edit Profile',
     'house' => [
 
-    "0" => "House",
+        "0" => "House",
         'managment' => 'House Managment',
         'rented_managment' => 'Rented Houses Managment',
         'edit' => 'Edit House',
         'update' => 'House updated successfully!',
         'delete' => 'House deleted successfully!',
         'rated' => 'House rated successfully!',
+        'detail' => 'House Details',
     ],
     'message_sent' => 'Message Sent!',
     'verify_phone_success' => 'phone Verification Successfull',
@@ -226,5 +228,27 @@ return [
     'resend' => 'Resend Code',
     'pass_noMatch' => 'Passwords do not match',
     'invalid_phone' => 'Invalid phone number',
+    'notice_delete' => 'Please type your email of this account <span class="fw-bold"> :form </span> to confirm its deletion
+                                            from this application. After successful deletion, you can\'t recover this
+                                            account.',
+    'drop' => 'Drop files here or click to upload',
+    'upload_upto' => 'Upload up to 5 images (Max size: 2MB each)',
+    'select_file' => 'Select File',
+    'get_add' => 'Go here to get :form from address',
+    'private_note' => 'Private notes',
+    'private_note_info' => 'Private notes are only visible to owner. It wont be shown on the frontend.',
+    'upload' => 'Upload Images',
+    'sure_delete_image' => 'Are you sure you want to delete this image from Database?',
+    'delete_img_success' => 'Image deleted successfully',
+    'amenities' => 'Amenities',
+    'no_found_tb' => 'No :form found',
+    'showing_all' => 'Showing _START_ to _END_ of _TOTAL_ :form',
+    'showing' => 'Showing 0 to 0 of 0 :form',
+    'filterd' => 'filtered from _MAX_ total :form',
+    'show_menu' => 'Show _MENU_ :form',
+    'no_found_filt' => 'No matching :form found',
+    'sure_delete' => 'Are you sure you want to delete this :form ? This action cannot be undone.',
+    'delete_success' => ':form deleted successfully',
+
 
 ];

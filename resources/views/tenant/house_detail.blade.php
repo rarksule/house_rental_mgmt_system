@@ -59,13 +59,13 @@
 
                 <!-- Description Section -->
                 <section class="my-5">
-                    <h2 class="mb-4">Description</h2>
+                    <h2 class="mb-4">{{__('message.description')}}</h2>
                     <p>{!! $house->description !!}</p>
                 </section>
 
                 <!-- Amenities Section -->
                 <section class="mb-5">
-                    <h2 class="mb-4">Amenities</h2>
+                    <h2 class="mb-4">{{__('message.amenities')}}</h2>
                     <div class="row">
 
 

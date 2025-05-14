@@ -14,9 +14,11 @@
                                     </div>
                                     <div class="page-title-right">
                                         <ol class="breadcrumb mb-0">
+                                            @if(!isTenant())
                                             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"
                                                     title="{{ __('message.dashboard') }}">{{ __('message.dashboard') }}</a>
                                             </li>
+                                            @endif
                                             <li class="breadcrumb-item">{{ __('message.owner.0') }}</li>
                                             <li class="breadcrumb-item active" aria-current="page">{{ $pageTitle }}</li>
                                         </ol>
@@ -48,8 +50,7 @@
                                             <div class="invalid-feedback">{{__("message.invalid",["form" => __("message.title")])}}</div>
                                         </div>
                                         <div class="mb-3 mt-3">
-                                            <label for="address" class="form-label fw-bold">house
-                                                address</label>
+                                            <label for="address" class="form-label fw-bold">{{__('message.address')}}</label>
                                             <input type="text" class="form-control form-control-lg" name="address"
                                                 placeholder="house address" id="address"
                                                 value="{{ old('address', $house->address ?? '') }}" required>
@@ -57,13 +58,13 @@
                                         </div>
 
                                         <div class="mb-3 mt-3">
-                                            <label for="description" class="form-label fw-bold">Description</label>
+                                            <label for="description" class="form-label fw-bold">{{__('message.description')}}</label>
                                             <textarea class="form-control" id="description" name="description" rows="6"
                                                 required>{{ old('description', $house->description ?? '') }}</textarea>
                                             <div class="invalid-feedback">{{__("message.invalid",["form" => __("message.description")])}}
                                             </div>
                                         </div>
-                                        <h5 class="mt-3 fw-bold">Upload Images</h5>
+                                        <h5 class="mt-3 fw-bold">{{__('upload')}}</h5>
                                         <input type="file" id="hidden-preview-container" name="images[]"
                                             class="form-control" multiple accept="image/*" style="display: none;"
                                             >
@@ -73,12 +74,11 @@
                                         <div class="dropzone border-primary rounded p-4 text-center" id="myDropzone">
                                             <div class="dz-message needsclick">
                                                 <i class="fas fa-cloud-upload-alt fa-3x text-primary mb-3"></i>
-                                                <h5>Drop files here or click to upload</h5>
-                                                <span class="text-muted">Upload up to 5 images (Max size: 2MB
-                                                    each)</span><br>
+                                                <h5>{{__('message.drop')}}</h5>
+                                                <span class="text-muted">{{__('message.upload_upto')}}</span><br>
                                                 <span>or</span><br>
 
-                                                <button type="button" class="btn btn-primary mt-2">Select File</button>
+                                                <button type="button" class="btn btn-primary mt-2">{{__('message.select_file')}}</button>
                                             </div>
                                         </div>
                                         <div class="invalid-feedback">{{__("message.invalid",["form" => __("message.images")])}}
@@ -123,33 +123,31 @@
                                     <div class="card-body">
                                         <div class="row g-3">
                                             <div class="col-md-6">
-                                                <label for="latitude" class="form-label fw-bold">Latitude</label>
+                                                <label for="latitude" class="form-label fw-bold">{{ __("message.latitude") }}</label>
                                                 <input type="text" class="form-control" id="latitude" name="latitude"
                                                     placeholder="Ex: 1.462260"
                                                     value="{{ old('latitude', $house->latitude ?? '') }}" required>
                                                 <div class="invalid-feedback">{{__("message.invalid",["form" => __("message.latitude")])}}
                                                 </div>
                                                 <a href="https://www.latlong.net/" target="blank"><small
-                                                        class="text-muted">Go here to get Latitude from
-                                                        address</small></a>
+                                                        class="text-muted">{{__('message.get_add',['form'=>__("message.latitude")])}}</small></a>
                                             </div>
                                             <div class="col-md-6">
-                                                <label for="longitude" class="form-label fw-bold">Longitude</label>
+                                                <label for="longitude" class="form-label fw-bold">{{ __("message.longtiude") }}</label>
                                                 <input type="text" class="form-control" id="longitude" name="longitude"
                                                     placeholder="Ex: 103.812530"
                                                     value="{{ old('longitude', $house->longitude ?? '') }}" required>
                                                 <div class="invalid-feedback">{{__("message.invalid",["form" => __("message.longtiude")])}}
                                                 </div>
                                                 <a href="https://www.latlong.net/" target="blank"><small
-                                                        class="text-muted">Go here to get Longitude from
-                                                        address.</small></a>
+                                                        class="text-muted">{{__('message.get_add',['form'=>__("message.longitude")])}}</small></a>
                                             </div>
                                         </div>
 
-                                        <h5 class="fw-bold mt-4 mb-3">house Details</h5>
+                                        <h5 class="fw-bold mt-4 mb-3">{{__('message.house.detail')}}</h5>
                                         <div class="row g-3">
                                             <div class="col-md-6">
-                                                <label for="rooms" class="form-label fw-bold">Number rooms</label>
+                                                <label for="rooms" class="form-label fw-bold">{{ __("message.rooms") }}</label>
                                                 <input type="number" class="form-control" id="rooms" name="rooms"
                                                     min="0" value="{{ old('rooms', $house->rooms ?? '') }}" required>
                                                 <div class="invalid-feedback">{{__("message.invalid",["form" => __("message.rooms")])}}</div>
@@ -166,23 +164,21 @@
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox" id="tapWater"
                                                         name="tapWater" {{ old('tapWater', isset($house->tapWater) ? 'checked' : '') }}>
-                                                    <label class="form-check-label" for="tapWater">Tap water
-                                                        available</label>
+                                                    <label class="form-check-label" for="tapWater">{{__('message.tapWater',['form' => ''])}}</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox" id="kitchen"
                                                         name="kitchen" {{ old('kitchen', isset($house->kitchen) ? 'checked' : '') }}>
-                                                    <label class="form-check-label" for="kitchen">Kitchen</label>
+                                                    <label class="form-check-label" for="kitchen">{{ __('message.kitchen',['form' => '']) }}</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox" id="acceptMarried"
                                                         name="acceptMarried" {{ old('acceptMarried', isset($house->acceptMarried) ? 'checked' : '') }}>
-                                                    <label class="form-check-label" for="acceptMarried">accept married
-                                                        couple</label>
+                                                    <label class="form-check-label" for="acceptMarried">{{__('message.acceptMarried',['form' => ''])}}</label>
                                                 </div>
                                             </div>
 
@@ -190,14 +186,14 @@
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox" id="hasDog"
                                                         name="hasDog" {{ old('hasDog', isset($house->hasDog) ? 'checked' : '') }}>
-                                                    <label class="form-check-label" for="hasDog">I have Dog</label>
+                                                    <label class="form-check-label" for="hasDog">{{__('message.hasDog',['form' => ''])}}</label>
                                                 </div>
                                             </div>
                                             
                                         </div>
                                         <div class="row g-3 mt-3 mb-3">
                                             <div class="col-md-6">
-                                                <label for="price" class="form-label fw-bold">Price</label>
+                                                <label for="price" class="form-label fw-bold">{{__('message.price')}}</label>
                                                 <div class="input-group">
                                                     <input type="number" class="form-control" id="price" name="price"
                                                         min="0" value="{{ old('price', $house->price ?? '') }}"
@@ -229,21 +225,19 @@
 
                                 <div class="card-body">
                                     <div class="mb-3 ">
-                                        <label for="privateNotes" class="form-label fw-bold">Private notes</label>
+                                        <label for="privateNotes" class="form-label fw-bold">{{__('message.private_note')}}</label>
                                         <textarea class="form-control border-primary" id="privateNotes" name="privateNotes"
                                             rows="3">{{ old('privateNotes', $house->privateNotes ?? '') }}</textarea>
-                                        <small class="text-muted">Private notes are only visible to owner. It wont be
-                                            shown
-                                            on the frontend.</small>
+                                        <small class="text-muted">{{__('private_note_info')}}</small>
                                     </div>
                                         <div class="form-check form-switch ">
                                             <input class="form-check-input" type="checkbox" id="rented" name="rented" {{ old('rented', isset($house->rented) ? 'checked' : '') }}>
-                                            <label class="form-check-label fw-bold h5" for="rented">Rented</label>
+                                            <label class="form-check-label fw-bold h5" for="rented">{{__('message.rented')}}</label>
                                         </div>
                                         <div class="mb-1"  id="paymentDateContainer">
                                             <div class="row g-3 mt-3 mb-3">
                                             <div class="col-md-6">
-                                                <label for="payment_date" class="form-label fw-bold">Payment Date</label>
+                                                <label for="payment_date" class="form-label fw-bold">{{__('message.payment_date')}}</label>
                                                 <input type="date" class="form-control form-control-lg"
                                                     name="payment_date" placeholder="payment_date"
                                                     id="payment_date"
@@ -262,7 +256,7 @@
                                                         <option value="{{ $tenant->email }}">{{ $tenant->name }}</option>
                                                         @endforeach
                                                     </datalist>
-                                                <div class="invalid-feedback">Please specify who rented.</div>
+                                                <div class="invalid-feedback">{{__('message.invalid',['form'=>__('message.renter')])}}</div>
                                                 
                                             
                                             </div>
@@ -275,7 +269,7 @@
                                 <!-- Footer Buttons -->
                                 <div class="d-flex justify-content-end mb-5">
                                     <div>
-                                        <button type="submit" class="btn btn-primary px-4 py-2 me-2">Save</button>
+                                        <button type="submit" class="btn btn-primary px-4 py-2 me-2">{{__('message.save')}}</button>
                                     </div>
                                 </div>
                             </form>
@@ -298,7 +292,7 @@
                     const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
 
                     // Confirm before deleting
-                    if (confirm('Are you sure you want to delete this image from Database?')) {
+                    if (confirm("@lang('message.sure_delete_image')")) {
                         $.ajax({
                             url: "{{ route('owner.deletemedia') }}", // You'll need to create this route
                             type: "POST",
@@ -314,7 +308,7 @@
                                 // Remove the image container from the DOM
                                 button.closest('.col-auto').remove();
                                 dbImages--;
-                                toastr.success(response.message || 'Image deleted successfully');
+                                toastr.success(response.message || "@lang('message.delete_img_success')");
                             },
                             error: function (xhr, status, error) {
                                 toastr.error(xhr.responseJSON.message || 'Failed to delete image');

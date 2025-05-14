@@ -69,13 +69,13 @@
                 @endforeach
             ],
             language: {
-                emptyTable: "No {{ $title ?? 'records' }} found",
-                info: "Showing _START_ to _END_ of _TOTAL_ {{ $title ?? 'records' }}",
-                infoEmpty: "Showing 0 to 0 of 0 {{ $title ?? 'records' }}",
-                infoFiltered: "(filtered from _MAX_ total {{ $title ?? 'records' }})",
-                lengthMenu: "Show _MENU_ {{ $title ?? 'records' }}",
-                search: "Search:",
-                zeroRecords: "No matching {{ $title ?? 'records' }} found"
+                emptyTable: "{{ __('message.no_found',['form'=> $title ]) }}",
+                info: "{{ __('message.showing_all',['form'=>$title]) }}",
+                infoEmpty: "{{ __('message.showing_all',['form'=>$title]) }}",
+                infoFiltered: " {{__('message.filterd',['form'=>$title])}})",
+                lengthMenu: " {{ __('message.show_menu',['form'=> $title]) }}",
+                search: "{{ __('message.search.0') }}",
+                zeroRecords: "{{ __('message.no_found_filt',['form'=>$title]) }}"
             }
         });
 
@@ -91,7 +91,7 @@
                 var deleteUrl = "{{ route('owner.deleteHouse',[':id']) }}".replace(':id', dataId);
             }
             
-            if (confirm('Are you sure you want to delete this {{ $title ?? "item" }}? This action cannot be undone.')) {
+            if (confirm("{{ __('message.sure_delete',['form'=>$item]) }}")) {
                 $.ajax({
                     url: deleteUrl,
                     type: 'POST',
@@ -101,7 +101,7 @@
                     },
                     success: function (result) {
                         table.ajax.reload();
-                        toastr.success('{{ $title ?? "Item" }} deleted successfully');
+                        toastr.success("{{ __('message.delete_success',['form'=> $item]) }}");
                     },
                     error: function (xhr) {
                         alert('Error deleting {{ $title ?? "item" }}: ' + (xhr.responseJSON?.message || 'Unknown error'));
@@ -124,7 +124,7 @@
                 },
                 success: function (result) {
                     table.ajax.reload();
-                    toastr.success('Status updated successfully');
+                    toastr.success("{{ __('message.saved',['form'=>__('message.status')]) }}");
                 },
                 error: function (xhr) {
                     alert('Error updating status: ' + (xhr.responseJSON?.message || 'Unknown error'));

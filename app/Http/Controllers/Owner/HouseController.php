@@ -137,7 +137,7 @@ class HouseController extends Controller
             ->where('type', VISITED)
             ->exists()){
 
-            $this->recordHistory(VISITED,$visitor->id,$house->id);
+            $this->recordHistory(VISITED,$visitor_id,$house->id);
             }
         }
 
@@ -165,12 +165,11 @@ class HouseController extends Controller
      */
     public function edit( $r)
     {
-        $authId = auth()->id();
         $house =House::find($r);
         if(!$house){
             return back()->with('error',__('message.no_data'));
         }
-        if($house->owner_id != $authId){
+        if($house->owner_id != auth()->id()){
             return back()->with('error',__('message.action_forbidden'));
         }
         $pageTitle  = __('message.house.edit');
@@ -178,20 +177,20 @@ class HouseController extends Controller
         $tenants = User::where('role', USER_ROLE_TENANT) 
     ->where(function($query) {
         $query->whereHas('sentMessages', function ($q) {
-                $q->where('receiver_id', $authId);
+                $q->where('receiver_id', auth()->id());
             })
             ->orWhereHas('receivedMessages', function ($q) {
-                $q->where('sender_id', $authId);
+                $q->where('sender_id', auth()->id());
             });
     })
     ->get();
         $tenant = User::where('role', USER_ROLE_TENANT) // Assuming you have a 'role' column
     ->where(function($query) {
         $query->whereHas('sentMessages', function ($q) {
-                $q->where('receiver_id', $authId);
+                $q->where('receiver_id', auth()->id());
             })
             ->orWhereHas('receivedMessages', function ($q) {
-                $q->where('sender_id', $authId);
+                $q->where('sender_id', auth()->id());
             });
     })
     ->get();
