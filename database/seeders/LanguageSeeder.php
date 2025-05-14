@@ -16,9 +16,9 @@ class LanguageSeeder extends Seeder
         \DB::table("languages")->insert(
             [
                 ['name' => 'English','code'=>'en','status'=>1],
-                ['name' => 'Amharic','code'=>'am','status'=>1],
-                ['name' => 'Somali','code'=>'so','status'=>1],
-                ['name' => 'Oromo','code'=>'om','status'=>1],
+                ['name' => 'አማርኛ','code'=>'am','status'=>1],
+                ['name' => 'Af somali','code'=>'so','status'=>1],
+                ['name' => 'Afaan Oromoo','code'=>'om','status'=>1],
             ]
         );
     }

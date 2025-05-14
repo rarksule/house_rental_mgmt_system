@@ -76,7 +76,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Chart row -->
 
                     <div class="row">
                         <div class="col-lg-7">
@@ -152,9 +151,3 @@
         </div>
     </div>
 </x-app-layout>
-{{-- @endsection --}}
-
-@push('script')
-    <script src="{{ asset('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
-    <script src="{{ asset('assets/js/pages/index-charts.js') }}"></script>
-@endpush

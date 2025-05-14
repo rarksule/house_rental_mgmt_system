@@ -7,8 +7,7 @@ a,
 .theme-btn,
 button,
 .theme-btn-back,
-.page-link,
-.tenant-portal-notice-tbl td {
+.page-link{
     transition: all 0.6s ease-in-out;
 }
 
@@ -658,6 +657,157 @@ button:focus {
     body.sidebar-enable .vertical-menu {
         display: block
     }
+}
+
+
+.vertical-collpsed .main-content {
+    margin-left: 70px
+}
+
+
+.vertical-collpsed .vertical-menu {
+    position: absolute;
+    width: 80px !important;
+    z-index: 5
+}
+
+.vertical-collpsed .vertical-menu .simplebar-content-wrapper,
+.vertical-collpsed .vertical-menu .simplebar-mask {
+    overflow: visible !important
+}
+
+.vertical-collpsed .vertical-menu .simplebar-scrollbar {
+    display: none !important
+}
+
+.vertical-collpsed .vertical-menu .simplebar-offset {
+    bottom: 0 !important
+}
+
+.vertical-collpsed .vertical-menu #sidebar-menu .badge,
+.vertical-collpsed .vertical-menu #sidebar-menu .collapse.in,
+.vertical-collpsed .vertical-menu #sidebar-menu .menu-title {
+    display: none !important
+}
+
+.vertical-collpsed .vertical-menu #sidebar-menu .nav.collapse {
+    height: inherit !important
+}
+
+.vertical-collpsed .vertical-menu #sidebar-menu .has-arrow:after {
+    display: none
+}
+
+.vertical-collpsed .vertical-menu #sidebar-menu>ul>li {
+    position: relative;
+    white-space: nowrap
+}
+
+.vertical-collpsed .vertical-menu #sidebar-menu>ul>li>a {
+    min-height: 55px;
+    -webkit-transition: none;
+    transition: none;
+    padding: .750rem 1.5rem;
+}
+
+.vertical-collpsed .vertical-menu #sidebar-menu>ul>li>a:active,
+.vertical-collpsed .vertical-menu #sidebar-menu>ul>li>a:focus,
+.vertical-collpsed .vertical-menu #sidebar-menu>ul>li>a:hover {
+    color: var(--primary-color)
+}
+
+.vertical-collpsed .vertical-menu #sidebar-menu>ul>li>a i {
+    font-size: 1.1rem;
+    line-height: 1.40625rem;
+}
+
+.vertical-collpsed .vertical-menu #sidebar-menu>ul>li>a span {
+    display: none;
+    padding-left: 25px
+}
+
+.vertical-collpsed .vertical-menu #sidebar-menu>ul>li:hover>a {
+    position: relative;
+    width: calc(190px + 70px);
+    color: var(--body-font-color);
+    background-color: var(--bg-light);
+    -webkit-transition: none;
+    transition: none
+}
+
+.vertical-collpsed .vertical-menu #sidebar-menu>ul>li:hover>a i {
+    color: var(--primary-color)
+}
+
+.vertical-collpsed .vertical-menu #sidebar-menu>ul>li:hover>a span {
+    display: inline
+}
+
+.vertical-collpsed .vertical-menu #sidebar-menu>ul>li:hover>ul {
+    display: block;
+    left: 70px;
+    position: absolute;
+    width: 190px;
+    height: auto !important;
+    -webkit-box-shadow: 3px 5px 12px -4px rgba(18, 19, 21, .1);
+    box-shadow: 3px 5px 12px -4px rgba(18, 19, 21, .1)
+}
+
+.vertical-collpsed .vertical-menu #sidebar-menu>ul>li:hover>ul ul {
+    -webkit-box-shadow: 3px 5px 12px -4px rgba(18, 19, 21, .1);
+    box-shadow: 3px 5px 12px -4px rgba(18, 19, 21, .1)
+}
+
+.vertical-collpsed .vertical-menu #sidebar-menu>ul>li:hover>ul a {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    padding: 8px 20px;
+    position: relative;
+    width: 190px;
+    z-index: 6;
+    color: var(--body-font-color)
+}
+
+.vertical-collpsed .vertical-menu #sidebar-menu>ul>li:hover>ul a {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    padding: 0 20px 11px;
+    position: relative;
+    width: 190px;
+    z-index: 6;
+    color: var(--body-font-color);
+}
+
+.vertical-collpsed .vertical-menu #sidebar-menu>ul>li:hover>ul a:hover {
+    color: var(--primary-color)
+}
+
+.vertical-collpsed .vertical-menu #sidebar-menu>ul ul {
+    padding: 0px 0 11px;
+    z-index: 9999;
+    display: none;
+    background-color: var(--bg-light);
+}
+
+.vertical-collpsed .vertical-menu #sidebar-menu>ul ul li:hover>ul {
+    display: block;
+    left: 190px;
+    height: auto !important;
+    margin-top: -36px;
+    position: absolute;
+    width: 190px
+}
+
+.vertical-collpsed .vertical-menu #sidebar-menu>ul ul li>a span.pull-right {
+    position: absolute;
+    right: 20px;
+    top: 12px;
+    -webkit-transform: rotate(270deg);
+    transform: rotate(270deg)
+}
+
+.vertical-collpsed .vertical-menu #sidebar-menu>ul ul li.active a {
+    color: #f8f9fa
 }
 
 .dashboard-feature-item-icon-wrap {
