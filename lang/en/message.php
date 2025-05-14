@@ -221,5 +221,10 @@ return [
     'goto_user' => 'Go to User',
     'get_code' => 'Get Code',
     'verify_otp' => 'Verify OTP',
+    'enter_otp' => 'Please enter the OTP sent to your phone number.',
+    'didnt_receive' => "Didn't receive code? Wait",
+    'resend' => 'Resend Code',
+    'pass_noMatch' => 'Passwords do not match',
+    'invalid_phone' => 'Invalid phone number',
 
 ];

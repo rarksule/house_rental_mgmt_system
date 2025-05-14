@@ -5,14 +5,14 @@
             <div class="container-fluid p-0">
                 <div class="row sign-up-page-wrap-row">
                     <div class="col-md-6">
-                        <div class="sign-up-right-content bg-white mx-4">
+                        <div class="sign-up-right-content bg-white mx-4 card">
                             <form action="register" method="post">
                                 @csrf
-                                <h1 class="mb-4">{{ __('message.sign_up') }}</h1>
+                                <h1 class="my-5">{{ __('message.sign_up') }}</h1>
                                 <p class="font-16 mb-5">{{ __('message.already_have_account') }} <a
                                         href="{{ route('login') }}"
                                         class="secondary-color font-medium">{{ __('message.sign_in') }}</a></p>
-                                <div class="row mb-4">
+                                <div class="row mb-5">
                                     <div class="col-md-6">
                                         <label
                                             class="label-text-title color-heading font-medium mb-2">{{ __('message.first_name') }}
@@ -37,7 +37,7 @@
                                     </div>
                                 </div>
 
-                                <div class="row mb-4">
+                                <div class="row mb-5">
                                     <div class="col-md-8">
 
                                         <label
@@ -72,7 +72,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="row mb-4">
+                                <div class="row mb-5">
                                     <div class="col-md-12">
                                         <label
                                             class="label-text-title color-heading font-medium mb-2">{{ __('message.email') }}
@@ -86,8 +86,8 @@
                                     </div>
                                 </div>
 
-                                <div class="row mb-4">
-                                    <div class="col-md-12 mb-4">
+                                <div class="row mb-5">
+                                    <div class="col-md-12 mb-5">
                                         <label
                                             class="label-text-title color-heading font-medium mb-2">{{ __('message.password') }}
                                             <su style="color: red;"> *</su>
@@ -112,7 +112,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row mb-4">
+                                <div class="row mb-5">
                                     <div class="col-md-12">
                                         <button type="submit"
                                             class="btn btn-primary font-15 fw-bold w-100"
@@ -124,7 +124,7 @@
                     </div>
                     <div class="col-md-6 d-none d-md-block">
                         <div class="sign-up-left-content position-relative text-center">
-                            <div class="sign-up-bottom-img mb-4">
+                            <div class="sign-up-bottom-img mb-5">
                                 <img src="{{ getSettingImage('sign_in_image') }}" alt="app_name" class="img-fluid">
                             </div>
                             <h1 class="text-white">{{ __('message.sign_up_text_title') }}</h1>

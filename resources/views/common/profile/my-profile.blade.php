@@ -379,7 +379,7 @@
                 if (password !== confirmPassword) {
                     e.preventDefault(); // Prevent form submission
                     errorElement.style.display = 'block';
-                    errorElement.textContent = 'Passwords do not match';
+                    errorElement.textContent = {{ __('message.pass_noMatch') }};
                 } else {
                     errorElement.style.display = 'none';
                 }

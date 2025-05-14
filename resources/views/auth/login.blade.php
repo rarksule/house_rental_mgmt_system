@@ -1,5 +1,5 @@
 <x-app-layout>
-     <div id="headless-wrapper">
+    <div id="headless-wrapper">
         <section class="sign-up-page bg-white">
             <div class="container-fluid p-0">
                 <div class="row sign-up-page-wrap-row">
@@ -15,8 +15,8 @@
                                     <div class="col-md-12">
                                         <label
                                             class="label-text-title color-heading font-medium mb-2">{{ __('message.Email') }}</label>
-                                        <input type="text" name="email" class="form-control email" value="{{ old('email') }}"
-                                            placeholder="{{ __('message.Email') }}">
+                                        <input type="text" name="email" class="form-control email"
+                                            value="{{ old('email') }}" placeholder="{{ __('message.Email') }}">
                                         @error('email')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -27,12 +27,13 @@
                                         <label
                                             class="label-text-title color-heading font-medium mb-2">{{ __('message.Password') }}</label>
                                         <div class="form-group mb-0 position-relative">
-                                            <input class="form-control password" name="password" value="{{ old('Password') }}"
+                                            <input class="form-control password" name="password"
+                                                value="{{ old('Password') }}"
                                                 placeholder="{{ __('message.Password') }}" type="password">
                                             <span class="toggle fas fa-eye pass-icon" style="cursor: pointer;"></span>
-                                        @error('password')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
+                                            @error('password')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -41,12 +42,12 @@
                                     </div>
                                     <div class="col-md-6"><a href="#" id="forgotPassword"
                                             class="text-primary d-block text-start text-md-end"
-                                            title="{{ __('message.Forgot Password?') }}">{{ __('message.Forgot Password?') }}</a></div>
+                                            title="{{ __('message.Forgot Password?') }}">{{ __('message.Forgot Password?') }}</a>
+                                    </div>
                                 </div>
                                 <div class="row mb-4">
                                     <div class="col-md-12">
-                                        <button type="submit"
-                                            class=" btn btn-primary font-15 fw-bold w-100"
+                                        <button type="submit" class=" btn btn-primary font-15 fw-bold w-100"
                                             title="{{ __('message.Sign In') }}">{{ __('message.Sign In') }}</button>
                                     </div>
                                 </div>
@@ -65,7 +66,7 @@
                 </div>
             </div>
         </section>
-    </div> 
+    </div>
 
     <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel"
         aria-hidden="true">
@@ -77,9 +78,7 @@
                         <span class="iconify" data-icon="akar-icons:cross"></span>
                     </button>
                 </div>
-                <form action="{{ route('resetpassword') }}" method="POST" id="resetPasswordForm"
-                    
-                    >
+                <form action="{{ route('resetpassword') }}" method="POST" id="resetPasswordForm">
                     <div class="modal-body">
                         @csrf
                         <div class="modal-inner-form-box">
@@ -90,10 +89,10 @@
 
                                 <div class="col-md-12 input-group mb-4 ">
                                     <span class="input-group-text fs-6 bg-light border-dark">+251</span>
-                                    <input type="text" class="form-control" name="phone" autocomplete="off" id="phone"
-                                        placeholder="{{ __('message.contact_number') }}" required>
+                                    <input type="text" class="form-control" name="phone" autocomplete="off"
+                                        id="phone" placeholder="{{ __('message.contact_number') }}" required>
                                     <button class="btn btn-primary" id="getCode"
-                                        type="button">{{__('message.get_code')}}</button>
+                                        type="button">{{ __('message.get_code') }}</button>
                                 </div>
 
                                 <div id="OTP-field" style="display: none;">
@@ -131,33 +130,33 @@
                         <button type="button" class="btn btn-outline-dark me-3" data-bs-dismiss="modal"
                             title="{{ __('message.back') }}">{{ __('message.back') }}</button>
                         <button type="submit" class="btn btn-primary me-3" id="verify" style="display:none"
-                            title="Verify OTP">{{__("message.verify_otp")}}</button>
+                            title="Verify OTP">{{ __('message.verify_otp') }}</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    @push('script')
-    <script>
-        document.getElementById('resetPasswordForm').addEventListener('submit', function (e) {
-            const errorElement = document.getElementById('confirm_password_error');
 
-            if (new_password.value !== confirm_password.value) {
-                e.preventDefault(); // Prevent form submission
-                errorElement.style.display = 'block';
-                errorElement.textContent = 'Passwords do not match';
-            } else {
-                errorElement.style.display = 'none';
-            }
-        });
-            $('#forgotPassword').on('click', function () {
+    @push('script')
+        <script>
+            document.getElementById('resetPasswordForm').addEventListener('submit', function(e) {
+                const errorElement = document.getElementById('confirm_password_error');
+
+                if (new_password.value !== confirm_password.value) {
+                    e.preventDefault(); // Prevent form submission
+                    errorElement.style.display = 'block';
+                    errorElement.textContent = 'Passwords do not match';
+                } else {
+                    errorElement.style.display = 'none';
+                }
+            });
+            $('#forgotPassword').on('click', function() {
                 var selector = $('#forgotPasswordModal');
                 selector.find('.is-invalid').removeClass('is-invalid');
                 selector.find('.error-message').remove();
                 selector.find('form').trigger('reset');
                 selector.modal('show')
             })
-
         </script>
         <script>
             let timerDuration = 60;
@@ -183,11 +182,11 @@
             function sendOtpRequest() {
                 const phoneNumber = phoneInput.value.trim();
                 if (!phoneNumber) {
-                    toastr.error('Please enter a phone number.');
+                    toastr.error("@lang('message.invalid_phone')");
                     return;
                 }
                 if (phoneNumber.length != 9) {
-                    toastr.error('Please enter valid phone number.');
+                    toastr.error("@lang('message.phone')");
                     return;
                 }
 
@@ -204,7 +203,7 @@
                         phone: phoneNumber,
                         _token: csrfToken
                     },
-                    success: function (response) {
+                    success: function(response) {
                         toastr.success(response);
                         console.log('OTP code sent to the user.');
                         getCodeBtn.disabled = true;
@@ -214,7 +213,7 @@
                         verifyBtn.style.display = 'inline-block';
                         startTimer();
                     },
-                    error: function (xhr, status, error) {
+                    error: function(xhr, status, error) {
                         toastr.error(error);
                         console.error('Failed to send OTP code.');
                     }
@@ -224,7 +223,7 @@
 
 
             // Original button click event (optional, keep if you still want manual trigger)
-            getCodeBtn.addEventListener('click', function () {
+            getCodeBtn.addEventListener('click', function() {
                 sendOtpRequest();
             });
 

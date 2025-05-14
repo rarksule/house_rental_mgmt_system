@@ -10,16 +10,15 @@
                                     <div class="col-md-6">
 
                                         <div class="card p-4 shadow-sm d-flex justify-content-between">
-                                            <h2 class="mb-3 text-center h2">Verify Your Phone Number</h2>
-                                            <p class="text-center text-muted mb-4">Please enter the OTP sent to your
-                                                phone number.</p>
+                                            <h2 class="mb-3 text-center h2">{{ __('message.verify_phone') }}</h2>
+                                            <p class="text-center text-muted mb-4">{{__('message.enter_otp')}}</p>
 
                                             <form method="POST" action="{{ route('otpverify') }}" id="otpForm">
                                                 @csrf
 
                                                 <!-- Phone Number Field -->
                                                 <div class="mb-4">
-                                                    <label class="form-label">Phone Number</label>
+                                                    <label class="form-label">{{ __('message.phone') }}</label>
 
                                                     <div class="input-group">
                                                         <span class="input-group-text fs-6 bg-light border-dark">+251</span>
@@ -39,15 +38,15 @@
                                                 </div>
 
                                                 <div class="d-grid mb-3">
-                                                    <button type="submit" class="btn btn-success">Verify OTP</button>
+                                                    <button type="submit" class="btn btn-success">{{ __('message.verify_otp') }}</button>
                                                 </div>
 
                                                 <!-- Timer and Resend -->
                                                 <div class="text-center mt-3">
-                                                    <p class="text-muted" id="timerText">Didn't receive code? Wait <span
-                                                            id="timer">60</span>s</p>
+                                                    <p class="text-muted" id="timerText">{{ __('message.didnt_receive') }}<span
+                                                            id="timer">60</span></p>
                                                     <button type="button" class="btn btn-link p-0" id="resendBtn"
-                                                        style="display: none;">Resend Code</button>
+                                                        style="display: none;">{{__('message.resend')}}</button>
                                                 </div>
 
                                             </form>

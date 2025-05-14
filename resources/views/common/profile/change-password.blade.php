@@ -70,6 +70,7 @@
         </div>
     </div>
     @push('script')
+        
         <script>
             document.getElementById('passwordForm').addEventListener('submit', function (e) {
                 const password = document.getElementById('new_password').value;
@@ -79,7 +80,7 @@
                 if (password !== confirmPassword) {
                     e.preventDefault(); // Prevent form submission
                     errorElement.style.display = 'block';
-                    errorElement.textContent = 'Passwords do not match';
+                    errorElement.textContent = {{ __('message.pass_noMatch') }};
                 } else {
                     errorElement.style.display = 'none';
                 }
