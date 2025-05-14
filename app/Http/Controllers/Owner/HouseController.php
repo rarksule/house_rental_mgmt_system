@@ -22,11 +22,11 @@ class HouseController extends Controller
     public function index(HousesDataTable $dataTable)
     {
         
-        $pageTitle = 'Houses Managment';
-        $title = 'house';
+        $pageTitle = __('message.house.managment');
+        $title = __('message.house.0');
         $columns = $dataTable->getViewColumns();
         $button =isOwner() ? '<a href="'.route('owner.addHouse') .'" class="btn btn-success btn-sm">
-        <i class="fas fa-plus"></i> Add New'. $title .'</a>' : '';
+        <i class="fas fa-plus"></i>'.__('message.add_new',['form' => $title]).'</a>' : '';
         
         return $dataTable->render('common.tables', compact(['columns','title','pageTitle','button']));
     
@@ -35,11 +35,11 @@ class HouseController extends Controller
     public function rented(RentedHousesDataTable $dataTable)
     {
         
-        $pageTitle = 'Rented Houses Managment';
-        $title = 'house';
+        $pageTitle = __('message.house.rented_managment');
+        $title = __('message.house.0');
         $columns = $dataTable->getViewColumns();
         $button = isOwner() ? '<a href="'.route('owner.addHouse') .'" class="btn btn-success btn-sm">
-        <i class="fas fa-plus"></i> Add New'. $title .'</a>': '';
+        <i class="fas fa-plus"></i> '. __('message.add_new',['form' => $title]).'</a>': '';
         return $dataTable->render('common.tables', compact(['columns','title','pageTitle','button']));
     
     }
@@ -49,7 +49,7 @@ class HouseController extends Controller
      */
     public function create()
     {
-        $pageTitle  = 'Add House';
+        $pageTitle  = __('message.add_house');
         $tenants = User::where('role', USER_ROLE_TENANT) 
     ->where(function($query) {
         $query->whereHas('sentMessages', function ($q) {
@@ -148,7 +148,7 @@ class HouseController extends Controller
             }
         }
 
-        return redirect()->route(userPrefix().'.allHouse')->with('success', 'House created successfully!');
+        return redirect()->route(userPrefix().'.allHouse')->with('success', __('message.saved',['form'=>__('message.house.0')]));
     }
     
 
@@ -165,26 +165,33 @@ class HouseController extends Controller
      */
     public function edit( $r)
     {
-        $pageTitle  = 'Edit House';
+        $authId = auth()->id();
         $house =House::find($r);
+        if(!$house){
+            return back()->with('error',__('message.no_data'));
+        }
+        if($house->owner_id != $authId){
+            return back()->with('error',__('message.action_forbidden'));
+        }
+        $pageTitle  = __('message.house.edit');
         
         $tenants = User::where('role', USER_ROLE_TENANT) 
     ->where(function($query) {
         $query->whereHas('sentMessages', function ($q) {
-                $q->where('receiver_id', auth()->id());
+                $q->where('receiver_id', $authId);
             })
             ->orWhereHas('receivedMessages', function ($q) {
-                $q->where('sender_id', auth()->id());
+                $q->where('sender_id', $authId);
             });
     })
     ->get();
         $tenant = User::where('role', USER_ROLE_TENANT) // Assuming you have a 'role' column
     ->where(function($query) {
         $query->whereHas('sentMessages', function ($q) {
-                $q->where('receiver_id', auth()->id());
+                $q->where('receiver_id', $authId);
             })
             ->orWhereHas('receivedMessages', function ($q) {
-                $q->where('sender_id', auth()->id());
+                $q->where('sender_id', $authId);
             });
     })
     ->get();
@@ -276,7 +283,7 @@ class HouseController extends Controller
             }
         }
 
-        return redirect()->route('owner.allHouse')->with('success', 'House updated successfully!');
+        return redirect()->route('owner.allHouse')->with('success', __('message.house.update'));
     }
 
     /**
@@ -290,7 +297,7 @@ class HouseController extends Controller
         $house = House::findOrFail($id);
         $house->delete();
         $this->recordHistory(REMOVED,auth()->id(),$house->id);
-        return back()->with('success','house deleted succesfully');
+        return back()->with('success',__('message.house.delete'));
     }
 
 
@@ -317,7 +324,7 @@ class HouseController extends Controller
             'had_visit' => '0',
         ]);
 
-        return back()->with('success', 'House rated successfully!');
+        return back()->with('success', __('message.house.rated'));
     }
 
     public function deleteMedia(Request $request)

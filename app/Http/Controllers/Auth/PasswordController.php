@@ -14,14 +14,14 @@ class PasswordController extends Controller
 {
     public function index(): View
     {
-        return view('common.profile.change-password', ['pageTitle' => 'change_password']);
+        return view('common.profile.change-password', ['pageTitle' => __("message.change_password")]);
     }
 
     public function store(Request $request)
     {
         $user = auth()->user();
         if (!Hash::check($request->current_password, $user->password)) {
-            return back()->with('error', __('auth.failed'));
+            return back()->with('error', __('message.auth_failed'));
         }
         $user->password = Hash::make($request->password);
         $user->save();
@@ -43,7 +43,7 @@ class PasswordController extends Controller
         Auth::login($user);
         $user->phone_verified_at = time();
         $user->save();
-        return redirect()->route('dashboard')->with('success', 'password reset Successfull');
+        return redirect()->route('dashboard')->with('success', __('message.reset_password_success'));
 
     }
 }

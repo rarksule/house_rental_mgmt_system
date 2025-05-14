@@ -30,9 +30,9 @@ class SMSMessageController extends Controller
      */
     public function store(Request $request)
     {
-        $user = User::where('contact_number', $request->phone)->first();
+        $user = User::where('contact_number', $request->phone)->whereNot('role',USER_ROLE_ADMIN)->first();
         if (!$user) {
-            return response()->json('user not found',404);
+            return response()->json(__('message.not_found'),404);
         }
         $otp = str_pad(random_int(0, pow(10, 6) - 1), 6, '0', STR_PAD_LEFT);
 
@@ -42,7 +42,7 @@ class SMSMessageController extends Controller
             'expires_at' => $expiry,
             'phone' => $request->phone,
         ]);
-        return response()->json('OTP sent successfully');
+        return response()->json(__('message.otp_sent'));
     }
 
     /**
@@ -76,9 +76,9 @@ class SMSMessageController extends Controller
             Auth::login($user);
             $user->phone_verified_at = time();
             $user->save();
-            return redirect()->route('dashboard')->with('success', 'phone Verification Successfull');
+            return redirect()->route('dashboard')->with('success', __('message.verify_phone_success'));
         }
-        return back()->with('error', 'incorrect code');
+        return back()->with('error', __('message.invalid',['form'=>__('message.code')]));
     }
 
     /**

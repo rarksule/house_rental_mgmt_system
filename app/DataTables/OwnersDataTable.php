@@ -23,11 +23,11 @@ class OwnersDataTable extends DataTable
             ->eloquent($query)
             ->addColumn('verified', function($user) {
                 return $user->phone_verified_at 
-                    ? '<span class="badge bg-success">Verified</span>'
-                    : '<span class="badge bg-warning text-dark">Pending</span>';
+                    ? '<span class="badge bg-success">'.__("message.verified").'</span>'
+                    : '<span class="badge bg-warning text-dark">'.__("message.pending").'</span>';
             })
             ->addColumn('status', function($user) {
-                $status = $user->status ? 'active' : 'inactive';
+                $status = $user->status ? __("message.active") : __("message.inactive");
                 $color = $user->status ? 'success' : 'danger';
                 return '<a href="javascript:void(0)" class="change-status" data-id="' . $user->id . '">
                     <span class="badge bg-' . $color . '">' . ucfirst($status) . '</span>
@@ -88,14 +88,14 @@ class OwnersDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('id'),
-            Column::make('email'),
-            Column::make('first_name'),
-            Column::make('last_name'),
-            Column::computed('verified'),
-            Column::make('contact_number'),
-            Column::computed('status'),
-            Column::computed('action')
+            Column::make('id')->title(__("message.id")),
+            Column::make('email')->title(__("message.email")),
+            Column::make('first_name')->title(__("message.first_name")),
+            Column::make('last_name')->title(__("message.last_name")),
+            Column::computed('verified')->title(__("message.verified")),
+            Column::make('contact_number')->title(__("message.contact_number")),
+            Column::computed('status')->title(__("message.status")),
+            Column::computed('action')->title(__("message.action"))
                   ->exportable(false)
                   ->printable(false)
                   ->width(100)

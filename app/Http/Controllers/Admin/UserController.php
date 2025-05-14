@@ -14,8 +14,8 @@ class UserController extends Controller
 {
     public function owners(OwnersDataTable $dataTable)
     {
-        $pageTitle = 'owners Managment';
-        $title = 'owners';
+        $pageTitle = __("message.owner.managment");
+        $title = ___('message.owners');
         $columns = $dataTable->getViewColumns();
         $button = isAdmin() ? '<a href="'.route('admin.adduser' , ['role'=>USER_ROLE_OWNER]) .'" class="btn btn-success btn-sm">
         <i class="fas fa-plus"></i>'.__('message.add_new',["form" => __('message.owner.0')]).'</a>' : '';
@@ -25,7 +25,7 @@ class UserController extends Controller
 
     public function create(Request $request){
         $add = $request->role ==USER_ROLE_OWNER ? __('message.owners') : __('message.tenants');
-        $pageTitle = 'Add '.$add;
+        $pageTitle = __('message.add_new',['form' => $add]);
         $role = $request->role;
         return view('common.profile.my-profile', compact(['pageTitle','role']));
     }
@@ -49,8 +49,8 @@ class UserController extends Controller
 
     public function tenants(TenantsDataTable $dataTable)
     {
-        $pageTitle = 'Tenants Managment';
-        $title = 'Tenants';
+        $pageTitle = __("message.tenant_managment");
+        $title = __('message.tenants');
         $columns = $dataTable->getViewColumns();
         $button = isAdmin() ? '<a href="'.route('admin.adduser' , ['role'=>USER_ROLE_TENANT]) .'" class="btn btn-success btn-sm">
         <i class="fas fa-plus"></i> Add New '. $title .'</a>' : '';
@@ -59,7 +59,7 @@ class UserController extends Controller
     }
 
     public function edit($id){
-        $pageTitle = 'Edit User';
+        $pageTitle = __("message.edit_user");
         $user = User::findOrFail($id);
         return view('common.profile.my-profile',compact(['pageTitle','user']));
     }
@@ -67,7 +67,7 @@ class UserController extends Controller
 
     public function activte($id){
         if(!isAdmin()){
-            return back(401)->with('error','message.action_forbidden');
+            return back(401)->with('error',__('message.action_forbidden'));
         }
         $user = User::findOrFail($id);
         $user->status = $user->status ? 0 : 1;
@@ -78,7 +78,7 @@ class UserController extends Controller
 
     public function destroy($id){
         if(!isAdmin()){
-            return back(401)->with('error','message.action_forbidden');
+            return back(401)->with('error',__('message.action_forbidden'));
         }
         $user = User::findOrFail($id);
         $user->delete();

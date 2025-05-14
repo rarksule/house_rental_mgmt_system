@@ -64,8 +64,8 @@ class HousesDataTable extends DataTable
             })
             ->addColumn('rented', function ($house) {
                 return $house->rented == 1
-                    ? '<span class="badge bg-success">Rented</span>'
-                    : '<span class="badge bg-secondary">Available</span>';
+                    ? '<span class="badge bg-success">'.__("message.rented").'</span>'
+                    : '<span class="badge bg-secondary">'.__("message.not_rented").'</span>';
             })
 
             ->addColumn('action', function ($house) {
@@ -132,26 +132,26 @@ class HousesDataTable extends DataTable
     protected function getColumns()
 {
     $columns = [
-        Column::make('id'),
-        Column::make('name'),
+        Column::make('id')->title(__("message.id")),
+        Column::make('name')->title(__("message.name")),
     ];
 
     
     if (auth()->user()->role == USER_ROLE_ADMIN) {
-        $columns[] = Column::make('owner.first_name')->title('Owner');
+        $columns[] = Column::make('owner.first_name')->title(__("message.owner.0"));
     }
 
     // Add the rest of the columns
     $columns = array_merge($columns, [
-        Column::computed('Tenant'),
-        Column::make('price'),
-        Column::make('payment_date'),
-        Column::make('address'),
-        Column::computed('Location'),
-        Column::make('area'),
-        Column::computed('Rating'), 
-        Column::computed('rented'),
-        Column::computed('action')
+        Column::computed('Tenant')->title(__("message.tenant")),
+        Column::make('price')->title(__("message.price")),
+        Column::make('payment_date')->title(__("message.payment_date")),
+        Column::make('address')->title(__("message.address")),
+        Column::computed('Location')->title(__("message.location")),
+        Column::make('area')->title(__("message.area")),
+        Column::computed('Rating')->title(__("message.rating")), 
+        Column::computed('rented')->title(__("message.rented")),
+        Column::computed('action')->title(__("message.action"))
             ->exportable(false)
             ->printable(false)
             ->width(100)

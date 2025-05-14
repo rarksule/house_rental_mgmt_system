@@ -23,11 +23,18 @@ class TenantsDataTable extends DataTable
             ->eloquent($query)
             ->addColumn('verified', function ($user) {
                 return $user->phone_verified_at
-                    ? '<span class="badge bg-success">Verified</span>'
-                    : '<span class="badge bg-warning text-dark">Pending</span>';
+                    ? '<span class="badge bg-success">'.__("message.verified").'</span>'
+                    : '<span class="badge bg-warning text-dark">'.__("message.pending").'</span>';
+            })
+            ->addColumn('rentedHouse', function ($user) {
+                if($user->rentedHouse!=null){
+                    $link = '<a href="'.route("house_detail",[$user->rentedHouse->id]).'"><span class="badge bg-primary">'.__("message.goto_house").'</span></a>';
+                }
+                
+                return $link ?? '---';
             })
             ->addColumn('status', function ($user) {
-                $status = $user->status ? 'active' : 'inactive';
+                $status = $user->status ? __("message.active") : __("message.inactive");
                 $color = $user->status ? 'success' : 'danger';
                 $statusBadge = '<span class="badge bg-' . $color . '">' . ucfirst($status) . '</span>';
 
@@ -50,7 +57,7 @@ class TenantsDataTable extends DataTable
                     ';
                 });  
             }
-            return $datatable->rawColumns(['verified', 'status', ...(isAdmin() ? ['action'] : [])]);
+            return $datatable->rawColumns(['verified','rentedHouse', 'status', ...(isAdmin() ? ['action'] : [])]);
             
     }
 
@@ -104,15 +111,15 @@ class TenantsDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('id'),
-            Column::make('email'),
-            Column::make('first_name'),
-            Column::make('last_name'),
-            Column::computed('verified'),
-            // Column::computed('rented_house'),
-            Column::make('contact_number'),
-            Column::computed('status'),
-            ...(isAdmin() ? [Column::computed('action')
+            Column::make('id')->title(__("message.id")),
+            Column::make('email')->title(__("message.email")),
+            Column::make('first_name')->title(__("message.first_name")),
+            Column::make('last_name')->title(__("message.last_name")),
+            Column::computed('verified')->title(__("message.verified")),
+            Column::make('contact_number')->title(__("message.contact_number")),
+            Column::computed('rentedHouse')->title(__("message.rented_house")),
+            Column::computed('status')->title(__("message.status")),
+            ...(isAdmin() ? [Column::computed('action')->title(__("message.action"))
             ->exportable(false)
             ->printable(false)
             ->width(100)

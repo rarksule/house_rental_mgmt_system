@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\Owner\OwnerController;
-use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Owner\HouseController;
@@ -51,5 +50,5 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'a
     Route::get('/messages',[MessageController::class,'index'])->name('messages');
 
     
-    Route::post('/reply',[ReviewController::class,'reply'])->name('reply');
+    Route::post('/reply',[AdminController::class,'reply'])->name('reply');
 });

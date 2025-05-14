@@ -32,8 +32,7 @@
         },
         "files": [
             "app/Helper/helper.php",
-            "app/Helper/const.php",
-            "app/Helper/const_array.php"
+            "app/Helper/const.php"
 
         ]
     },

@@ -45,7 +45,7 @@ class AdminController extends Controller
             $lang->status = isset($request->languages[$lang->id]);
             $lang->save();
         }
-        return back()->with('success', __("message.language saved"));
+        return back()->with('success', __("message.saved",['form'=>__('message.language')]));
     }
 
     public function policy(Request $request)
@@ -56,7 +56,7 @@ class AdminController extends Controller
         $cleanterms_conditions = Purifier::clean($request->input('terms_conditions'));
         $settings = Setting::firstOrCreate(['id' => 1]);
         $settings->update(['privacy_policy' => $cleanprivacy_policy, 'cookie_policy' => $cleancookie_policy, 'terms_conditions' => $cleanterms_conditions]);
-        return back()->with('success', __("message.policy saved saved"));
+        return back()->with('success', __("message.saved",['form'=>__('message.policy')]));
     }
 
     public function ownerHistory(Request $request){
@@ -68,6 +68,23 @@ class AdminController extends Controller
         $who = __("message.owners");
         
         return view('admin.user_history',compact(['rentalHistory',"who"]));
+    }
+
+
+    public function reply(Request $request)
+    {
+        if(!isAdmin()){
+            return back()->with('error',__('message.action_forbidden'));
+        }
+
+        ReviewReplay::create([
+            'content'=>$request->content,
+            'user_id'=>auth()->id(),
+            'review_id' =>$request->review_id,
+        ]);
+
+        return back()->with('success',__('message.saved',['form' => __('message.reply')]));
+        
     }
 
 

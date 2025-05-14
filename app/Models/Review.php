@@ -46,17 +46,4 @@ class Review extends Model
         'rating' => 'integer',
     ];
 
-
-    public function getImageAttribute(): string
-    {
-        if ($this->getMedia() != null) {
-            return $this->getFirstMediaUrl();
-        }
-        return asset('assets/images/no-image.jpg');
-    }
-
-    public function addImageAttribute(): void
-    {
-        $this->addMediaFromRequest('image')->toMediaCollection('profile_image');
-    }
 }

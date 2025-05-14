@@ -20,7 +20,6 @@ return Application::configure(basePath: dirname(__DIR__))
             'admin' => Admin::class,
             'owner' => Owner::class,
             'tenant' => Tenant::class,
-            'common' => Common::class,
         ])->web([SetLocale::class]);
         //
     })

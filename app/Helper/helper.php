@@ -7,7 +7,7 @@ use App\Models\Message;
 function getSettingImage($option_key = null)
 {
 
-    return asset('assets/images/no-image.jpg');
+    return asset('assets/images/favicon.png');
 
 }
 

@@ -69,7 +69,7 @@ class UserController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (!Auth::attempt($credentials)) {
-            return back()->with('error', __('auth.failed'));
+            return back()->with('error', __('message.auth_failed'));
         }
 
         $user = User::where('email', $request->email)->first();
@@ -90,11 +90,11 @@ class UserController extends Controller
                 return redirect()->route('dashboard');
             } else {
                 Auth::logout();
-                return back()->with('error', __(SOMETHING_WENT_WRONG));
+                return back()->with('error', __('message.auth_failed'));
             }
         } else {
             Auth::logout();
-            return back()->with('error', __(SOMETHING_WENT_WRONG));
+            return back()->with('error', __('message.auth_failed'));
         }
     }
 
@@ -120,7 +120,7 @@ class UserController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/')->with('success',__('message.saved',['form'=>__('message.delete_account')]));
     }
 
 

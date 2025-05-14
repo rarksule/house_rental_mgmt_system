@@ -61,10 +61,10 @@ class MessageController extends Controller
             if ($request->wantsJson) {
                 return response()->json([
                     'success' => true,
-                    'message' => 'you can\'t message yourself',
+                    'message' => __('message.action_forbidden'),
                 ]);
             }
-            return back()->with('error', 'you can\'t message yourself');
+            return back()->with('error', __('message.action_forbidden'));
         }
 
         $message = Message::create([
@@ -80,7 +80,7 @@ class MessageController extends Controller
             ]);
         }
 
-        return back()->with('success', 'Message sent!');
+        return back()->with('success', __('message.message_sent'));
     }
 }
 

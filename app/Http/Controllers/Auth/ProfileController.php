@@ -9,7 +9,7 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        $pageTitle = 'Edit Profile';
+        $pageTitle = __('message.edit_profile');
         $user = auth()->user();
         return view('common.profile.my-profile', compact(['pageTitle', 'user']));
     }
@@ -18,7 +18,7 @@ class ProfileController extends Controller
     {
         $authuser = auth()->user();
         if ($authuser->id != $id && !isAdmin()) {
-            return redirect()->back(402)->with('error', 'un authorized');
+            return redirect()->back(402)->with('error', __('message.action_forbidden'));
         }
         $user = User::findOrFail($id);
 
@@ -26,7 +26,7 @@ class ProfileController extends Controller
         if ($request->hasFile('profile_image')) {
             $user->addImage();
         }
-        return redirect()->back()->with('success','saved succesfully');
+        return redirect()->back()->with('success',__('message.saved',['form'=>__('message.profile')]));
 
     }
 }

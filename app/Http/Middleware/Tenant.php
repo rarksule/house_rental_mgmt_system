@@ -17,8 +17,12 @@ class Tenant
     public function handle(Request $request, Closure $next): Response
     {   
         $user = auth()->user();
-        if(isset($user) && $user->phone_verified_at == null && $user->role != USER_ROLE_ADMIN){
+        if(isset($user) && $user->phone_verified_at == null && !isAdmin()){
              Auth::logout();
+        }
+
+        if(!isTenant()){
+            Abort(401);
         }
         return $next($request);
     }
