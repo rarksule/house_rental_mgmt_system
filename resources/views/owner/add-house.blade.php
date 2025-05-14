@@ -8,7 +8,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div
-                                    class="page-title-box d-sm-flex align-items-center justify-content-between border-bottom mb-3">
+                                    class="page-title-box d-sm-flex align-items-center justify-content-between theme-border mb-3">
                                     <div class="page-title-left">
                                         <h5 class="mb-sm-0 ms-1 fw-bold">{{ $pageTitle }}</h5>
                                     </div>

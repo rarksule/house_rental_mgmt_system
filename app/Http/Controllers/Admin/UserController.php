@@ -15,7 +15,7 @@ class UserController extends Controller
     public function owners(OwnersDataTable $dataTable)
     {
         $pageTitle = __("message.owner.managment");
-        $title = ___('message.owners');
+        $title = __('message.owners');
         $columns = $dataTable->getViewColumns();
         $button = isAdmin() ? '<a href="'.route('admin.adduser' , ['role'=>USER_ROLE_OWNER]) .'" class="btn btn-success btn-sm">
         <i class="fas fa-plus"></i>'.__('message.add_new',["form" => __('message.owner.0')]).'</a>' : '';

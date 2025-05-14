@@ -22,7 +22,7 @@
                                             <table class="table table-bordered table-hover">
                                                 <thead class="thead-light">
                                                     <tr>
-                                                        <th>{{__('message.house')}}</th>
+                                                        <th>{{__('message.house.0')}}</th>
                                                         <th>{{__('message.action')}}</th>
                                                         <th>{{__('message.date')}}</th>
                                                         <th>{{__("message.description")}}</th>

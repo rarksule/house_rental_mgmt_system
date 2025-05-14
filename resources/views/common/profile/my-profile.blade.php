@@ -9,7 +9,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div
-                                class="page-title-box d-sm-flex align-items-center justify-content-between border-bottom mb-3">
+                                class="page-title-box d-sm-flex align-items-center justify-content-between theme-border mb-3">
                                 <div class="page-title-left">
                                     <h3 class="mb-sm-0">{{ $pageTitle }}</h3>
                                 </div>
@@ -44,7 +44,7 @@
                                             @csrf
                                             <div class="settings-inner-box bg-white theme-border rounded-3 mb-4">
                                                 <div class="settings-inner-box-fields pb-0">
-                                                    <div class="settings-inner-box-title border-bottom p-3">
+                                                    <div class="settings-inner-box-title theme-border p-3">
                                                         <h4>{{ __('message.personal_information') }}</h4>
                                                     </div>
                                                 </div>
@@ -202,7 +202,7 @@
                                             </div>
                                             <div class="settings-inner-box bg-white theme-border rounded-3 mb-4">
                                                 <div class="settings-inner-box-fields pb-0">
-                                                    <div class="settings-inner-box-title border-bottom p-3">
+                                                    <div class="settings-inner-box-title theme-border p-3">
                                                         <h4>{{ isOwner($user ?? null, $role ?? null) ? __('message.permanent_address') : __('message.previous_address') }}
                                                         </h4>
                                                     </div>
@@ -252,7 +252,7 @@
                                             </div>
                                             <div class="settings-inner-box bg-white theme-border rounded-3 mb-4">
                                                 <div class="settings-inner-box-fields pb-0">
-                                                    <div class="settings-inner-box-title border-bottom p-3">
+                                                    <div class="settings-inner-box-title theme-border p-3">
                                                         <h4>{{ __('message.other_information') }}</h4>
                                                     </div>
                                                 </div>
@@ -304,7 +304,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-12 mb-4 d-flex justify-content-end">
-                                                    <button type="submit" class="theme-btn"
+                                                    <button type="submit" class="btn btn-primary"
                                                         title="{{ isset($user) ? __('message.update') : __('message.save') }}">{{ isset($user) ? __('message.update') : __('message.save') }}</button>
                                                 </div>
                                             </div>
@@ -359,9 +359,9 @@
                             </div>
                         </div>
                         <div class="modal-footer justify-content-start">
-                            <button type="button" class="theme-btn-back me-3" data-bs-dismiss="modal"
+                            <button type="button" class="btn btn-outline-dark me-3" data-bs-dismiss="modal"
                                 title="{{ __('message.back') }}">{{ __('message.back') }}</button>
-                            <button type="submit" class="theme-btn me-3"
+                            <button type="submit" class="btn btn-primary me-3"
                                 title="{{ __('message.delete') }}">{{ __('message.delete') }}</button>
                         </div>
                     </form>

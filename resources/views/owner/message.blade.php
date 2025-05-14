@@ -63,7 +63,7 @@
                     </div>
                 </div>
 
-                <div class="p-3 border-top">
+                <div class="p-3 theme-border">
                     <form id="message-form" method="POST" action="{{route('messagesSend')}}">
                         @csrf
                         <input type="text" class="form-control" hidden value="{{ optional($receiver)->id }}" name="id">

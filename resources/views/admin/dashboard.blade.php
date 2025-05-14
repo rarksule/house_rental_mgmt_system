@@ -19,7 +19,7 @@
                             <div class="dashboard-feature-item bg-off-white theme-border rounded-3 p-3 mb-4">
                                 <div
                                     class="dashboard-feature-item-icon-wrap font-20 d-flex align-items-center justify-content-center bg-white rounded-3">
-                                    <span class="iconify orange-color" data-icon="material-symbols:patient-list"></span>
+                                    <span class="iconify text-warning" data-icon="material-symbols:patient-list"></span>
                                 </div>
                                 <p class="mt-2">{{ __('message.Total_Owner') }}</p>
                                 <h2 class="mt-1">{{ $totalOwner }}</h2>
@@ -30,7 +30,7 @@
                             <div class="dashboard-feature-item bg-off-white theme-border rounded-3 p-3 mb-4">
                                 <div
                                     class="dashboard-feature-item-icon-wrap font-20 d-flex align-items-center justify-content-center bg-white rounded-3">
-                                    <span class="iconify primary-color" data-icon="bxs:home-circle"></span>
+                                    <span class="iconify text-primary" data-icon="bxs:home-circle"></span>
                                 </div>
                                 <p class="mt-2">{{ __('message.Total_houses') }}</p>
                                 <h2 class="mt-1">{{ $totalHouse }}</h2>
@@ -41,7 +41,7 @@
                             <div class="dashboard-feature-item bg-off-white theme-border rounded-3 p-3 mb-4">
                                 <div
                                     class="dashboard-feature-item-icon-wrap font-20 d-flex align-items-center justify-content-center bg-white rounded-3">
-                                    <span class="iconify orange-color" data-icon="material-symbols:garage-home"></span>
+                                    <span class="iconify text-warning" data-icon="material-symbols:garage-home"></span>
                                 </div>
                                 <p class="mt-2">{{ __('message.Total_communication') }}</p>
                                 <h2 class="mt-1">{{ $totalmessage }}</h2>
@@ -52,7 +52,7 @@
                             <div class="dashboard-feature-item bg-off-white theme-border rounded-3 p-3 mb-4">
                                 <div
                                     class="dashboard-feature-item-icon-wrap font-20 d-flex align-items-center justify-content-center bg-white rounded-3">
-                                    <span class="iconify green-color" data-icon="mdi:user"></span>
+                                    <span class="iconify text-success" data-icon="mdi:user"></span>
                                 </div>
                                 <p class="mt-2">{{ __('message.Total_Tenant') }}</p>
                                 <h2 class="mt-1">{{ $totalTenant }}</h2>
@@ -68,9 +68,9 @@
                                                 <div class="d-flex align-items-center justify-content-between mb-4">
                                                     <h4 class="mb-0">{{ __('message.new_tenants') }}</h4>
                                                     <div>
-                                                        <a class="theme-link font-14 font-medium d-flex align-items-center justify-content-center"
+                                                        <a class="text-primary font-14 font-medium d-flex align-items-center justify-content-center"
                                                             href="{{ route('admin.tenants') }}">
-                                                            {{ __('View All') }}<i class="ri-arrow-right-line ms-2"></i>
+                                                            {{ __('message.View_All') }}<i class="ri-arrow-right-line ms-2"></i>
                                                         </a>
                                                     </div>
                                                 </div>
@@ -92,7 +92,7 @@
                                                             @forelse ($tenants as $tenant)
                                                                 <tr>
                                                                     <td>
-                                                                        <h6 class="theme-text-color">
+                                                                        <h6 class="text-gray-900">
                                                                             {{ $tenant->first_name }}
                                                                         </h6>
                                                                     </td>
@@ -126,9 +126,9 @@
                                                 <div class="d-flex align-items-center justify-content-between mb-4">
                                                     <h4 class="mb-0">{{ __('message.new_owners') }}</h4>
                                                     <div>
-                                                        <a class="theme-link font-14 font-medium d-flex align-items-center justify-content-center"
+                                                        <a class="text-primary font-14 font-medium d-flex align-items-center justify-content-center"
                                                             href="{{ route('admin.owners') }}">
-                                                            {{ __('View All') }}<i class="ri-arrow-right-line ms-2"></i>
+                                                            {{ __('message.View_All') }}<i class="ri-arrow-right-line ms-2"></i>
                                                         </a>
                                                     </div>
                                                 </div>
@@ -150,7 +150,7 @@
                                                             @forelse ($owners as $owner)
                                                             <tr>
                                                                 <td>
-                                                                    <h6 class="theme-text-color">
+                                                                    <h6 class="text-gray-900">
                                                                         {{ $owner->first_name }}
                                                                     </h6>
                                                                 </td>

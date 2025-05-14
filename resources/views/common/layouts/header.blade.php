@@ -9,7 +9,9 @@
                     </button>
                 @endif
                 <a class="navbar-brand" href="{{ route('home') }}">
-                    <h2 class="m-0 text-primary font-24 text-truncate d-sm-inline" style="max-width: 100px;">
+                    <img src="{{ getSettingImage() }}" alt="{{ 'app_logo' }}" class="d-inline"
+                        title="{{ __('message.jigjiga') }}">
+                    <h2 class="m-0 text-primary font-24 d-none d-md-inline">
                         {{ __('message.jigjiga') }}
                     </h2>
                 </a>
@@ -47,8 +49,8 @@
 
                 @if (Auth::check())
                     <div class="dropdown d-inline-block ms-2 user-dropdown">
-                        <button type="button" class="header-item" id="page-header-user-dropdown" data-bs-toggle="dropdown" 
-                        aria-haspopup="true" aria-expanded="false">
+                        <button type="button" class="header-item" id="page-header-user-dropdown"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img class="rounded-circle avatar-xs fit-image header-profile-user"
                                 src="{{ getSingleImage(auth()->user(), 'profile_image') }}">
                             <span class="d-none d-xl-inline-block ms-1 font-medium">{{ auth()->user()->name }}</span>
@@ -102,10 +104,8 @@
         </div>
         <!-- Navigation Links (Will collapse on mobile) -->
         @if (!isAdminPanel())
-            <div class="navbar navbar-expand-lg">
-                <div class="container-fluid">
                     <div class="collapse navbar-collapse" id="navbarContent">
-                        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                        <ul class="navbar-nav px-auto mb-2 mb-lg-0">
                             @if (isAdmin() || isOwner())
                                 <li class="nav-item">
                                     <a class="nav-link active h2"
@@ -113,12 +113,14 @@
                                 </li>
                             @endif
 
-                            <li class="nav-item">
-                                <a class="nav-link text-nowrap h3" href="#about">{{ __('message.Contact_Us') }}</a>
-                            </li>
-                            <li class="nav-item me-2">
-                                <a class="nav-link text-nowrap h3" href="#about">{{ __('message.About_Us') }}</a>
-                            </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-nowrap active h2"
+                                        href="#about">{{ __('message.Contact_Us') }}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-nowrap active h2"
+                                        href="#about">{{ __('message.About_Us') }}</a>
+                                </li>
 
                             @if (!Auth::check())
                                 <li class="nav-item me-2">
@@ -133,8 +135,6 @@
 
                         </ul>
                     </div>
-                </div>
-            </div>
         @endif
     </div>
 </div>

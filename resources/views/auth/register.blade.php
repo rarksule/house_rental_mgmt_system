@@ -9,7 +9,7 @@
                             <form action="register" method="post">
                                 @csrf
                                 <h1 class="mb-4">{{ __('message.sign_up') }}</h1>
-                                <p class="font-16 mb-30">{{ __('message.already_have_account') }} <a
+                                <p class="font-16 mb-5">{{ __('message.already_have_account') }} <a
                                         href="{{ route('login') }}"
                                         class="secondary-color font-medium">{{ __('message.sign_in') }}</a></p>
                                 <div class="row mb-4">

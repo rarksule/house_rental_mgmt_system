@@ -6,31 +6,31 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card shadow">
-                                <div class="card-header bg-primary text-white">
-                                    <h4 class="mb-0">
-                                        <i class="fas fa-cog"></i> Policy & Language Settings
-                                    </h4>
+                                <div class="card-header text-primary">
+                                    <h5 class="mb-0">
+                                        <i class="fas fa-cog"> </i>{{ __('message.manage_policy') }}
+                                    </h5>
                                 </div>
 
                                 <div class="card-body">
                                     <!-- Policy Content Tabs -->
                                     <ul class="nav nav-tabs mb-4" id="policyTabs" role="tablist">
                                         <li class="nav-item">
-                                            <a class="nav-link active" id="privacy-tab" data-toggle="tab"
+                                            <a class="nav-link active text-secondary" id="privacy-tab" data-toggle="tab"
                                                 href="#privacy" role="tab" aria-controls="privacy" aria-selected="true">
-                                                Privacy Policy
+                                                {{ __('message.privacy') }}
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" id="cookie-tab" data-toggle="tab" href="#cookie"
+                                            <a class="nav-link text-secondary" id="cookie-tab" data-toggle="tab" href="#cookie"
                                                 role="tab" aria-controls="cookie" aria-selected="false">
-                                                Cookie Policy
+                                                {{ __('message.cookie') }}
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" id="terms-tab" data-toggle="tab" href="#terms"
+                                            <a class="nav-link text-secondary" id="terms-tab" data-toggle="tab" href="#terms"
                                                 role="tab" aria-controls="terms" aria-selected="false">
-                                                Terms & Conditions
+                                                {{ __('message.term_cond') }}
                                             </a>
                                         </li>
                                     </ul>
@@ -45,7 +45,7 @@
                                             <div class="tab-pane fade show active" id="privacy" role="tabpanel"
                                                 aria-labelledby="privacy-tab">
                                                 <div class="form-group">
-                                                    <label for="privacy_policy">Privacy Policy Content</label>
+                                                    <label for="privacy_policy">{{__('message.content',['form'=>__('message.privacy')])}}</label>
                                                     <textarea class="form-control" id="privacy_policy"
                                                         name="privacy_policy"
                                                         rows="10">{{ old('privacy_policy', $setting->privacy_policy ?? '') }}</textarea>
@@ -56,7 +56,7 @@
                                             <div class="tab-pane fade" id="cookie" role="tabpanel"
                                                 aria-labelledby="cookie-tab">
                                                 <div class="form-group">
-                                                    <label for="cookie_policy">Cookie Policy Content</label>
+                                                    <label for="cookie_policy">{{__('message.content',['form'=>__('message.cookie')])}}</label>
                                                     <textarea class="form-control" id="cookie_policy"
                                                         name="cookie_policy"
                                                         rows="10">{{ old('cookie_policy', $setting->cookie_policy ?? '') }}</textarea>
@@ -67,7 +67,7 @@
                                             <div class="tab-pane fade" id="terms" role="tabpanel"
                                                 aria-labelledby="terms-tab">
                                                 <div class="form-group">
-                                                    <label for="terms_conditions">Terms & Conditions</label>
+                                                    <label for="terms_conditions">{{__('message.content',['form'=>__('message.term_cond')])}}</label>
                                                     <textarea class="form-control" id="terms_conditions"
                                                         name="terms_conditions"
                                                         rows="10">{{ old('terms_conditions', $setting->terms_conditions ?? '') }}</textarea>
@@ -76,7 +76,7 @@
                                         </div>
 
                                         <button type="submit" class="btn btn-primary mt-5">
-                                            <i class="fas fa-save"></i> Save Policies
+                                            <i class="fas fa-save"></i> {{ __('message.save_policy') }}
                                         </button>
                                     </form>
 
@@ -84,7 +84,7 @@
 
                                     <!-- Language Toggles -->
                                     <h5 class="mb-3">
-                                        <i class="fas fa-language"></i> Language Settings
+                                        <i class="fas fa-language"></i> {{ __('message.language_settings') }}
                                     </h5>
 
                                     <form method="POST" action="{{ route('admin.language') }}">
@@ -94,9 +94,9 @@
                                             <table class="table table-bordered table-hover">
                                                 <thead class="thead-light">
                                                     <tr>
-                                                        <th>Language</th>
-                                                        <th>Code</th>
-                                                        <th>Status</th>
+                                                        <th>{{__('message.language')}}</th>
+                                                        <th>{{__('message.language_code')}}</th>
+                                                        <th>{{__('message.status')}}</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -120,7 +120,7 @@
                                         </div>
 
                                         <button type="submit" class="btn btn-primary">
-                                            <i class="fas fa-save"></i> Save Language Settings
+                                            <i class="fas fa-save"></i> {{ __('message.save_language') }}
                                         </button>
                                     </form>
                                 </div>

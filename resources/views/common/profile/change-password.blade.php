@@ -10,7 +10,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div
-                                class="page-title-box d-sm-flex align-items-center justify-content-between border-bottom mb-3">
+                                class="page-title-box d-sm-flex align-items-center justify-content-between theme-border mb-3">
                                 <div class="page-title-left">
                                     <h3 class="mb-sm-0">{{ $pageTitle }}</h3>
                                 </div>
@@ -57,7 +57,7 @@
                                                 <div id="confirm_password_error" class="text-danger" style="display: none;"></div>
                                             </div>
                                             <div class="col-md-12 mb-4">
-                                                <button type="submit" class="theme-btn" title="{{ __('message.update') }}">{{ __('message.update') }}</button>
+                                                <button type="submit" class="btn btn-primary" title="{{ __('message.update') }}">{{ __('message.update') }}</button>
                                             </div>
                                         </div>
                                     </div>

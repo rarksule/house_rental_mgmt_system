@@ -11,12 +11,4 @@ integrity="sha384-tViUnnbYAV00FLIhhi3v/dWt3Jxw4gZQcNoSCxCIFNJVCx7/D55/wXsrNIRANw
 <link rel="icon" href="{{ getSettingImage('app_fav_icon') }}" type="image/png" sizes="16x16">
 <link rel="stylesheet" href="{{ asset('assets/css/toastr.min.css') }}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/min/dropzone.min.css">
-    <style>
-        :root { 
-            --primary-color: #3686FC;
-                --secondary-color: #8253FB;
-                --button-primary-color: #3686FC;
-                --button-hover-color: #0063E6;
-        }
-    </style>
-    <link rel="stylesheet" href="{{ asset('assets/appvite.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/appvite.css') }}">

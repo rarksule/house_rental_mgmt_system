@@ -8,8 +8,8 @@
                             <form action="{{ route('login') }}" method="post">
                                 @csrf
                                 <h1 class="mb-4">{{ __('message.Sign In') }}</h1>
-                                <p class="font-16 mb-30">{{ __('message.New User?') }} <a href="{{ route('register') }}"
-                                        class="secondary-color font-medium">{{ __('message.Sign Up') }}</a></p>
+                                <p class="font-16 mb-5">{{ __('message.New User?') }} <a href="{{ route('register') }}"
+                                        class="text-primary font-medium">{{ __('message.Sign Up') }}</a></p>
 
                                 <div class="row mb-4">
                                     <div class="col-md-12">
@@ -40,13 +40,13 @@
                                     <div class="col-md-6">
                                     </div>
                                     <div class="col-md-6"><a href="#" id="forgotPassword"
-                                            class="theme-link d-block text-start text-md-end"
+                                            class="text-primary d-block text-start text-md-end"
                                             title="{{ __('message.Forgot Password?') }}">{{ __('message.Forgot Password?') }}</a></div>
                                 </div>
                                 <div class="row mb-4">
                                     <div class="col-md-12">
                                         <button type="submit"
-                                            class="theme-btn theme-button1 theme-button3 font-15 fw-bold w-100"
+                                            class=" btn btn-primary font-15 fw-bold w-100"
                                             title="{{ __('message.Sign In') }}">{{ __('message.Sign In') }}</button>
                                     </div>
                                 </div>
@@ -56,7 +56,7 @@
                     <div class="col-md-6 d-none d-md-block">
                         <div class="sign-up-left-content position-relative text-center">
                             <div class="sign-up-bottom-img mb-4">
-                                <img src="{{ getSettingImage() }}" alt="{{ 'app_name' }}" class="img-fluid">
+                                <img src="{{ getSettingImage() }}" alt="{{ 'app_logo' }}" class="img-fluid">
                             </div>
                             <h1 class="text-white">{{ __('message.sign_in_text_title') }}</h1>
                             <p class="mt-4 w-75 mx-auto">{{ __('message.sign_in_text_subtitle') }}</p>
@@ -93,7 +93,7 @@
                                     <input type="text" class="form-control" name="phone" autocomplete="off" id="phone"
                                         placeholder="{{ __('message.contact_number') }}" required>
                                     <button class="btn btn-primary" id="getCode"
-                                        type="button">{{__('Get Code')}}</button>
+                                        type="button">{{__('message.get_code')}}</button>
                                 </div>
 
                                 <div id="OTP-field" style="display: none;">
@@ -128,10 +128,10 @@
                         </div>
                     </div>
                     <div class="modal-footer justify-content-start">
-                        <button type="button" class="theme-btn-back me-3" data-bs-dismiss="modal"
+                        <button type="button" class="btn btn-outline-dark me-3" data-bs-dismiss="modal"
                             title="{{ __('message.back') }}">{{ __('message.back') }}</button>
-                        <button type="submit" class="theme-btn me-3" id="verify" style="display:none"
-                            title="Verify OTP">Verify OTP</button>
+                        <button type="submit" class="btn btn-primary me-3" id="verify" style="display:none"
+                            title="Verify OTP">{{__("message.verify_otp")}}</button>
                     </div>
                 </form>
             </div>
