@@ -82,7 +82,7 @@
                 if (password !== confirmPassword) {
                     e.preventDefault(); // Prevent form submission
                     errorElement.style.display = 'block';
-                    errorElement.textContent = @lang('message.pass_noMatch');
+                    errorElement.textContent = "@lang('message.pass_noMatch')";
                 } else {
                     errorElement.style.display = 'none';
                 }

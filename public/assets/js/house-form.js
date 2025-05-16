@@ -94,7 +94,7 @@ rentedCheckbox.addEventListener('change', function () {
     } else {
         paymentContainer.style.display = 'none';
         paymentInput.required = false;
-        renter.required = true;
+        renter.required = false;
     }
 });
 

@@ -112,4 +112,37 @@ class User extends Authenticatable implements HasMedia
     {   $this->clearMediaCollection('profile_image');
         $this->addMediaFromRequest('profile_image')->toMediaCollection('profile_image');
     }
+
+    protected static function boot()
+{
+    parent::boot();
+
+    static::deleting(function($user) {
+        if ($user->isForceDeleting()) {
+            // If permanently deleting, force delete houses
+            $user->houses()->withTrashed()->forceDelete();
+            if(isTenant($user)){
+            $house = $user->rentedHouse()->withTrashed();
+            $house->tenant_id = null;
+                    $house->rented = false;
+                    $house->save();
+            }
+        } else {
+            // If soft deleting, soft delete houses
+            $user->houses()->delete();
+            if(isTenant($user)){
+            $house = $user->rentedHouse();
+            $house->tenant_id = null;
+                    $house->rented = false;
+                    $house->payment_date = null;
+                    $house->save();
+            }
+        }
+    });
+
+    static::restoring(function($user) {
+        // Restore soft deleted houses when owner is restored
+        $user->houses()->withTrashed()->restore();
+    });
+}
 }

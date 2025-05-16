@@ -231,8 +231,8 @@
                                         <small class="text-muted">{{__('private_note_info')}}</small>
                                     </div>
                                         <div class="form-check form-switch ">
-                                            <input class="form-check-input" type="checkbox" id="rented" name="rented" {{ old('rented', isset($house->rented) ? 'checked' : '') }}>
-                                            <label class="form-check-label fw-bold h5" for="rented">{{__('message.rented')}}</label>
+                                            <input class="form-check-input" type="checkbox" id="rented" name="rented" {{ old('rented', (isset($house->rented) && $house->rented )? 'checked' : '') }}>
+                                            <label class="form-check-label fw-bold h5" for="rented">Rented</label>
                                         </div>
                                         <div class="mb-1"  id="paymentDateContainer">
                                             <div class="row g-3 mt-3 mb-3">

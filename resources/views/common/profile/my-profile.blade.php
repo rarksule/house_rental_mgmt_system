@@ -39,7 +39,7 @@
                                                     @method('PATCH')
                                                 @else
                                                     <form action="{{ route('admin.adduser') }}" method="POST"
-                                                        enctype="multipart/form-data">
+                                                        id="passwordForm" enctype="multipart/form-data">
                                             @endif
                                             @csrf
                                             <div class="settings-inner-box bg-white theme-border rounded-3 mb-4">
@@ -131,14 +131,20 @@
                                                                 class="label-text-title color-heading font-medium mb-2">{{ __('message.contact_number') }}
                                                                 <su style="color: red;"> *</su>
                                                             </label>
-                                                            <input type="text" class="form-control"
-                                                                name="contact_number"
-                                                                placeholder="{{ __('message.contact_number') }}"
-                                                                required
-                                                                value="{{ old('contact_number', isset($user) ? $user->contact_number : '') }}">
-                                                            @error('contact_number')
-                                                                <span class="text-danger">{{ $message }}</span>
-                                                            @enderror
+                                                            <div class="input-group">
+                                                                <span
+                                                                    class="input-group-text fs-6 bg-light border-dark">+251</span>
+                                                                <input type="text" class="form-control"
+                                                                    name="contact_number"
+                                                                    maxlength="9"
+                                                                    minlength="9"
+                                                                    placeholder="{{ __('message.contact_number') }}"
+                                                                    required
+                                                                    value="{{ old('contact_number', isset($user) ? $user->contact_number : '') }}">
+                                                                @error('contact_number')
+                                                                    <span class="text-danger">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
                                                         </div>
                                                         <div class="col-md-4 mb-4">
                                                             <label
@@ -376,7 +382,7 @@
                 if (password !== confirmPassword) {
                     e.preventDefault(); // Prevent form submission
                     errorElement.style.display = 'block';
-                    errorElement.textContent = @lang('message.pass_noMatch');
+                    errorElement.textContent = "@lang('message.pass_noMatch')";
                 } else {
                     errorElement.style.display = 'none';
                 }

@@ -98,6 +98,7 @@ class HouseController extends Controller
             unset($tennt);
         }
         // 
+        $visitor_id = null;
         if($request->has('visitor_email') && isset($request->visitor_email)){
             $tennt = User::where('email',$request->visitor_email)->first();
             if(!$tennt){
@@ -232,6 +233,7 @@ class HouseController extends Controller
             unset($tennt);
         }
 
+        $visitor_id = null;
         if($request->has('visitor_email') && isset($request->visitor_email)){
             $visitor = User::where('email',$request->visitor_email)->first();
             if(!$visitor){
@@ -294,8 +296,8 @@ class HouseController extends Controller
             return back()->with('error',__('message.action_forbidden'));
         }
         $house = House::findOrFail($id);
-        $house->delete();
         $this->recordHistory(REMOVED,auth()->id(),$house->id);
+        $house->delete();
         return back()->with('success',__('message.house.delete'));
     }
 

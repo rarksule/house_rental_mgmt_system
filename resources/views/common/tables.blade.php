@@ -86,7 +86,7 @@
     
               if(isAdmin){
                 var deleteUrl = dataType=='user' ? "{{ route('admin.deleteUser',[':id']) }}".replace(':id', dataId) 
-                    : "{{ route('admin.deleteHouse',[':id']) }}".replace(':id', dataId);
+                    : "{{ route(userprefix().'.deleteHouse',[':id']) }}".replace(':id', dataId);
             }else{
                 var deleteUrl = "{{ route('owner.deleteHouse',[':id']) }}".replace(':id', dataId);
             }
