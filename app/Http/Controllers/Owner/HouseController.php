@@ -131,7 +131,7 @@ class HouseController extends Controller
             $this->recordHistory(RENTED, $tenant_id, $house->id);
         }
 
-        if ($visitor_id != null) {
+        if ($visitor_id != null && $house->histories() != null) {
 
             if (
                 !$house->histories()
@@ -301,21 +301,21 @@ class HouseController extends Controller
             return response()->json(['success' => false, 'message' => __('message.action_forbidden')], 403);
         }
         $house = House::withTrashed()->findOrFail($id);
-        
+
         if (!$house) {
             response()->json(['success' => false, 'message' => __('message.not_found')], 404);
         }
-        if (($house->owner_id != auth()->id()&& isOwner())) {
-             return response()->json(['success' => false, 'message' => __('message.action_forbidden')], 403);
+        if (($house->owner_id != auth()->id() && isOwner())) {
+            return response()->json(['success' => false, 'message' => __('message.action_forbidden')], 403);
         }
-        if ($house->deleted_at!=null) {
+        if ($house->deleted_at != null) {
             $house->forceDelete();
         } else {
             $this->recordHistory(REMOVED, auth()->id(), $house->id);
             $house->delete();
         }
-        
-        return response()->json(['success' => true, ], ); 
+
+        return response()->json(['success' => true,], );
     }
 
 
@@ -325,20 +325,20 @@ class HouseController extends Controller
             return response()->json(['success' => false, 'message' => __('message.action_forbidden')], 403);
         }
         $house = House::withTrashed()->findOrFail($id);
-        
+
         if (!$house) {
             response()->json(['success' => false, 'message' => __('message.not_found')], 404);
         }
-        if (($house->owner_id != auth()->id()&& isOwner())) {
-             return response()->json(['success' => false, 'message' => __('message.action_forbidden')], 403);
+        if (($house->owner_id != auth()->id() && isOwner())) {
+            return response()->json(['success' => false, 'message' => __('message.action_forbidden')], 403);
         }
-        if ($house->deleted_at==null) {
+        if ($house->deleted_at == null) {
             return response()->json(['success' => false, 'message' => __('message.action_forbidden')], 403);
         } else {
             $house->restore();
         }
-        
-        return response()->json(['success' => true, ], ); 
+
+        return response()->json(['success' => true,], );
     }
 
 
