@@ -29,6 +29,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'a
     Route::get('/owners', [UserController::class, 'owners'])->name('owners');
     Route::delete('/deleteUser/{id}', [UserController::class, 'destroy'])->name('deleteUser');
     Route::delete('/deleteHouse/{id}', [HouseController::class, 'destroy'])->name('deleteHouse');
+
+    Route::delete('/restoreUser/{id}', [UserController::class, 'restore'])->name('restoreUser');
+    Route::delete('/restoreHouse/{id}', [HouseController::class, 'restore'])->name('restoreHouse');
     
     Route::get('/tenantsHistory', [OwnerController::class, 'tenatHistory'])->name('tenantsHistory');
     Route::get('/ownersHistory', [AdminController::class, 'ownerHistory'])->name('ownersHistory');

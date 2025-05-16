@@ -34,7 +34,14 @@ class OwnersDataTable extends DataTable
                 </a>';
             })
             ->addColumn('action', function($user) {
-                return  '
+                $buttons = '';
+                if($user->deleted_at){
+
+                $buttons .= '<button class="btn btn-success btn-sm restore  me-1 mb-1" data-id="'.$user.'" data-type="user">
+                               <i class="fas fa-trash-restore-alt"></i>
+                             </button>';
+                }
+                $buttons .=  '
                     <a href="' . route('admin.editUsers', $user->id) . '" class="btn btn-primary btn-sm me-1 mb-1">
                         <i class="fas fa-edit"></i>
                     </a>
@@ -42,6 +49,7 @@ class OwnersDataTable extends DataTable
                         <i class="fas fa-trash"></i>
                     </button>
                 ';
+                return $buttons;
             })
             ->rawColumns(['verified', 'status', 'action']);
     }
@@ -54,7 +62,7 @@ class OwnersDataTable extends DataTable
      */
     public function query(User $model)
     {
-        $model = $model->newQuery()->where('role',USER_ROLE_OWNER);
+        $model = $model->newQuery()->where('role',USER_ROLE_OWNER)->withTrashed();
         return $this->applyScopes($model);
     }
 

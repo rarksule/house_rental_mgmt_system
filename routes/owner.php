@@ -44,6 +44,7 @@ Route::group(['prefix' => 'owner', 'as' => 'owner.', 'middleware' => ['auth', 'o
     Route::get('/editHouse/{id}', [HouseController::class, 'edit'])->name('editHouse');
     Route::patch('/update/{id}', [HouseController::class, 'update'])->name('update');
     Route::delete('/deleteHouse/{id}', [HouseController::class, 'destroy'])->name('deleteHouse');
+    Route::delete('/restoreHouse/{id}', [HouseController::class, 'restore'])->name('restoreHouse');
     Route::get('/setting', [OwnerController::class, 'index'])->name('setting');
     Route::get('/dashboard', [OwnerController::class, 'index'])->name('dashboard');
     Route::get('/message', [MessageController::class, 'index'])->name('notification');

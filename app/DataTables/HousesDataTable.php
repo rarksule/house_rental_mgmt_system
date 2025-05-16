@@ -75,7 +75,12 @@ class HousesDataTable extends DataTable
                                   <i class="fas fa-edit"></i>
                                 </a>';
                 }
-                
+                if($house->deleted_at){
+
+                $buttons .= '<button class="btn btn-success btn-sm restore me-1 mb-1" data-id="'.$house->id.'" data-type="house">
+                               <i class="fas fa-trash-restore-alt"></i>
+                             </button>';
+                }
                 $buttons .= '<button class="btn btn-danger btn-sm delete mb-1" data-id="'.$house->id.'" data-type="house">
                                <i class="fas fa-trash"></i>
                              </button>';
@@ -94,9 +99,9 @@ class HousesDataTable extends DataTable
     public function query(House $model)
     {
         if (isAdmin()) {
-            $model = $model->newQuery()->with(['tenant', 'owner', 'reviews']);
+            $model = $model->newQuery()->with(['tenant', 'owner', 'reviews'])->withTrashed();
         } else {
-            $model = $model->newQuery()->with(['tenant', 'reviews'])->where('owner_id', auth()->user()->id);
+            $model = $model->newQuery()->with(['tenant', 'reviews'])->where('owner_id', auth()->user()->id)->withTrashed();
         }
 
         return $this->applyScopes($model);

@@ -69,7 +69,7 @@
                 @endforeach
             ],
             language: {
-                emptyTable: "{{ __('message.no_found',['form'=> $title ]) }}",
+                emptyTable: "{{ __('message.no_found_tb',['form'=> $title ]) }}",
                 info: "{{ __('message.showing_all',['form'=>$title]) }}",
                 infoEmpty: "{{ __('message.showing_all',['form'=>$title]) }}",
                 infoFiltered: " {{__('message.filterd',['form'=>$title])}})",
@@ -86,12 +86,12 @@
     
               if(isAdmin){
                 var deleteUrl = dataType=='user' ? "{{ route('admin.deleteUser',[':id']) }}".replace(':id', dataId) 
-                    : "{{ route(userprefix().'.deleteHouse',[':id']) }}".replace(':id', dataId);
+                    : "{{ route('admin.deleteHouse',[':id']) }}".replace(':id', dataId);
             }else{
                 var deleteUrl = "{{ route('owner.deleteHouse',[':id']) }}".replace(':id', dataId);
             }
             
-            if (confirm("{{ __('message.sure_delete',['form'=>$item]) }}")) {
+            if (confirm("{{ __('message.sure_delete',['form'=>$title ]) }}")) {
                 $.ajax({
                     url: deleteUrl,
                     type: 'POST',
@@ -101,7 +101,41 @@
                     },
                     success: function (result) {
                         table.ajax.reload();
-                        toastr.success("{{ __('message.delete_success',['form'=> $item]) }}");
+                        toastr.success("{{ __('message.delete_success',['form'=> $title ]) }}");
+                    },
+                    error: function (xhr) {
+                        if (xhr.status === 500) { // Only show alert for 500 errors
+                                alert("Server Error: Failed to delete {{ $title ?? 'item' }}");
+                            } else {
+                                toastr.error(xhr.responseJSON?.message || "Request failed");
+                            }
+                    }
+                });
+            }
+        });
+
+        $('#dynamicDataTable').on('click', '.restore', function () {
+            var dataId = $(this).data('id');
+            var dataType = $(this).data('type');
+    
+              if(isAdmin){
+                var deleteUrl = dataType=='user' ? "{{ route('admin.restoreUser',[':id']) }}".replace(':id', dataId) 
+                    : "{{ route(userprefix().'.restoreHouse',[':id']) }}".replace(':id', dataId);
+            }else{
+                var deleteUrl = "{{ route('owner.restoreHouse',[':id']) }}".replace(':id', dataId);
+            }
+            
+            if (confirm("{{ __('message.sure_delete',['form'=>$title ]) }}")) {
+                $.ajax({
+                    url: deleteUrl,
+                    type: 'POST',
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                      "_method":"DELETE"
+                    },
+                    success: function (result) {
+                        table.ajax.reload();
+                        toastr.success("{{ __('message.delete_success',['form'=> $title ]) }}");
                     },
                     error: function (xhr) {
                         alert('Error deleting {{ $title ?? "item" }}: ' + (xhr.responseJSON?.message || 'Unknown error'));

@@ -10,11 +10,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\House;
 use Spatie\MediaLibrary\HasMedia;
+use App\HistoryTrait;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
 class User extends Authenticatable implements HasMedia
 {
-    use HasFactory, Notifiable, InteractsWithMedia, SoftDeletes;
+    use HasFactory, Notifiable, InteractsWithMedia, SoftDeletes, HistoryTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -39,7 +40,7 @@ class User extends Authenticatable implements HasMedia
         'kids',
         'nid_number',
         'locale',
-        
+
     ];
 
 
@@ -109,40 +110,62 @@ class User extends Authenticatable implements HasMedia
 
 
     public function addImage(): void
-    {   $this->clearMediaCollection('profile_image');
+    {
+        $this->clearMediaCollection('profile_image');
         $this->addMediaFromRequest('profile_image')->toMediaCollection('profile_image');
     }
 
     protected static function boot()
-{
-    parent::boot();
+    {
+        parent::boot();
 
-    static::deleting(function($user) {
-        if ($user->isForceDeleting()) {
-            // If permanently deleting, force delete houses
-            $user->houses()->withTrashed()->forceDelete();
-            if(isTenant($user)){
-            $house = $user->rentedHouse()->withTrashed();
-            $house->tenant_id = null;
-                    $house->rented = false;
-                    $house->save();
-            }
-        } else {
-            // If soft deleting, soft delete houses
-            $user->houses()->delete();
-            if(isTenant($user)){
-            $house = $user->rentedHouse();
-            $house->tenant_id = null;
-                    $house->rented = false;
-                    $house->payment_date = null;
-                    $house->save();
-            }
-        }
-    });
+        static::deleting(function ($user) {
+            if ($user->isForceDeleting()) {
+                // If permanently deleting, force delete houses
+                $user->sentMessages()->delete();
+                $user->receivedMessages()->delete();
+                if (isOwner($user)) {
 
-    static::restoring(function($user) {
-        // Restore soft deleted houses when owner is restored
-        $user->houses()->withTrashed()->restore();
-    });
-}
+                    $user->houses()->withTrashed()->forceDelete();
+                } else if (isTenant($user)) {
+                    $house = optional($user->rentedHouse())->withTrashed()->first();
+
+                    if ($house) {
+                        $house->update([
+                            'tenant_id' => null,
+                            'rented' => false,
+                            'payment_date' => null,
+                        ]);
+                    }
+                }
+            } else {
+                // If soft deleting, soft delete houses
+                if (isOwner($user)) {
+                    $user->houses()->delete();
+
+                } else if (isTenant($user)) {
+                    $house = optional($user->rentedHouse())->withTrashed()->first();
+
+                    if ($house) {
+                        $house->update([
+                            'tenant_id' => null,
+                            'rented' => false,
+                            'payment_date' => null,
+                        ]);
+                        $this->recordHistory(RELEASED, $user, $house->id);
+                    }
+
+
+                }
+
+            }
+        });
+
+        static::restoring(function ($user) {
+            // Restore soft deleted houses when owner is restored
+            if (isOwner($user) && $user->houses()->withTrashed()!=null) {
+                $user->houses()->withTrashed()->restore();
+            }
+        });
+    }
 }

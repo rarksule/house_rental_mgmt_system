@@ -89,7 +89,7 @@ class RentedHousesDataTable extends DataTable
      */
     public function query(House $model)
     {
-        if (auth()->user()->role == USER_ROLE_ADMIN) {
+        if (isAdmin()) {
             $model = $model->newQuery()->with(['tenant', 'owner', 'reviews'])->where('rented',1);
         } else {
             $model = $model->newQuery()->with(['tenant', 'reviews'])->where('owner_id', auth()->user()->id)->where('rented',1);

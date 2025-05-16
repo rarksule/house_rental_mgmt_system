@@ -64,7 +64,7 @@
                                             <div class="invalid-feedback">{{__("message.invalid",["form" => __("message.description")])}}
                                             </div>
                                         </div>
-                                        <h5 class="mt-3 fw-bold">{{__('upload')}}</h5>
+                                        <h5 class="mt-3 fw-bold">{{__('message.upload')}}</h5>
                                         <input type="file" id="hidden-preview-container" name="images[]"
                                             class="form-control" multiple accept="image/*" style="display: none;"
                                             >
@@ -85,9 +85,10 @@
                                         </div>
 
                                         <!-- Image preview container -->
-                                        <div class="mt-4" id="imagePreviewContainer" style="display: none;">
+                                        <div class="mt-4" id="imagePreviewContainer"style="display: none;">
                                             <h6 class="mb-3">Preview:</h6>
                                             <div class="row overflow-md-visible" id="imagePreviews">
+
                                                 @if (isset($house))
                                                     @foreach($house->getMedia('images') as $image)
                                                         <div class="col-auto position-relative mb-3">
@@ -228,7 +229,7 @@
                                         <label for="privateNotes" class="form-label fw-bold">{{__('message.private_note')}}</label>
                                         <textarea class="form-control border-primary" id="privateNotes" name="privateNotes"
                                             rows="3">{{ old('privateNotes', $house->privateNotes ?? '') }}</textarea>
-                                        <small class="text-muted">{{__('private_note_info')}}</small>
+                                        <small class="text-muted">{{__('message.private_note_info')}}</small>
                                     </div>
                                         <div class="form-check form-switch ">
                                             <input class="form-check-input" type="checkbox" id="rented" name="rented" {{ old('rented', (isset($house->rented) && $house->rented )? 'checked' : '') }}>

@@ -249,6 +249,7 @@ return [
     'no_found_filt' => 'No matching :form found',
     'sure_delete' => 'Are you sure you want to delete this :form ? This action cannot be undone.',
     'delete_success' => ':form deleted successfully',
+    'restore' => 'Restored',
 
 
 ];

@@ -117,7 +117,7 @@
                                                             <label
                                                                 class="label-text-title color-heading font-medium mb-2">{{ __('message.email') }}
                                                                 <su style="color: red;"> *</su>
-                                                            </label>Drop files here or click to upload
+                                                            </label>
                                                             <input type="email" class="form-control" name="email"
                                                                 placeholder="{{ __('message.email') }}" required
                                                                 value="{{ old('email', isset($user) ? $user->email : '') }}"

@@ -47,7 +47,15 @@ class TenantsDataTable extends DataTable
             if(isAdmin()){
                 $datatable
                 ->addColumn('action', function ($user) {
-                    return  '
+                    $buttons = '';
+                if($user->deleted_at){
+
+                $buttons .= '<button class="btn btn-success btn-sm restore  me-1 mb-1" data-id="'.$user->id.'" data-type="user">
+                               <i class="fas fa-trash-restore-alt"></i>
+                             </button>';
+                }
+                $buttons .=  
+                     '
                         <a href="' . route('admin.editUsers', $user->id) . '" class="btn btn-primary btn-sm me-1 mb-1">
                             <i class="fas fa-edit"></i>
                         </a>
@@ -55,6 +63,7 @@ class TenantsDataTable extends DataTable
                             <i class="fas fa-trash"></i>
                         </button>
                     ';
+                    return $buttons;
                 });  
             }
             return $datatable->rawColumns(['verified','rentedHouse', 'status', ...(isAdmin() ? ['action'] : [])]);
@@ -70,7 +79,7 @@ class TenantsDataTable extends DataTable
     public function query(User $model)
     {
         if (isAdmin()) {
-            $model = $model->newQuery()->where('role', USER_ROLE_TENANT);
+            $model = $model->newQuery()->where('role', USER_ROLE_TENANT)->withTrashed();
         } else {
             $model = User::whereHas('rentedHouse', function ($query) {
                 $query->where('owner_id', auth()->id());
