@@ -131,10 +131,11 @@ class HouseController extends Controller
             $this->recordHistory(RENTED, $tenant_id, $house->id);
         }
 
-        if ($visitor_id != null && $house->histories() != null) {
+        if ($visitor_id != null) {
 
             if (
-                !$house->histories()
+                $house->histories() == null ||
+                !optional($house->histories())
                     ->where('user_id', $visitor_id)
                     ->where('type', VISITED)
                     ->exists()
@@ -266,19 +267,21 @@ class HouseController extends Controller
         if (($previousTenant != null && $tenant_id == null) || ($previousTenant != null && $tenant_id != $previousTenant)) {
             $this->recordHistory(RELEASED, $previousTenant, $house->id);
         }
-        if (($previousTenant != null && $tenant_id != $previousTenant) || ($previousTenant == null && $tenant_id != null)) {
+        if (($previousTenant != null && $tenant_id != $previousTenant && $tenant_id!=null ) || ($previousTenant == null && $tenant_id != null)) {
             $this->recordHistory(RENTED, $tenant_id, $house->id);
         }
-        if ($visitor_id != null) {
+
+         if ($visitor_id != null) {
 
             if (
-                !$house->histories()
+                $house->histories() == null ||
+                !optional($house->histories())
                     ->where('user_id', $visitor_id)
                     ->where('type', VISITED)
                     ->exists()
             ) {
 
-                $this->recordHistory(VISITED, $visitor->id, $house->id);
+                $this->recordHistory(VISITED, $visitor_id, $house->id);
             }
         }
 
