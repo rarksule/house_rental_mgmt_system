@@ -40,7 +40,7 @@ class OwnerController extends Controller
     public function tenatHistory(Request $request){
         if(isAdmin()){
             $rentalHistory = UserHistory::whereHas('user', function($query) {
-                $query->where('role', USER_ROLE_TENANT); // assuming 'role' column exists in users table
+                $query->where('role', USER_ROLE_TENANT)->orderBy('created_at', 'desc'); // assuming 'role' column exists in users table
             })->get();
             $who = __("message.tenants");
         }else{

@@ -8,6 +8,7 @@ use Illuminate\View\View;
 use App\Models\User;
 use App\Models\House;
 use App\Models\Message;
+use App\Models\ReviewReplay;
 use App\Models\Setting;
 use App\Models\Language;
 use App\Models\UserHistory;
@@ -62,7 +63,7 @@ class AdminController extends Controller
     public function ownerHistory(Request $request){
         if(isAdmin()){
             $rentalHistory = UserHistory::whereHas('user', function($query) {
-                $query->where('role', USER_ROLE_OWNER); // assuming 'role' column exists in users table
+                $query->where('role', USER_ROLE_OWNER)->orderBy('created_at', 'desc'); // assuming 'role' column exists in users table
             })->get();
         }
         $who = __("message.owners");
